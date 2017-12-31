@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2017年度小结]]></title>
+    <url>%2F2017%2F12%2F31%2F2017%E5%B9%B4%E5%BA%A6%E5%B0%8F%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[&emsp;&emsp;2017年算是颇有收获的一年。&emsp;&emsp;确定了自己毕业后要从事的方向，跟自己的专业没有太大关系，所以基本要靠自学了。想想或许这也不是什么坏事，可以按照自己喜欢的方式学习，还能锻炼学习能力。 关于学习&emsp;&emsp;这一年里，基于兴趣学习了几门流行的编程语言，学习了前端的一些基本知识。上半年开始了自己的自学之路，由于之前没有任何编程基础，同时本专业还有一些任务，靠挤时间花了大半个学期算是学完了Java的基础部分。下半年已经确定进入互联网搬砖，开始有计划的学习。虽然学习完了数据结构，但是自己的计划没有完全完成。总结起来，一是前期的学习比较杂乱，几乎是在同时学习前端+python+javaweb+其他，之后发现这样的学习效率并不高，于是将主要精力集中在数据结构，才能基本完成计划。二是还在兼顾专业课，现在觉得不应该在专业课下太多的功夫，说到底还是自己缺乏背水一战的决心。 个人博客&emsp;&emsp;不久前接触到了几个不错的个人博客，后来偶然了解到可以用Hexo+github搭建个人博客，出于折腾心理自己也搭建了一个。看过很多大神分享的面经，他们都有一个共同的习惯：总结。这也是我搭建博客的一个原因，静下心来写写总结，记录下自己的学习，生活，沉淀自己。 关于生活电影&emsp;&emsp;不知什么时候开始喜欢上看电影。作为第八艺术，一部优秀的电影足以带给你很多启示。高考后看完了很多经典电影。像《肖申克的救赎》，《霸王别姬》，《蝙蝠侠：黑暗骑士》。。。慢慢的意识到，虽然自己没有写影评的文笔，但应该记录下看过的电影。于是从下半年开始记录自己看过的电影。 游戏&emsp;&emsp;不久前入正了《巫师3：狂猎》，这是我第一款入正的游戏，也是我游戏时间最长的一款游戏，2017年的娱乐时间基本给了它。盗版已经快要玩通了，现在入正来表示对CD Projekt RED的支持，毕竟以后难得再遇到这样优秀的游戏。 关于感情不存在的]]></content>
+      <categories>
+        <category>年度小结</category>
+      </categories>
+      <tags>
+        <tag>年度小结</tag>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Windows下安装Ubuntu 16.04双系统]]></title>
     <url>%2F2017%2F12%2F29%2FWindows%E4%B8%8B%E5%AE%89%E8%A3%85Ubuntu-16-04%E5%8F%8C%E7%B3%BB%E7%BB%9F%2F</url>
-    <content type="text"><![CDATA[准备体验一下Linux，就在原有的Windows10系统下，安装Ubuntu官方会长期提供支持的最新的Ubuntu 16.04。记录一下自己的安装过程。 准备过程 准备工具U盘，Ubuntu 16.04 LTS镜像，启动U盘制作软件 分区分区我用的是DiskGenius这款软件，将自己的一个盘分出了50G的空白空间。之后点击这空白空间，新建分区。 制作U盘启动盘运行下载好的 rufus 这个软件，载入下载的Ubuntu镜像，之后点击开始，一路点击确定，等待一会，写入成功。 成功后如下图 安装 从U盘启动U盘插在电脑上，选择启动方式为U盘启动，（设置U盘启动可以进入BIOS） 安装Ubuntu选择了U盘启动后，会出现如下“欢迎”界面，选择中文后，点击“安装Ubuntu”; 选择安装类型最好选择“其他选项” 安装位置和磁盘分区这是很关键的一步。双击前面分好的空白分区，分配分区网上的建议分区大小 /boot - 200 MB ； 实际需求大约 100 ~ 200MB，建议分配 200 或者 300 MB。 / - 15-20 GB ； 15-20 GB 对于大多数用户来说是一个比较合适的取值。 /home - [不定] ； 通常用于存放用户数据，下载的文件和媒体文件。在桌面系统中，/home 通常是最大的文件系统。(个人建议: 多多益善) swap - [不定] ；内存（大于 1024 MB），可以分配较少的空间甚至不需要swap 分区。 装双系统，/boot 选择”逻辑分区”就行了 “/boot” 分区: “逻辑分区”、”空间起始位置”、”Ext4日志文件系统”、挂载点”/boot” ”/“分区： ”逻辑分区“、”空间起始位置“、”Ext4日志文件系统“、挂载点”/“ ”/home“分区：”逻辑分区“、”空间起始位置“、”Ext2文件系统“、挂载点”/home“ ”交换空间“：”逻辑分区“、”空间起始位置“、”交换空间“ “安装启动引导器的设备”选择/boot对应的分区 检查无误之后，点击“现在安装” 检查分区 选择区域，键盘 设置用户名及密码 安装，重启 安装成功后我的机子算是三系统共存，Windows10 + Ubuntu + Phoenix OS，选择不同的系统方法也很简单，开机之后屏幕左下提示选择启动方式，这时按下“Esc”按钮，就会进入启动管理，之后选择要启动的系统，进入即可。 至于具体怎么设置的，我是当初装Phoenix OS 的时候莫名其妙就设置好了，具体步骤已经忘了。 参考来源Windows下安装Ubuntu 16.04双系统]]></content>
+    <content type="text"><![CDATA[准备体验一下Linux，就在原有的Windows10系统下，安装Ubuntu官方会长期提供支持的最新的Ubuntu 16.04。记录一下自己的安装过程。 准备过程 准备工具U盘，Ubuntu 16.04 LTS镜像，启动U盘制作软件 分区分区我用的是DiskGenius这款软件，将自己的一个盘分出了50G的空白空间。之后点击这空白空间，新建分区。 制作U盘启动盘运行下载好的 rufus 这个软件，载入下载的Ubuntu镜像，之后点击开始，一路点击确定，等待一会，写入成功。 成功后如下图 安装 从U盘启动U盘插在电脑上，选择启动方式为U盘启动，（设置U盘启动可以进入BIOS） 安装Ubuntu选择了U盘启动后，会出现如下“欢迎”界面，选择中文后，点击“安装Ubuntu”; 选择安装类型最好选择“其他选项” 安装位置和磁盘分区这是很关键的一步。双击前面分好的空白分区，分配分区网上的建议分区大小 /boot - 200 MB ； 实际需求大约 100 ~ 200MB，建议分配 200 或者 300 MB。 / - 15-20 GB ； 15-20 GB 对于大多数用户来说是一个比较合适的取值。 /home - [不定] ； 通常用于存放用户数据，下载的文件和媒体文件。在桌面系统中，/home 通常是最大的文件系统。(个人建议: 多多益善) swap - [不定] ；内存（大于 1024 MB），可以分配较少的空间甚至不需要swap 分区。 装双系统，/boot 选择”逻辑分区”就行了 “/boot” 分区: “逻辑分区”、”空间起始位置”、”Ext4日志文件系统”、挂载点”/boot” ”/“分区： ”逻辑分区“、”空间起始位置“、”Ext4日志文件系统“、挂载点”/“ ”/home“分区：”逻辑分区“、”空间起始位置“、”Ext2文件系统“、挂载点”/home“ ”交换空间“：”逻辑分区“、”空间起始位置“、”交换空间“ “安装启动引导器的设备”选择/boot对应的分区 检查无误之后，点击“现在安装” 检查分区 选择区域，键盘 设置用户名及密码 安装，重启 安装成功后我的机子算是三系统共存，Windows10 + Ubuntu + Phoenix OS，选择不同的系统方法也很简单，开机之后屏幕左下提示选择启动方式，这时按下“Esc”按钮，就会进入启动管理，之后选择要启动的系统，进入即可。 参考来源Windows下安装Ubuntu 16.04双系统]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -17,7 +29,7 @@
     <url>%2F2017%2F12%2F28%2FMarkdown%E8%AF%AD%E6%B3%95%2F</url>
     <content type="text"><![CDATA[Markdown语法基本语法标题`# 一级标题` `## 二级标题` 强调*斜体文本* **粗体文本** ~~在文字上添加删除线~~ 链接网站[链接名称](http://链接网址) &lt;http://链接网址&gt; [Google][1] [1]:http://www.google.com/ 插入代码块12var s = "JavaScript syntax highlighting";alert(s); 插入图片![图片名称](http://图片网址) 也可以使用 HTML 的图片语法来自定义图片的宽高大小 [站外图片上传中……(3)] 列表- 列表文本前使用 [减号+空格] + 列表文本前使用 [加号+空格] * 列表文本前使用 [星号+空格] 1. 列表前使用 [数字+空格] 2. 我们会自动帮你添加数字 7. 不用担心数字不对 引用&gt; 引用文本前使用 [大于号+空格] 换行如果另起一行，只需在当前行结尾加 2 个空格 如果是要起一个新段落，只需要空出一行即可。 分隔符 --- 高级语法使用HTML元素如图片居中：&lt;center&gt; &lt;/center&gt; 公式$$ x = {-b pm sqrt{b^2-4ac} over 2a} $$ 更详细说明Markdown 语法说明]]></content>
       <categories>
-        <category>个人博客</category>
+        <category>Hexo</category>
       </categories>
       <tags>
         <tag>Markdown</tag>
@@ -28,7 +40,7 @@
     <url>%2F2017%2F12%2F25%2FHexo%E7%BE%8E%E5%8C%96%2F</url>
     <content type="text"><![CDATA[主题语言设置首先修改hexo根文件夹下的F:\hexo\_config.yml修改为language: zh-CN #网站使用的语言，然后修改主题文件的语言菜单项显示文本：设置菜单项的显示文本。在第一步中设置的菜单的名称并不直接用于界面上的展示。Hexo 在生成的时候将使用 这个名称查找对应的语言翻译，并提取显示文本。这些翻译文本放置在 NexT 主题目录下的 languages/{language}.yml （{language} 为你所使用的语言）。以简体中文为例，若你需要添加一个菜单项，比如 something。那么就需要修改简体中文对应的翻译文件 languages/zh-Hans.yml，在 menu 字段下添加一项: menu: home: 首页 archives: 归档 categories: 分类 tags: 标签 about: 关于 search: 搜索 commonweal: 公益404 something: 有料 设置favicon：favicon的全称Favorites Icon，即地址栏左侧的图标.有个在线工具可以上传自己的图片去生成指定规格的favicon.ico文件。打开主题配置文件_config.yml可以看到favicon的配置信息： # Put your favicon.ico into `hexo-site/source/` directory. favicon: /favicon.ico 添加标签与分类首先，主题配置文件中，在menu项下，要把tags页打开 menu: home: / categories: /categories #about: /about archives: /archives tags: /tags //确保标签页已打开 #schedule: /schedule #commonweal: /404.html 插入图片一种方法![图片名](链接) 另一种方法 主页配置文件_config.yml里post_asset_folder:这个选项设置为true 在hexo目录执行 npm install hexo-asset-image --save，下载安装一个可以上传本地图片的插件 之后运行hexo n &quot;xxxx&quot;生成md文章，/source/_posts文件夹内除了xxxx.md文件还有一个同名的文件夹 在xxxx.md中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在xxxx.md中按照markdown的格式引入图片： ![你想输入的替代文字](xxxx/图片名.jpg) 检查，hexo g生成页面后，进入public\2017\02\26\index.html文件中查看相关字段，可以发现，html标签内的语句是&lt;img src=&quot;2017/02/26/xxxx/图片名.jpg&quot;&gt;，而不是&lt;img src=&quot;xxxx/图片名.jpg&gt; 添加标签与分类hexo new page tags 确认站点配置文件里有tag_dir: tags确认主题配置文件里有tags: /tags编辑source/tags/index.md title: tags date: type: &quot;tags&quot; 添加多个标签tags: [标签1,标签2,标签3] 添加分类hexo new page categories 确认站点配置文件里category_dir: categories确认主题配置文件里有categories: /categories编辑站点的source/categories/index.md title: categories date: type: &quot;categories&quot; 文章自动添加categories在scaffold里有post.md，这是创建post的模板，添加相应的配置 菜单栏控制修改主题配置文件 # ------------------------------------------------------ # Menu Settings # ------------------------------------------------------ # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -&gt; archives) menu: home: / #categories: /categories about: /about archives: /archives tags: /tags #commonweal: /404.html 侧栏设置在主题配置文件的sidebar字段，此处我直接设置为侧栏一直显示，而且显示在右边： sidebar: # Sidebar Position, available value: left | right position: left #position: right # Sidebar Display, available value: # - post expand on posts automatically. Default. # - always expand for all pages automatically # - hide expand only when click on the sidebar toggle icon. # - remove Totally remove sidebar including sidebar toggler. #display: post display: always #display: hide #display: remove 设置头像和作者名称在站点配置文件中，新加一个字段avatar，值就是头像的连接地址，将avatar.png放到本地目录hexo\source\images中；作者名称直接设置站点配置文件中author字段的值： # Site title: Linsh-何乐不为~ subtitle: description: author: Linshuhe avatar: /images/avatar.png language: zh-Hans timezone: 设置阅读全文在文章使用&lt;!--more--&gt;手动设置根据文章的内容，自己在合适的位置添加 &lt; !--more--&gt; 标签，使用灵活，也是Hexo推荐的方法。 在文章中的front-matter中添加description，并提供文章摘录这种方式只会在首页列表中显示文章的摘要内容，进入文章详情后不会再显示。 自动形成摘要，在主题配置文件中添加默认截取的长度为 150 字符，可以根据需要自行设定 auto_excerpt: enable: true length: 150 参考来源 Hexo个人免费博客(三) next主题、评论、阅读量统计和站内搜索 Hexo-设置阅读全文 hexo生成博文插入图片]]></content>
       <categories>
-        <category>个人博客</category>
+        <category>Hexo</category>
       </categories>
       <tags>
         <tag>hexo</tag>
@@ -39,7 +51,7 @@
     <url>%2F2017%2F10%2F21%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
       <categories>
-        <category>个人博客</category>
+        <category>Hexo</category>
       </categories>
       <tags>
         <tag>hexo</tag>
