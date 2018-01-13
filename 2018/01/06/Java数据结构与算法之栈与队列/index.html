@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="栈,队列,数据结构," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/categories/年度小结/index.html">
+<meta name="description" content="栈栈的定义栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。">
+<meta name="keywords" content="栈,队列,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java数据结构与算法之栈与队列">
+<meta property="og:url" content="http://yoursite.com/2018/01/06/Java数据结构与算法之栈与队列/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="栈栈的定义栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-13T03:44:27.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Java数据结构与算法之栈与队列">
+<meta name="twitter:description" content="栈栈的定义栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/年度小结/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/06/Java数据结构与算法之栈与队列/"/>
 
 
 
 
 
-  <title>分类: 年度小结 | Hexo</title>
+  <title>Java数据结构与算法之栈与队列 | Hexo</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,55 +284,231 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>年度小结<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/06/Java数据结构与算法之栈与队列/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SpringLi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/12/31/2017年度小结/" itemprop="url">
-              
-                <span itemprop="name">2017年度小结</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Java数据结构与算法之栈与队列</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-31T20:39:06+08:00"
-              content="2017-12-31" >
-          12-31
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T11:04:51+08:00">
+                2018-01-06
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="栈的定义"><a href="#栈的定义" class="headerlink" title="栈的定义"></a>栈的定义</h3><p>栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。<br><a id="more"></a></p>
+<h3 id="栈的特点"><a href="#栈的特点" class="headerlink" title="栈的特点"></a>栈的特点</h3><ol>
+<li>后进先出（Last In First Out），简称为LIFO线性表</li>
+<li>限定只能在栈顶进行插入和删除操作。</li>
+<li>n个数依次入栈，则出栈方式共有<code>C（2n,n）/(n+1)</code>种</li>
+</ol>
+<h3 id="栈的创建"><a href="#栈的创建" class="headerlink" title="栈的创建"></a>栈的创建</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* 基于链表的栈的实现</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Stack</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">T</span>&gt; </span>&#123; <span class="comment">//使用内部类创建节点</span></div><div class="line">        <span class="keyword">private</span> T data;</div><div class="line">        <span class="keyword">private</span> Node&lt;T&gt; next;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Node</span><span class="params">(T data)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data = data;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Node</span><span class="params">(T data, Node&lt;T&gt; next)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data = data;</div><div class="line">            <span class="keyword">this</span>.next = next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> T <span class="title">getData</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> data;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node&lt;T&gt; root;<span class="comment">//栈顶指针</span></div><div class="line">    <span class="keyword">int</span> top = -<span class="number">1</span>;<span class="comment">//栈容量</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(T data)</span> </span>&#123; <span class="comment">//入栈</span></div><div class="line">        <span class="comment">//另一种描述</span></div><div class="line">        Node&lt;T&gt; oldroot = root;</div><div class="line">        root = <span class="keyword">new</span> Node&lt;T&gt;(data);</div><div class="line">        root.next = oldroot;</div><div class="line">        top++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/*public void push(T data)&#123;</span></div><div class="line"><span class="comment">        root = new Node&lt;T&gt;(data, root);</span></div><div class="line"><span class="comment">        top ++;</span></div><div class="line"><span class="comment">    &#125;*/</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">pop</span><span class="params">()</span> </span>&#123; <span class="comment">//出栈</span></div><div class="line">        <span class="keyword">if</span> (top &lt;= -<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        T getData = root.getData();</div><div class="line">        root = root.next;</div><div class="line">        top--;</div><div class="line">        <span class="keyword">return</span> getData;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">peek</span><span class="params">()</span> </span>&#123; <span class="comment">//返回栈顶元素</span></div><div class="line">        <span class="keyword">return</span> root.getData();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123; <span class="comment">//判断是否为空栈</span></div><div class="line">        <span class="keyword">return</span> top == -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>&#123; <span class="comment">//清空栈</span></div><div class="line">        root = <span class="keyword">null</span>;</div><div class="line">        top = -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h3><ol>
+<li>数值转换</li>
+<li>表达式求值</li>
+<li>浏览器历史纪录</li>
+<li>解析xml/json等</li>
+</ol>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h3 id="队列的实现"><a href="#队列的实现" class="headerlink" title="队列的实现"></a>队列的实现</h3><pre><code class="java"><span class="comment">/**</span>
+<span class="comment">* 利用链表实现队列</span>
+<span class="comment">*/</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Queue</span>&lt;<span class="title">T</span>&gt; </span>{
+    <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">T</span>&gt; </span>{ <span class="comment">//队列节点</span>
+        <span class="keyword">private</span> T data;
+        <span class="keyword">private</span> Node&lt;T&gt; next;
+
+        <span class="function"><span class="keyword">private</span> <span class="title">Node</span><span class="params">(T data)</span> </span>{
+            <span class="keyword">this</span>.data = data;
+        }
+    }
+
+    <span class="keyword">private</span> Node&lt;T&gt; first; <span class="comment">//队首指针</span>
+    <span class="keyword">private</span> Node&lt;T&gt; last; <span class="comment">//队尾指针</span>
+    <span class="keyword">private</span> <span class="keyword">int</span> n; <span class="comment">//队列容量</span>
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Enqueue</span><span class="params">(T data)</span> </span>{ <span class="comment">//入队</span>
+        Node&lt;T&gt; oldlast = last;
+        last = <span class="keyword">new</span> Node&lt;&gt;(data);
+        last.next = <span class="keyword">null</span>;
+        <span class="keyword">if</span> (isEmpty()) first = last;
+        <span class="keyword">else</span> oldlast.next = last;
+        n++;
+
+    }
+
+    <span class="function"><span class="keyword">public</span> T <span class="title">Dequeue</span><span class="params">()</span> </span>{ <span class="comment">//出队</span>
+        <span class="keyword">if</span> (isEmpty()) <span class="keyword">return</span> <span class="keyword">null</span>;
+        T data = first.data;
+        first = first.next;
+        n--;
+        <span class="keyword">if</span> (isEmpty()) last = <span class="keyword">null</span>;
+        <span class="keyword">return</span> data;
+    }
+
+    <span class="function"><span class="keyword">public</span> T <span class="title">peek</span><span class="params">()</span> </span>{ <span class="comment">//查看队首元素</span>
+        <span class="keyword">if</span> (isEmpty()) <span class="keyword">return</span> <span class="keyword">null</span>;
+        <span class="keyword">return</span> first.data;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>{ <span class="comment">//判断队列是否为空</span>
+        <span class="keyword">return</span> first == <span class="keyword">null</span>;
+    }
+}
+</code></pre>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/栈/" rel="tag"># 栈</a>
+          
+            <a href="/tags/队列/" rel="tag"># 队列</a>
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/31/2017年度小结/" rel="next" title="2017年度小结">
+                <i class="fa fa-chevron-left"></i> 2017年度小结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -335,6 +516,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -355,8 +540,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -426,6 +620,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈"><span class="nav-number">1.</span> <span class="nav-text">栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈的定义"><span class="nav-number">1.1.</span> <span class="nav-text">栈的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈的特点"><span class="nav-number">1.2.</span> <span class="nav-text">栈的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈的创建"><span class="nav-number">1.3.</span> <span class="nav-text">栈的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈的应用"><span class="nav-number">1.4.</span> <span class="nav-text">栈的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列"><span class="nav-number">2.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#队列的实现"><span class="nav-number">2.1.</span> <span class="nav-text">队列的实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -569,6 +779,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
