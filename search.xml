@@ -1,362 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[Java数据结构与算法之栈与队列]]></title>
-      <url>/2018/01/06/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/</url>
-      <content type="html"><![CDATA[<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="栈的定义"><a href="#栈的定义" class="headerlink" title="栈的定义"></a>栈的定义</h3><p>栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。<br><a id="more"></a></p>
-<h3 id="栈的特点"><a href="#栈的特点" class="headerlink" title="栈的特点"></a>栈的特点</h3><ol>
-<li>后进先出（Last In First Out），简称为LIFO线性表</li>
-<li>限定只能在栈顶进行插入和删除操作。</li>
-<li>n个数依次入栈，则出栈方式共有<code>C（2n,n）/(n+1)</code>种</li>
-</ol>
-<h3 id="栈的创建"><a href="#栈的创建" class="headerlink" title="栈的创建"></a>栈的创建</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* 基于链表的栈的实现</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Stack</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">T</span>&gt; </span>&#123; <span class="comment">//使用内部类创建节点</span></div><div class="line">        <span class="keyword">private</span> T data;</div><div class="line">        <span class="keyword">private</span> Node&lt;T&gt; next;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Node</span><span class="params">(T data)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data = data;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Node</span><span class="params">(T data, Node&lt;T&gt; next)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data = data;</div><div class="line">            <span class="keyword">this</span>.next = next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> T <span class="title">getData</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> data;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node&lt;T&gt; root;<span class="comment">//栈顶指针</span></div><div class="line">    <span class="keyword">int</span> top = -<span class="number">1</span>;<span class="comment">//栈容量</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(T data)</span> </span>&#123; <span class="comment">//入栈</span></div><div class="line">        <span class="comment">//另一种描述</span></div><div class="line">        Node&lt;T&gt; oldroot = root;</div><div class="line">        root = <span class="keyword">new</span> Node&lt;T&gt;(data);</div><div class="line">        root.next = oldroot;</div><div class="line">        top++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/*public void push(T data)&#123;</span></div><div class="line"><span class="comment">        root = new Node&lt;T&gt;(data, root);</span></div><div class="line"><span class="comment">        top ++;</span></div><div class="line"><span class="comment">    &#125;*/</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">pop</span><span class="params">()</span> </span>&#123; <span class="comment">//出栈</span></div><div class="line">        <span class="keyword">if</span> (top &lt;= -<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        T getData = root.getData();</div><div class="line">        root = root.next;</div><div class="line">        top--;</div><div class="line">        <span class="keyword">return</span> getData;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">peek</span><span class="params">()</span> </span>&#123; <span class="comment">//返回栈顶元素</span></div><div class="line">        <span class="keyword">return</span> root.getData();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123; <span class="comment">//判断是否为空栈</span></div><div class="line">        <span class="keyword">return</span> top == -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>&#123; <span class="comment">//清空栈</span></div><div class="line">        root = <span class="keyword">null</span>;</div><div class="line">        top = -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h3><ol>
-<li>数值转换</li>
-<li>表达式求值</li>
-<li>浏览器历史纪录</li>
-<li>解析xml/json等</li>
-</ol>
-<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h3 id="队列的实现"><a href="#队列的实现" class="headerlink" title="队列的实现"></a>队列的实现</h3><pre><code class="java"><span class="comment">/**</span>
-<span class="comment">* 利用链表实现队列</span>
-<span class="comment">*/</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Queue</span>&lt;<span class="title">T</span>&gt; </span>{
-    <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">T</span>&gt; </span>{ <span class="comment">//队列节点</span>
-        <span class="keyword">private</span> T data;
-        <span class="keyword">private</span> Node&lt;T&gt; next;
-
-        <span class="function"><span class="keyword">private</span> <span class="title">Node</span><span class="params">(T data)</span> </span>{
-            <span class="keyword">this</span>.data = data;
-        }
-    }
-
-    <span class="keyword">private</span> Node&lt;T&gt; first; <span class="comment">//队首指针</span>
-    <span class="keyword">private</span> Node&lt;T&gt; last; <span class="comment">//队尾指针</span>
-    <span class="keyword">private</span> <span class="keyword">int</span> n; <span class="comment">//队列容量</span>
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Enqueue</span><span class="params">(T data)</span> </span>{ <span class="comment">//入队</span>
-        Node&lt;T&gt; oldlast = last;
-        last = <span class="keyword">new</span> Node&lt;&gt;(data);
-        last.next = <span class="keyword">null</span>;
-        <span class="keyword">if</span> (isEmpty()) first = last;
-        <span class="keyword">else</span> oldlast.next = last;
-        n++;
-
-    }
-
-    <span class="function"><span class="keyword">public</span> T <span class="title">Dequeue</span><span class="params">()</span> </span>{ <span class="comment">//出队</span>
-        <span class="keyword">if</span> (isEmpty()) <span class="keyword">return</span> <span class="keyword">null</span>;
-        T data = first.data;
-        first = first.next;
-        n--;
-        <span class="keyword">if</span> (isEmpty()) last = <span class="keyword">null</span>;
-        <span class="keyword">return</span> data;
-    }
-
-    <span class="function"><span class="keyword">public</span> T <span class="title">peek</span><span class="params">()</span> </span>{ <span class="comment">//查看队首元素</span>
-        <span class="keyword">if</span> (isEmpty()) <span class="keyword">return</span> <span class="keyword">null</span>;
-        <span class="keyword">return</span> first.data;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>{ <span class="comment">//判断队列是否为空</span>
-        <span class="keyword">return</span> first == <span class="keyword">null</span>;
-    }
-}
-</code></pre>
-]]></content>
-      
-        <categories>
-            
-            <category> Algorithm </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 栈 </tag>
-            
-            <tag> 队列 </tag>
-            
-            <tag> 数据结构 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[2017年度小结]]></title>
-      <url>/2017/12/31/2017%E5%B9%B4%E5%BA%A6%E5%B0%8F%E7%BB%93/</url>
-      <content type="html"><![CDATA[<p>&emsp;&emsp;2017年算是颇有收获的一年。<br><a id="more"></a><br>&emsp;&emsp;确定了自己毕业后要从事的方向，跟自己的专业没有太大关系，所以基本要靠自学了。想想或许这也不是什么坏事，可以按照自己喜欢的方式学习，还能锻炼学习能力。</p>
-<h2 id="关于学习"><a href="#关于学习" class="headerlink" title="关于学习"></a>关于学习</h2><p>&emsp;&emsp;这一年里，基于兴趣学习了几门流行的编程语言，学习了前端的一些基本知识。上半年开始了自己的自学之路，由于之前没有任何编程基础，同时本专业还有一些任务，靠挤时间花了大半个学期算是学完了Java的基础部分。下半年已经确定进入互联网搬砖，开始有计划的学习。虽然学习完了数据结构，但是自己的计划没有完全完成。总结起来，一是前期的学习比较杂乱，几乎是在同时学习前端+python+javaweb+其他，之后发现这样的学习效率并不高，于是将主要精力集中在数据结构，才能基本完成计划。二是还在兼顾专业课，现在觉得不应该在专业课下太多的功夫，说到底还是自己缺乏背水一战的决心。</p>
-<h2 id="个人博客"><a href="#个人博客" class="headerlink" title="个人博客"></a>个人博客</h2><p>&emsp;&emsp;不久前接触到了几个不错的个人博客，后来偶然了解到可以用Hexo+github搭建个人博客，出于折腾心理自己也搭建了一个。看过很多大神分享的面经，他们都有一个共同的习惯：总结。这也是我搭建博客的一个原因，静下心来写写总结，记录下自己的学习，生活，沉淀自己。</p>
-<h2 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h2><h3 id="电影"><a href="#电影" class="headerlink" title="电影"></a>电影</h3><p>&emsp;&emsp;不知什么时候开始喜欢上看电影。作为第八艺术，一部优秀的电影足以带给你很多启示。高考后看完了很多经典电影。像《肖申克的救赎》，《霸王别姬》，《蝙蝠侠：黑暗骑士》。。。慢慢的意识到，虽然自己没有写影评的文笔，但应该记录下看过的电影。于是从下半年开始记录自己看过的电影。</p>
-<p><img src="/2017/12/31/2017年度小结/movies.png" alt="movies"></p>
-<h3 id="游戏"><a href="#游戏" class="headerlink" title="游戏"></a>游戏</h3><p>&emsp;&emsp;不久前入正了《巫师3：狂猎》，这是我第一款入正的游戏，也是我游戏时间最长的一款游戏，2017年的娱乐时间基本给了它。盗版已经快要玩通了，现在入正来表示对CD Projekt RED的支持，毕竟以后难得再遇到这样优秀的游戏。</p>
-<h2 id="关于感情"><a href="#关于感情" class="headerlink" title="关于感情"></a>关于感情</h2><center>不存在的</center>
-]]></content>
-      
-        <categories>
-            
-            <category> 年度小结 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 年度小结 </tag>
-            
-            <tag> life </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Windows下安装Ubuntu 16.04双系统]]></title>
-      <url>/2017/12/29/Windows%E4%B8%8B%E5%AE%89%E8%A3%85Ubuntu-16-04%E5%8F%8C%E7%B3%BB%E7%BB%9F/</url>
-      <content type="html"><![CDATA[<p>准备体验一下Linux，就在原有的Windows10系统下，安装Ubuntu官方会长期提供支持的最新的Ubuntu 16.04。记录一下自己的安装过程。<br><a id="more"></a></p>
-<h1 id="准备过程"><a href="#准备过程" class="headerlink" title="准备过程"></a>准备过程</h1><ol>
-<li><p>准备工具<br>U盘，Ubuntu 16.04 LTS镜像，<a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows" target="_blank" rel="external">启动U盘制作软件</a></p>
-</li>
-<li><p>分区<br>分区我用的是<a href="http://www.diskgenius.cn/download.php" target="_blank" rel="external">DiskGenius</a>这款软件，将自己的一个盘分出了50G的空白空间。之后点击这空白空间，新建分区。</p>
-</li>
-<li><p>制作U盘启动盘<br>运行下载好的 rufus 这个软件，载入下载的Ubuntu镜像，之后点击开始，一路点击确定，等待一会，写入成功。</p>
-</li>
-</ol>
-<p>成功后如下图<br><img src="/2017/12/29/Windows下安装Ubuntu-16-04双系统/2017.png" alt="图片"></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ol>
-<li>从U盘启动<br>U盘插在电脑上，选择启动方式为U盘启动，（设置U盘启动可以进入BIOS）</li>
-<li>安装Ubuntu<br>选择了U盘启动后，会出现如下“欢迎”界面，选择中文后，点击“安装Ubuntu”;</li>
-<li>选择安装类型<br>最好选择“其他选项”</li>
-<li><p>安装位置和磁盘分区<br>这是很关键的一步。<br>双击前面分好的空白分区，分配分区<br>网上的建议分区大小</p>
-<pre><code>/boot - 200 MB ； 实际需求大约 100 ~ 200MB，建议分配 200 或者 300 MB。
-/ - 15-20 GB ； 15-20 GB 对于大多数用户来说是一个比较合适的取值。
-/home - [不定] ； 通常用于存放用户数据，下载的文件和媒体文件。在桌面系统中，/home 通常是最大的文件系统。(个人建议: 多多益善)
-swap - [不定] ；内存（大于 1024 MB），可以分配较少的空间甚至不需要swap 分区。
-</code></pre><p> 装双系统，<code>/boot</code> 选择”逻辑分区”就行了</p>
-<p> “/boot” 分区: “逻辑分区”、”空间起始位置”、”Ext4日志文件系统”、挂载点”/boot”<br> ”/“分区： ”逻辑分区“、”空间起始位置“、”Ext4日志文件系统“、挂载点”/“<br> ”/home“分区：”逻辑分区“、”空间起始位置“、”Ext2文件系统“、挂载点”/home“<br> ”交换空间“：”逻辑分区“、”空间起始位置“、”交换空间“</p>
-<p> “安装启动引导器的设备”选择/boot对应的分区<br> 检查无误之后，点击“现在安装”</p>
-</li>
-<li><p>检查分区</p>
-</li>
-<li>选择区域，键盘</li>
-<li>设置用户名及密码</li>
-<li>安装，重启</li>
-</ol>
-<p>安装成功后我的机子算是三系统共存，Windows10 + Ubuntu + Phoenix OS，选择不同的系统方法也很简单，开机之后屏幕左下提示选择启动方式，这时按下“Esc”按钮，就会进入启动管理，之后选择要启动的系统，进入即可。<br><img src="/2017/12/29/Windows下安装Ubuntu-16-04双系统/201728.jpg" alt="图"></p>
-<h1 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h1><p><a href="https://www.cnblogs.com/Duane/p/5424218.html" target="_blank" rel="external">Windows下安装Ubuntu 16.04双系统</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> Linux </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 双系统 </tag>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Markdown语法]]></title>
-      <url>/2017/12/28/Markdown%E8%AF%AD%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a><center>Markdown语法</center></h1><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><pre><code>`# 一级标题`
-`## 二级标题`
-</code></pre><a id="more"></a>
-<h3 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h3><pre><code>*斜体文本* 
-**粗体文本**
-~~在文字上添加删除线~~
-</code></pre><h3 id="链接网站"><a href="#链接网站" class="headerlink" title="链接网站"></a>链接网站</h3><pre><code>[链接名称](http://链接网址)
-&lt;http://链接网址&gt;
-[Google][1]   [1]:http://www.google.com/
-</code></pre><h3 id="插入代码块"><a href="#插入代码块" class="headerlink" title="插入代码块"></a>插入代码块</h3><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">"JavaScript syntax highlighting"</span>;</div><div class="line">alert(s);</div></pre></td></tr></table></figure>
-</code></pre><h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><pre><code>![图片名称](http://图片网址)
-
-也可以使用 HTML 的图片语法来自定义图片的宽高大小
-[站外图片上传中……(3)]
-</code></pre><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><pre><code>- 列表文本前使用 [减号+空格]
-+ 列表文本前使用 [加号+空格]
-* 列表文本前使用 [星号+空格]
-1. 列表前使用 [数字+空格]
-2. 我们会自动帮你添加数字
-7. 不用担心数字不对
-</code></pre><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><pre><code>&gt; 引用文本前使用 [大于号+空格]
-</code></pre><h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><pre><code>如果另起一行，只需在当前行结尾加 2 个空格
-如果是要起一个新段落，只需要空出一行即可。
-分隔符  ---
-</code></pre><h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><h3 id="使用HTML元素"><a href="#使用HTML元素" class="headerlink" title="使用HTML元素"></a>使用HTML元素</h3><p>如<code>图片居中：&lt;center&gt; &lt;/center&gt;</code></p>
-<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><pre><code>$$ x = {-b pm sqrt{b^2-4ac} over 2a} $$
-</code></pre><p>更详细说明<br><a href="https://link.jianshu.com/?t=http://wowubuntu.com/markdown/index.html#editor" target="_blank" rel="external">Markdown 语法说明</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> Hexo </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Markdown </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hexo美化]]></title>
-      <url>/2017/12/25/Hexo%E7%BE%8E%E5%8C%96/</url>
-      <content type="html"><![CDATA[<h2 id="主题语言设置"><a href="#主题语言设置" class="headerlink" title="主题语言设置"></a>主题语言设置</h2><p>首先修改hexo根文件夹下的<br><code>F:\hexo\_config.yml</code>修改为<code>language: zh-CN   #网站使用的语言</code>，然后修改主题文件的语言<br>菜单项显示文本：设置菜单项的显示文本。在第一步中设置的菜单的名称并不直接用于界面上的展示。Hexo 在生成的时候将使用 这个名称查找对应的语言翻译，并提取显示文本。<a id="more"></a>这些翻译文本放置在 <strong>NexT</strong> 主题目录下的 <code>languages/{language}.yml</code> （{language} 为你所使用的语言）。以简体中文为例，若你需要添加一个菜单项，比如 <code>something</code>。那么就需要修改简体中文对应的翻译文件 <code>languages/zh-Hans.yml</code>，在 <code>menu</code> 字段下添加一项:</p>
-<pre><code>menu:
-    home: 首页
-    archives: 归档
-    categories: 分类
-    tags: 标签
-    about: 关于
-    search: 搜索
-    commonweal: 公益404
-    something: 有料
-</code></pre><h2 id="设置favicon："><a href="#设置favicon：" class="headerlink" title="设置favicon："></a>设置favicon：</h2><p>favicon的全称Favorites Icon，即地址栏左侧的图标.<br>有个<a href="http://www.atool.org/ico.php" target="_blank" rel="external">在线工具</a>可以上传自己的图片去生成指定规格的<code>favicon.ico</code>文件。<br>打开主题配置文件<code>_config.yml</code>可以看到favicon的配置信息：</p>
-<pre><code># Put your favicon.ico into `hexo-site/source/` directory.
-favicon: /favicon.ico  
-</code></pre><h2 id="添加标签与分类"><a href="#添加标签与分类" class="headerlink" title="添加标签与分类"></a>添加标签与分类</h2><p>首先，主题配置文件中，在<code>menu</code>项下，要把<code>tags</code>页打开</p>
-<pre><code>menu:
-  home: /
-  categories: /categories
-  #about: /about
-  archives: /archives
-  tags: /tags    //确保标签页已打开
-  #schedule: /schedule     
-  #commonweal: /404.html  
-</code></pre><h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><h3 id="一种方法"><a href="#一种方法" class="headerlink" title="一种方法"></a>一种方法</h3><pre><code>![图片名](链接)
-</code></pre><h3 id="另一种方法"><a href="#另一种方法" class="headerlink" title="另一种方法"></a>另一种方法</h3><ol>
-<li>主页配置文件<code>_config.yml</code>里<code>post_asset_folder:</code>这个选项设置为<code>true</code></li>
-<li>在hexo目录执行 <code>npm install hexo-asset-image --save</code>，下载安装一个可以上传本地图片的插件</li>
-<li>之后运行<code>hexo n &quot;xxxx&quot;</code>生成md文章，<code>/source/_posts</code>文件夹内除了<code>xxxx.md</code>文件还有一个同名的文件夹</li>
-<li><p>在<code>xxxx.md</code>中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在<code>xxxx.md</code>中按照markdown的格式引入图片：</p>
-<pre><code>![你想输入的替代文字](xxxx/图片名.jpg)
-</code></pre></li>
-<li><p>检查，<code>hexo g</code>生成页面后，进入<code>public\2017\02\26\index.html</code>文件中查看相关字段，可以发现，html标签内的语句是<code>&lt;img src=&quot;2017/02/26/xxxx/图片名.jpg&quot;&gt;</code>，而不是<code>&lt;img src=&quot;xxxx/图片名.jpg&gt;</code></p>
-</li>
-</ol>
-<h2 id="添加标签与分类-1"><a href="#添加标签与分类-1" class="headerlink" title="添加标签与分类"></a>添加标签与分类</h2><pre><code>hexo new page tags
-</code></pre><p>确认站点配置文件里有<code>tag_dir: tags</code><br>确认主题配置文件里有<code>tags: /tags</code><br>编辑<code>source/tags/index.md</code></p>
-<pre><code>title: tags
-date: 
-type: &quot;tags&quot;
-</code></pre><h3 id="添加多个标签"><a href="#添加多个标签" class="headerlink" title="添加多个标签"></a>添加多个标签</h3><pre><code>tags: [标签1,标签2,标签3]
-</code></pre><h3 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h3><pre><code>hexo new page categories
-</code></pre><p>确认站点配置文件里<code>category_dir: categories</code><br>确认主题配置文件里有<code>categories: /categories</code><br>编辑站点的<code>source/categories/index.md</code> </p>
-<pre><code>title: categories
-date: 
-type: &quot;categories&quot;
-</code></pre><h3 id="文章自动添加categories"><a href="#文章自动添加categories" class="headerlink" title="文章自动添加categories"></a>文章自动添加<code>categories</code></h3><p>在<code>scaffold</code>里有<code>post.md</code>，这是创建post的模板，添加相应的配置</p>
-<h2 id="菜单栏控制"><a href="#菜单栏控制" class="headerlink" title="菜单栏控制"></a>菜单栏控制</h2><p>修改主题配置文件</p>
-<pre><code># ------------------------------------------------------
-# Menu Settings
-# ------------------------------------------------------
-
-# When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -&gt; archives)
-menu:
-  home: /
-  #categories: /categories
-  about: /about
-  archives: /archives
-  tags: /tags
-  #commonweal: /404.html
-</code></pre><h2 id="侧栏设置"><a href="#侧栏设置" class="headerlink" title="侧栏设置"></a>侧栏设置</h2><p>在主题配置文件的<code>sidebar</code>字段，此处我直接设置为侧栏一直显示，而且显示在右边：</p>
-<pre><code>sidebar:
-  # Sidebar Position, available value: left | right
-  position: left
-  #position: right
-
-  # Sidebar Display, available value:
-  #  - post    expand on posts automatically. Default.
-  #  - always  expand for all pages automatically
-  #  - hide    expand only when click on the sidebar toggle icon.
-  #  - remove  Totally remove sidebar including sidebar toggler.
-  #display: post
-  display: always
-  #display: hide
-  #display: remove
-</code></pre><h2 id="设置头像和作者名称"><a href="#设置头像和作者名称" class="headerlink" title="设置头像和作者名称"></a>设置头像和作者名称</h2><p>在站点配置文件中，新加一个字段<code>avatar</code>，值就是头像的连接地址，将<code>avatar.png</code>放到本地目录<code>hexo\source\images</code>中；作者名称直接设置站点配置文件中<code>author</code>字段的值：</p>
-<pre><code># Site
-title: Linsh-何乐不为~
-subtitle:
-description:
-author: Linshuhe
-avatar: /images/avatar.png
-language: zh-Hans
-timezone:
-</code></pre><h2 id="设置阅读全文"><a href="#设置阅读全文" class="headerlink" title="设置阅读全文"></a>设置阅读全文</h2><h3 id="在文章使用-lt-more-gt-手动设置"><a href="#在文章使用-lt-more-gt-手动设置" class="headerlink" title="在文章使用&lt;!--more--&gt;手动设置"></a>在文章使用<code>&lt;!--more--&gt;</code>手动设置</h3><p>根据文章的内容，自己在合适的位置添加 <code>&lt; !--more--&gt;</code> 标签，使用灵活，也是Hexo推荐的方法。<br><img src="https://upload-images.jianshu.io/upload_images/2352140-ec93f0ac69d07b21.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/635" alt="图片"></p>
-<h3 id="在文章中的front-matter中添加description，并提供文章摘录"><a href="#在文章中的front-matter中添加description，并提供文章摘录" class="headerlink" title="在文章中的front-matter中添加description，并提供文章摘录"></a>在文章中的<code>front-matter</code>中添加<code>description</code>，并提供文章摘录</h3><p>这种方式只会在首页列表中显示文章的摘要内容，进入文章详情后不会再显示。<br><img src="https://upload-images.jianshu.io/upload_images/2352140-67c6e1edb5695035.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/630" alt="图片2"></p>
-<h3 id="自动形成摘要，在主题配置文件中添加"><a href="#自动形成摘要，在主题配置文件中添加" class="headerlink" title="自动形成摘要，在主题配置文件中添加"></a>自动形成摘要，在<strong>主题配置</strong>文件中添加</h3><p>默认截取的长度为 150 字符，可以根据需要自行设定</p>
-<pre><code>auto_excerpt:
-  enable: true
-  length: 150
-</code></pre><h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><ol>
-<li><a href="http://blog.csdn.net/linshuhe1/article/details/52424573" target="_blank" rel="external">Hexo个人免费博客(三) next主题、评论、阅读量统计和站内搜索</a></li>
-<li><a href="https://www.jianshu.com/p/78c218f9d1e7" target="_blank" rel="external">Hexo-设置阅读全文</a></li>
-<li><a href="http://blog.csdn.net/sugar_rainbow/article/details/57415705" target="_blank" rel="external">hexo生成博文插入图片</a></li>
-</ol>
-]]></content>
-      
-        <categories>
-            
-            <category> Hexo </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2017/10/21/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> Hexo </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[Java数据结构与算法之栈与队列]]></title>
+    <url>%2F2018%2F01%2F06%2FJava%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97%2F</url>
+    <content type="text"><![CDATA[栈栈的定义栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。 栈的特点 后进先出（rear In front Out），简称为LIFO 限定只能在栈顶进行插入和删除操作。 n个数依次入栈，则出栈方式共有C（2n,n）/(n+1)种 栈的创建1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859/*** 基于链表的栈的实现*/public class Stack&lt;T&gt; &#123; class Node&lt;T&gt; &#123; //使用内部类创建节点 private T data; private Node&lt;T&gt; next; private Node(T data) &#123; this.data = data; &#125; private Node(T data, Node&lt;T&gt; next) &#123; this.data = data; this.next = next; &#125; private T getData() &#123; return data; &#125; &#125; Node&lt;T&gt; root;//栈顶指针 int top = -1;//栈容量 public void push(T data) &#123; //入栈 //另一种描述 Node&lt;T&gt; oldroot = root; root = new Node&lt;T&gt;(data); root.next = oldroot; top++; &#125; /*public void push(T data)&#123; root = new Node&lt;T&gt;(data, root); top ++; &#125;*/ public T pop() &#123; //出栈 if (top &lt;= -1) return null; T getData = root.getData(); root = root.next; top--; return getData; &#125; public T peek() &#123; //返回栈顶元素 return root.getData(); &#125; public boolean isEmpty() &#123; //判断是否为空栈 return top == -1; &#125; public void clear()&#123; //清空栈 root = null; top = -1; &#125;&#125; 栈的应用 数值转换 表达式求值 浏览器历史纪录 解析xml/json等 队列队列是一种特殊的线性表，只允许在表的前端（front）进行删除操作，在表的后端（rear）进行插入操作。 队列的特点 先进先出（First In First Out），FIFO 队列的实现123456789101112131415161718192021222324252627282930313233343536373839404142434445/*** 利用链表实现队列*/public class Queue&lt;T&gt; &#123; class Node&lt;T&gt; &#123; //队列节点 private T data; private Node&lt;T&gt; next; private Node(T data) &#123; this.data = data; &#125; &#125; private Node&lt;T&gt; front; //队首指针 private Node&lt;T&gt; rear; //队尾指针 private int n; //队列容量 public void Enqueue(T data) &#123; //入队 Node&lt;T&gt; oldrear = rear; rear = new Node&lt;&gt;(data); rear.next = null; if (isEmpty()) front = rear; else oldrear.next = rear; n++; &#125; public T Dequeue() &#123; //出队 if (isEmpty()) return null; T data = front.data; front = front.next; n--; if (isEmpty()) rear = null; return data; &#125; public T peek() &#123; //查看队首元素 if (isEmpty()) return null; return front.data; &#125; public boolean isEmpty() &#123; //判断队列是否为空 return front == null; &#125;&#125;]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>栈</tag>
+        <tag>队列</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2017年度小结]]></title>
+    <url>%2F2017%2F12%2F31%2F2017%E5%B9%B4%E5%BA%A6%E5%B0%8F%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[&emsp;&emsp;2017年算是颇有收获的一年。&emsp;&emsp;确定了自己毕业后要从事的方向，跟自己的专业没有太大关系，所以基本要靠自学了。想想或许这也不是什么坏事，可以按照自己喜欢的方式学习，还能锻炼学习能力。 关于学习&emsp;&emsp;这一年里，基于兴趣学习了几门流行的编程语言，学习了前端的一些基本知识。上半年开始了自己的自学之路，由于之前没有任何编程基础，同时本专业还有一些任务，靠挤时间花了大半个学期算是学完了Java的基础部分。下半年已经确定进入互联网搬砖，开始有计划的学习。虽然学习完了数据结构，但是自己的计划没有完全完成。总结起来，一是前期的学习比较杂乱，几乎是在同时学习前端+python+javaweb+其他，之后发现这样的学习效率并不高，于是将主要精力集中在数据结构，才能基本完成计划。二是还在兼顾专业课，现在觉得不应该在专业课下太多的功夫，说到底还是自己缺乏背水一战的决心。 个人博客&emsp;&emsp;不久前接触到了几个不错的个人博客，后来偶然了解到可以用Hexo+github搭建个人博客，出于折腾心理自己也搭建了一个。看过很多大神分享的面经，他们都有一个共同的习惯：总结。这也是我搭建博客的一个原因，静下心来写写总结，记录下自己的学习，生活，沉淀自己。 关于生活电影&emsp;&emsp;不知什么时候开始喜欢上看电影。作为第八艺术，一部优秀的电影足以带给你很多启示。高考后看完了很多经典电影。像《肖申克的救赎》，《霸王别姬》，《蝙蝠侠：黑暗骑士》。。。慢慢的意识到，虽然自己没有写影评的文笔，但应该记录下看过的电影。于是从下半年开始记录自己看过的电影。 游戏&emsp;&emsp;不久前入正了《巫师3：狂猎》，这是我第一款入正的游戏，也是我游戏时间最长的一款游戏，2017年的娱乐时间基本给了它。盗版已经快要玩通了，现在入正来表示对CD Projekt RED的支持，毕竟以后难得再遇到这样优秀的游戏。 关于感情不存在的]]></content>
+      <categories>
+        <category>年度小结</category>
+      </categories>
+      <tags>
+        <tag>年度小结</tag>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Windows下安装Ubuntu 16.04双系统]]></title>
+    <url>%2F2017%2F12%2F29%2FWindows%E4%B8%8B%E5%AE%89%E8%A3%85Ubuntu-16-04%E5%8F%8C%E7%B3%BB%E7%BB%9F%2F</url>
+    <content type="text"><![CDATA[准备体验一下Linux，就在原有的Windows10系统下，安装Ubuntu官方会长期提供支持的最新的Ubuntu 16.04。记录一下自己的安装过程。 准备过程 准备工具U盘，Ubuntu 16.04 LTS镜像，启动U盘制作软件 分区分区我用的是DiskGenius这款软件，将自己的一个盘分出了50G的空白空间。之后点击这空白空间，新建分区。 制作U盘启动盘运行下载好的 rufus 这个软件，载入下载的Ubuntu镜像，之后点击开始，一路点击确定，等待一会，写入成功。 成功后如下图 安装 从U盘启动U盘插在电脑上，选择启动方式为U盘启动，（设置U盘启动可以进入BIOS） 安装Ubuntu选择了U盘启动后，会出现如下“欢迎”界面，选择中文后，点击“安装Ubuntu”; 选择安装类型最好选择“其他选项” 安装位置和磁盘分区这是很关键的一步。双击前面分好的空白分区，分配分区网上的建议分区大小 /boot - 200 MB ； 实际需求大约 100 ~ 200MB，建议分配 200 或者 300 MB。 / - 15-20 GB ； 15-20 GB 对于大多数用户来说是一个比较合适的取值。 /home - [不定] ； 通常用于存放用户数据，下载的文件和媒体文件。在桌面系统中，/home 通常是最大的文件系统。(个人建议: 多多益善) swap - [不定] ；内存（大于 1024 MB），可以分配较少的空间甚至不需要swap 分区。 装双系统，/boot 选择”逻辑分区”就行了 “/boot” 分区: “逻辑分区”、”空间起始位置”、”Ext4日志文件系统”、挂载点”/boot” ”/“分区： ”逻辑分区“、”空间起始位置“、”Ext4日志文件系统“、挂载点”/“ ”/home“分区：”逻辑分区“、”空间起始位置“、”Ext2文件系统“、挂载点”/home“ ”交换空间“：”逻辑分区“、”空间起始位置“、”交换空间“ “安装启动引导器的设备”选择/boot对应的分区 检查无误之后，点击“现在安装” 检查分区 选择区域，键盘 设置用户名及密码 安装，重启 安装成功后我的机子算是三系统共存，Windows10 + Ubuntu + Phoenix OS，选择不同的系统方法也很简单，开机之后屏幕左下提示选择启动方式，这时按下“Esc”按钮，就会进入启动管理，之后选择要启动的系统，进入即可。 参考来源Windows下安装Ubuntu 16.04双系统]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>双系统</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Markdown语法]]></title>
+    <url>%2F2017%2F12%2F28%2FMarkdown%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[Markdown语法基本语法标题`# 一级标题` `## 二级标题` 强调*斜体文本* **粗体文本** ~~在文字上添加删除线~~ 链接网站[链接名称](http://链接网址) &lt;http://链接网址&gt; [Google][1] [1]:http://www.google.com/ 插入代码块12var s = "JavaScript syntax highlighting";alert(s); 插入图片![图片名称](http://图片网址) 也可以使用 HTML 的图片语法来自定义图片的宽高大小 [站外图片上传中……(3)] 列表- 列表文本前使用 [减号+空格] + 列表文本前使用 [加号+空格] * 列表文本前使用 [星号+空格] 1. 列表前使用 [数字+空格] 2. 我们会自动帮你添加数字 7. 不用担心数字不对 引用&gt; 引用文本前使用 [大于号+空格] 换行如果另起一行，只需在当前行结尾加 2 个空格 如果是要起一个新段落，只需要空出一行即可。 分隔符 --- 高级语法使用HTML元素如图片居中：&lt;center&gt; &lt;/center&gt; 公式$$ x = {-b pm sqrt{b^2-4ac} over 2a} $$ 更详细说明Markdown 语法说明]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo美化]]></title>
+    <url>%2F2017%2F12%2F25%2FHexo%E7%BE%8E%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[主题语言设置首先修改hexo根文件夹下的F:\hexo\_config.yml修改为language: zh-CN #网站使用的语言，然后修改主题文件的语言菜单项显示文本：设置菜单项的显示文本。在第一步中设置的菜单的名称并不直接用于界面上的展示。Hexo 在生成的时候将使用 这个名称查找对应的语言翻译，并提取显示文本。这些翻译文本放置在 NexT 主题目录下的 languages/{language}.yml （{language} 为你所使用的语言）。以简体中文为例，若你需要添加一个菜单项，比如 something。那么就需要修改简体中文对应的翻译文件 languages/zh-Hans.yml，在 menu 字段下添加一项: menu: home: 首页 archives: 归档 categories: 分类 tags: 标签 about: 关于 search: 搜索 commonweal: 公益404 something: 有料 设置favicon：favicon的全称Favorites Icon，即地址栏左侧的图标.有个在线工具可以上传自己的图片去生成指定规格的favicon.ico文件。打开主题配置文件_config.yml可以看到favicon的配置信息： # Put your favicon.ico into `hexo-site/source/` directory. favicon: /favicon.ico 添加标签与分类首先，主题配置文件中，在menu项下，要把tags页打开 menu: home: / categories: /categories #about: /about archives: /archives tags: /tags //确保标签页已打开 #schedule: /schedule #commonweal: /404.html 插入图片一种方法![图片名](链接) 另一种方法 主页配置文件_config.yml里post_asset_folder:这个选项设置为true 在hexo目录执行 npm install hexo-asset-image --save，下载安装一个可以上传本地图片的插件 之后运行hexo n &quot;xxxx&quot;生成md文章，/source/_posts文件夹内除了xxxx.md文件还有一个同名的文件夹 在xxxx.md中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在xxxx.md中按照markdown的格式引入图片： ![你想输入的替代文字](xxxx/图片名.jpg) 检查，hexo g生成页面后，进入public\2017\02\26\index.html文件中查看相关字段，可以发现，html标签内的语句是&lt;img src=&quot;2017/02/26/xxxx/图片名.jpg&quot;&gt;，而不是&lt;img src=&quot;xxxx/图片名.jpg&gt; 添加标签与分类hexo new page tags 确认站点配置文件里有tag_dir: tags确认主题配置文件里有tags: /tags编辑source/tags/index.md title: tags date: type: &quot;tags&quot; 添加多个标签tags: [标签1,标签2,标签3] 添加分类hexo new page categories 确认站点配置文件里category_dir: categories确认主题配置文件里有categories: /categories编辑站点的source/categories/index.md title: categories date: type: &quot;categories&quot; 文章自动添加categories在scaffold里有post.md，这是创建post的模板，添加相应的配置 菜单栏控制修改主题配置文件 # ------------------------------------------------------ # Menu Settings # ------------------------------------------------------ # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -&gt; archives) menu: home: / #categories: /categories about: /about archives: /archives tags: /tags #commonweal: /404.html 侧栏设置在主题配置文件的sidebar字段，此处我直接设置为侧栏一直显示，而且显示在右边： sidebar: # Sidebar Position, available value: left | right position: left #position: right # Sidebar Display, available value: # - post expand on posts automatically. Default. # - always expand for all pages automatically # - hide expand only when click on the sidebar toggle icon. # - remove Totally remove sidebar including sidebar toggler. #display: post display: always #display: hide #display: remove 设置头像和作者名称在站点配置文件中，新加一个字段avatar，值就是头像的连接地址，将avatar.png放到本地目录hexo\source\images中；作者名称直接设置站点配置文件中author字段的值： # Site title: Linsh-何乐不为~ subtitle: description: author: Linshuhe avatar: /images/avatar.png language: zh-Hans timezone: 设置阅读全文在文章使用&lt;!--more--&gt;手动设置根据文章的内容，自己在合适的位置添加 &lt; !--more--&gt; 标签，使用灵活，也是Hexo推荐的方法。 在文章中的front-matter中添加description，并提供文章摘录这种方式只会在首页列表中显示文章的摘要内容，进入文章详情后不会再显示。 自动形成摘要，在主题配置文件中添加默认截取的长度为 150 字符，可以根据需要自行设定 auto_excerpt: enable: true length: 150 参考来源 Hexo个人免费博客(三) next主题、评论、阅读量统计和站内搜索 Hexo-设置阅读全文 hexo生成博文插入图片]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F10%2F21%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
 </search>
