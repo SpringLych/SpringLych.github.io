@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/02/20/Shadowsocks介绍及搭建/sw1.png">
 <meta property="og:image" content="http://yoursite.com/2018/02/20/Shadowsocks介绍及搭建/sw2.png">
 <meta property="og:image" content="http://yoursite.com/2018/02/20/Shadowsocks介绍及搭建/4k.png">
-<meta property="og:updated_time" content="2018-02-21T04:58:49.081Z">
+<meta property="og:updated_time" content="2018-02-23T04:55:05.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shadowsocks介绍及搭建">
 <meta name="twitter:description" content="我个人经常需要进行一些技术类问题的搜索学习，为了更好的使用Google进行学习，也为了接触学习一下Linux，自己就租一台vps。">
@@ -490,6 +490,25 @@
 <li><p>分应用代理，需要翻的应用开启<br><img src="/2018/02/20/Shadowsocks介绍及搭建/androidssr5.png" width="120px"></p>
 </li>
 </ul>
+<h3 id="PC端高级使用技巧"><a href="#PC端高级使用技巧" class="headerlink" title="PC端高级使用技巧"></a>PC端高级使用技巧</h3><h4 id="代理规则与PAC"><a href="#代理规则与PAC" class="headerlink" title="代理规则与PAC"></a>代理规则与PAC</h4><p>SSR分两种规则方式：<code>系统代理模式</code>和<code>代理规则</code>。</p>
+<p><code>PAC规则</code> 是根据PAC文件中的黑白地址名单来判断那些网站走代理。也就是判断 流量是否进入客户端。</p>
+<p><code>代理规则</code> 是根据IP判断，按选择的规则来判断进入 客户端的流量是直连还是走代理。</p>
+<p>例如，<code>系统代理PAC</code>，访问www.google.com，在PAC匹配到，于是走代理，SSR客户端受到访问谷歌数据，这时用<code>代理规则</code>判断。<code>代理规则</code>为绕过局域网，判断谷歌是不是局域网，是则直连，不是则走代理。其他绕过局域网和大陆等规则同理。 </p>
+<p>简单来说，<code>系统代理模式</code>判断是否让数据进入SSR客户端，<code>代理规则</code>判断进入SSR客户端的数据是走直连还是代理。</p>
+<h4 id="用户自定义规则"><a href="#用户自定义规则" class="headerlink" title="用户自定义规则"></a>用户自定义规则</h4><p>代理规则中的 <code>用户自定义</code>，就是可以让你自定义什么域名或IP 走代理还是直连，比PAC更方便添加/编辑规则，以后完全可以抛弃 PAC，而改用 用户自定义 代理规则（系统代理模式选择全局，浏览器扩展也设置 127.0.0.1 1080(默认端口)）。</p>
+<p>规则文件位置是在 ShadowsocksR.exe 客户端同目录下的 user.rule 文件。</p>
+<p>提供一个github上规则  <a href="https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/gfwlist-user.rule" target="_blank" rel="external">https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/gfwlist-user.rule</a></p>
+<h4 id="编辑规则"><a href="#编辑规则" class="headerlink" title="编辑规则"></a>编辑规则</h4><p>可以自己编译user.rule来添加一些规则。</p>
+<p>规则匹配结果类型有 四种：remoteproxy、localproxy、direct、reject。均可用于两类规则。</p>
+<ul>
+<li>remoteproxy：经过SSR服务器连接（走代理）</li>
+<li>localproxy：经过本地代理连接，或没有配置本地代理时使用直连连接（本地代理指的是：选项设置 - 二级(前置)代理）</li>
+<li>direct：直连连接（直连，不走代理）</li>
+<li>reject：拒绝连接（可用于屏蔽广告，当然前提是用系统代理规则：全局模式，否则只有进入SSR客户端的广告才会被过滤）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">格式：</div><div class="line">hostname rule</div><div class="line"># 域名 规则</div></pre></td></tr></table></figure>
+<p>例如，Github在新疆被屏蔽，我可以编辑user-rule添加Github走代理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.github.com remoteproxy</div></pre></td></tr></table></figure></p>
+<p>于是我再访问Github就会走代理。</p>
 <h2 id="Chrome配合SwitchyOmega使用SSR"><a href="#Chrome配合SwitchyOmega使用SSR" class="headerlink" title="Chrome配合SwitchyOmega使用SSR"></a>Chrome配合SwitchyOmega使用SSR</h2><ul>
 <li>首先下载 <a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?utm_source=chrome-ntp-icon" target="_blank" rel="external">SwitchyOmega</a> 这款插件</li>
 <li><p>安装至Chrome后左键单击这个插件，选择”选项”<br><img src="/2018/02/20/Shadowsocks介绍及搭建/swchoice.png" width="120px"></p>
@@ -522,6 +541,7 @@
 <h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
 <li><a href="https://github.com/getlantern/forum/issues/5620" target="_blank" rel="external">自己搭建ss/SSR服务器教程（适合初学者，最低2.5美元/月）</a></li>
 <li><a href="https://doub.io/ss-jc26/" target="_blank" rel="external">Shadowsocks指导篇（总结归类）——从无到有，境无止尽！</a></li>
+<li><a href="https://doub.io/ss-jc61/" target="_blank" rel="external">ShadowsocksR PC客户端中的 [代理规则 – 用户自定义] 功能使用教程</a></li>
 </ul>
 
       
@@ -557,8 +577,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/20/测试/" rel="next" title="测试">
-                <i class="fa fa-chevron-left"></i> 测试
+              <a href="/2018/01/14/数据结构与算法之初级排序/" rel="next" title="Java数据结构与算法之排序（一）">
+                <i class="fa fa-chevron-left"></i> Java数据结构与算法之排序（一）
               </a>
             
           </div>
@@ -566,6 +586,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/11/二叉树的递归与非递归遍历/" rel="prev" title="二叉树的递归与非递归遍历">
+                二叉树的递归与非递归遍历 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -642,7 +666,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -707,7 +731,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks-R介绍"><span class="nav-number">1.</span> <span class="nav-text">Shadowsocks/R介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks-R服务端配置"><span class="nav-number">2.</span> <span class="nav-text">Shadowsocks/R服务端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#购买VPS"><span class="nav-number">2.1.</span> <span class="nav-text">购买VPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS部署"><span class="nav-number">2.2.</span> <span class="nav-text">VPS部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xshell连接VPS"><span class="nav-number">2.3.</span> <span class="nav-text">Xshell连接VPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署SS-SSR"><span class="nav-number">2.4.</span> <span class="nav-text">部署SS/SSR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks-R本地配置"><span class="nav-number">3.</span> <span class="nav-text">Shadowsocks/R本地配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">3.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PC端配置"><span class="nav-number">3.2.</span> <span class="nav-text">PC端配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android端配置"><span class="nav-number">3.3.</span> <span class="nav-text">Android端配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome配合SwitchyOmega使用SSR"><span class="nav-number">4.</span> <span class="nav-text">Chrome配合SwitchyOmega使用SSR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用SwitchyOmega进行自动切换"><span class="nav-number">4.1.</span> <span class="nav-text">使用SwitchyOmega进行自动切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化ShadowsocksR"><span class="nav-number">5.</span> <span class="nav-text">优化ShadowsocksR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单介绍"><span class="nav-number">5.1.</span> <span class="nav-text">简单介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">5.2.</span> <span class="nav-text">部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">7.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks-R介绍"><span class="nav-number">1.</span> <span class="nav-text">Shadowsocks/R介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks-R服务端配置"><span class="nav-number">2.</span> <span class="nav-text">Shadowsocks/R服务端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#购买VPS"><span class="nav-number">2.1.</span> <span class="nav-text">购买VPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS部署"><span class="nav-number">2.2.</span> <span class="nav-text">VPS部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xshell连接VPS"><span class="nav-number">2.3.</span> <span class="nav-text">Xshell连接VPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署SS-SSR"><span class="nav-number">2.4.</span> <span class="nav-text">部署SS/SSR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks-R本地配置"><span class="nav-number">3.</span> <span class="nav-text">Shadowsocks/R本地配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">3.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PC端配置"><span class="nav-number">3.2.</span> <span class="nav-text">PC端配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android端配置"><span class="nav-number">3.3.</span> <span class="nav-text">Android端配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PC端高级使用技巧"><span class="nav-number">3.4.</span> <span class="nav-text">PC端高级使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代理规则与PAC"><span class="nav-number">3.4.1.</span> <span class="nav-text">代理规则与PAC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户自定义规则"><span class="nav-number">3.4.2.</span> <span class="nav-text">用户自定义规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑规则"><span class="nav-number">3.4.3.</span> <span class="nav-text">编辑规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome配合SwitchyOmega使用SSR"><span class="nav-number">4.</span> <span class="nav-text">Chrome配合SwitchyOmega使用SSR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用SwitchyOmega进行自动切换"><span class="nav-number">4.1.</span> <span class="nav-text">使用SwitchyOmega进行自动切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化ShadowsocksR"><span class="nav-number">5.</span> <span class="nav-text">优化ShadowsocksR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单介绍"><span class="nav-number">5.1.</span> <span class="nav-text">简单介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">5.2.</span> <span class="nav-text">部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">7.</span> <span class="nav-text">参考：</span></a></li></ol></div>
             
 
           </div>
