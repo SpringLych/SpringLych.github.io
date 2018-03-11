@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。   前序遍历：访问根结点-&amp;gt;访问左子树-&amp;gt;访问右子树中序遍历：访问左子树-&amp;gt;访问根结点-&amp;gt;访问右子树后序遍历：访问左子树-&amp;gt;访问右子树-&amp;gt;访问根节点 一般遍历采用递归方式，而递归又可以使用栈转化为非递归方式，栈的效率越高，非递归方式的效率越高。 递归方式123456789101112131415161">
+<meta name="description" content="二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。">
 <meta name="keywords" content="树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树的递归与非递归遍历">
 <meta property="og:url" content="http://yoursite.com/2018/03/11/二叉树的递归与非递归遍历/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。   前序遍历：访问根结点-&amp;gt;访问左子树-&amp;gt;访问右子树中序遍历：访问左子树-&amp;gt;访问根结点-&amp;gt;访问右子树后序遍历：访问左子树-&amp;gt;访问右子树-&amp;gt;访问根节点 一般遍历采用递归方式，而递归又可以使用栈转化为非递归方式，栈的效率越高，非递归方式的效率越高。 递归方式123456789101112131415161">
+<meta property="og:description" content="二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-11T09:21:12.047Z">
+<meta property="og:updated_time" content="2018-03-11T09:33:52.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树的递归与非递归遍历">
-<meta name="twitter:description" content="二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。   前序遍历：访问根结点-&amp;gt;访问左子树-&amp;gt;访问右子树中序遍历：访问左子树-&amp;gt;访问根结点-&amp;gt;访问右子树后序遍历：访问左子树-&amp;gt;访问右子树-&amp;gt;访问根节点 一般遍历采用递归方式，而递归又可以使用栈转化为非递归方式，栈的效率越高，非递归方式的效率越高。 递归方式123456789101112131415161">
+<meta name="twitter:description" content="二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。">
 
 
 
@@ -387,7 +387,7 @@
       
 
       
-        <p>二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。  </p>
+        <p>二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。<br><a id="more"></a></p>
 <p>前序遍历：访问根结点-&gt;访问左子树-&gt;访问右子树<br>中序遍历：访问左子树-&gt;访问根结点-&gt;访问右子树<br>后序遍历：访问左子树-&gt;访问右子树-&gt;访问根节点</p>
 <p>一般遍历采用递归方式，而递归又可以使用栈转化为非递归方式，栈的效率越高，非递归方式的效率越高。</p>
 <h2 id="递归方式"><a href="#递归方式" class="headerlink" title="递归方式"></a>递归方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//前序遍历</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">prePrint</span><span class="params">(Node&lt;T&gt; node)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">    System.out.println(node.data);</div><div class="line">    prePrint(node.left);</div><div class="line">    prePrint(node.right);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//中序遍历</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">midPrint</span><span class="params">(Node&lt;T&gt; node)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">    midPrint(node.left);</div><div class="line">    System.out.println(node.data);</div><div class="line">    midPrint(node.right);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//后序遍历</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">laPrint</span><span class="params">(Node&lt;T&gt; node)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">    laPrint(node.left);</div><div class="line">    laPrint(node.right);</div><div class="line">    System.out.println(node.data);</div><div class="line">&#125;</div></pre></td></tr></table></figure>

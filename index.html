@@ -532,25 +532,14 @@
 
       
         
-          
-            <p>二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。  </p>
-<p>前序遍历：访问根结点-&gt;访问左子树-&gt;访问右子树<br>中序遍历：访问左子树-&gt;访问根结点-&gt;访问右子树<br>后序遍历：访问左子树-&gt;访问右子树-&gt;访问根节点</p>
-<p>一般遍历采用递归方式，而递归又可以使用栈转化为非递归方式，栈的效率越高，非递归方式的效率越高。</p>
-<h2 id="递归方式"><a href="#递归方式" class="headerlink" title="递归方式"></a>递归方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//前序遍历</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">prePrint</span><span class="params">(Node&lt;T&gt; node)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">    System.out.println(node.data);</div><div class="line">    prePrint(node.left);</div><div class="line">    prePrint(node.right);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//中序遍历</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">midPrint</span><span class="params">(Node&lt;T&gt; node)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">    midPrint(node.left);</div><div class="line">    System.out.println(node.data);</div><div class="line">    midPrint(node.right);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//后序遍历</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">laPrint</span><span class="params">(Node&lt;T&gt; node)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">    laPrint(node.left);</div><div class="line">    laPrint(node.right);</div><div class="line">    System.out.println(node.data);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="非递归方式"><a href="#非递归方式" class="headerlink" title="非递归方式"></a>非递归方式</h2><p>使用java.util.Stack实现栈</p>
-<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><p>使用非递归实现遍历二叉树，对任意节点node:</p>
-<ol>
-<li>声明一个p节点指向node</li>
-<li>访问节点p，将节点p入栈</li>
-<li>判断栈或p节点有一方是否不为空，有一方不为空则进入下一判断，直至栈或p节点都为空</li>
-<li>判断p节点是否空，p节点不为空，则输入p节点的数据，同时p节点入栈，p指向p的左节点，直至p节点为空（此时二叉树最左边的左孩子已经入栈）</li>
-<li>判断栈是否为空，不为空取出栈顶节点并使p指向栈顶节点的右节点，直至栈为空</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">    * 非递归实现前序遍历</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> node 访问节点</span></div><div class="line"><span class="comment">    */</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">preOrderStack</span><span class="params">(Node&lt;T&gt; node)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">    Stack&lt;Node&lt;T&gt;&gt; st = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    Node&lt;T&gt; p = node;</div><div class="line">    <span class="keyword">while</span> (!st.isEmpty() || p!=<span class="keyword">null</span>)&#123;</div><div class="line">        <span class="keyword">while</span> (p!=<span class="keyword">null</span>)&#123;</div><div class="line">            System.out.print(p.data + <span class="string">", "</span>);</div><div class="line">            st.push(p);</div><div class="line">            p = p.left;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!st.isEmpty())&#123;</div><div class="line">            p = st.pop();</div><div class="line">            <span class="comment">//栈中保存节点信息，为下一步p=p.right做准备，不可忽略</span></div><div class="line">            p = p.right;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><p>和前序遍历类似，不同在于从栈取出节点后输出节点信息<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">    * 非递归实现中序遍历</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> node 访问节点</span></div><div class="line"><span class="comment">    */</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">midOrderStack</span><span class="params">(Node node)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">    Stack&lt;Node&lt;T&gt;&gt; st = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    Node&lt;T&gt; p = node;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (!st.isEmpty() || p!=<span class="keyword">null</span>)&#123;</div><div class="line">        <span class="keyword">while</span> (p!=<span class="keyword">null</span>)&#123;</div><div class="line">            st.push(p);</div><div class="line">            p = p.left;</div><div class="line">            <span class="comment">//一直遍历到左子树最左边，同时保存节点至栈</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!st.empty())&#123;</div><div class="line">            p = st.pop();</div><div class="line">            System.out.print(p.data + <span class="string">", "</span>);</div><div class="line">            p = p.right;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">    * 非递归实现后序遍历（一）</span></div><div class="line"><span class="comment">    * <span class="doctag">@param</span> node 节点</span></div><div class="line"><span class="comment">    */</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">postOrderStack1</span><span class="params">(Node&lt;T&gt; node)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">    Stack&lt;Node&lt;T&gt;&gt; st = <span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">    Node&lt;T&gt; curN = node;<span class="comment">//当前访问节点</span></div><div class="line">    Node&lt;T&gt; lastN = <span class="keyword">null</span>;<span class="comment">//上次访问节点</span></div><div class="line">    <span class="keyword">while</span> (curN != <span class="keyword">null</span>)&#123;</div><div class="line">        st.push(curN);</div><div class="line">        curN = curN.left;</div><div class="line">        <span class="comment">//将curNode移到左子树最下边</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (!st.isEmpty())&#123;</div><div class="line">        curN = st.pop();</div><div class="line">        <span class="keyword">if</span> (curN.right == <span class="keyword">null</span> || curN.right == lastN)&#123;</div><div class="line">            <span class="comment">//一个根节点被访问的条件是：无右子树或右子树已被访问过</span></div><div class="line">            System.out.print(curN.data + <span class="string">", "</span>);</div><div class="line">            lastN = curN;</div><div class="line">            <span class="comment">//修改最近被访问的节点</span></div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            st.push(curN);<span class="comment">//根节点再次入栈</span></div><div class="line">            curN = curN.right;</div><div class="line">            <span class="keyword">while</span> (curN != <span class="keyword">null</span>)&#123;</div><div class="line">                st.push(curN);</div><div class="line">                curN = curN.left;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    System.out.println(<span class="string">"\n"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
+          <p>二叉树具有三种基本的遍历方式：前序遍历，中序遍历，后序遍历。<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/11/二叉树的递归与非递归遍历/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -762,7 +751,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/14/数据结构与算法之初级排序/" itemprop="url">Java数据结构与算法之排序（一）</a></h1>
+                <a class="post-title-link" href="/2018/01/14/数据结构与算法之初级排序/" itemprop="url">数据结构与算法之初级排序</a></h1>
         
 
         <div class="post-meta">
@@ -908,7 +897,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/14/数据结构与算法之树（二）/" itemprop="url">Java数据结构与算法之树（二）</a></h1>
+                <a class="post-title-link" href="/2018/01/14/数据结构与算法之树（二）/" itemprop="url">数据结构与算法之树（二）</a></h1>
         
 
         <div class="post-meta">
@@ -1054,7 +1043,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/13/数据结构与算法之树（一）/" itemprop="url">Java数据结构与算法之树（一）</a></h1>
+                <a class="post-title-link" href="/2018/01/13/数据结构与算法之树（一）/" itemprop="url">数据结构与算法之树（一）</a></h1>
         
 
         <div class="post-meta">
@@ -1200,7 +1189,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/06/数据结构与算法之栈与队列/" itemprop="url">Java数据结构与算法之栈与队列</a></h1>
+                <a class="post-title-link" href="/2018/01/06/数据结构与算法之栈与队列/" itemprop="url">数据结构与算法之栈与队列</a></h1>
         
 
         <div class="post-meta">
