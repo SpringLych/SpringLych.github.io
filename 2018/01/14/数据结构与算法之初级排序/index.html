@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="排序尽管实际中我们可以使用标准库中的函数完成排序而不需要自己实现，学习排序仍有很强的实际意义。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-11T09:35:09.491Z">
+<meta property="og:updated_time" content="2018-03-14T09:35:27.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之初级排序">
 <meta name="twitter:description" content="排序尽管实际中我们可以使用标准库中的函数完成排序而不需要自己实现，学习排序仍有很强的实际意义。">
@@ -388,10 +388,11 @@
 
       
         <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>尽管实际中我们可以使用标准库中的函数完成排序而不需要自己实现，学习排序仍有很强的实际意义。<br><a id="more"></a></p>
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序就是每一步都将一个待排数据按其大小插入到已经排序的数据中的适当位置，直到全部插入完毕。 </p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序就是每一步都将一个待排数据按其大小插入到已经排序的数据中的适当位置，直到全部插入完毕。<br>当数据规模小到一定程度时，可以使用插入排序进行优化</p>
 <h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
 <li>最好情况：数组有序，每插入一个元素，只需要比较前一个元素，时间复杂度为<code>O(N)</code></li>
 <li>最坏情况：插入第N个元素，要考虑前<code>N - 1</code>个元素，比较次数为<code>1+2+3+..+n-1</code>，即<code>N^2/2</code>，时间复杂度<code>O(N^2)</code></li>
+<li>平均情况：<code>O(N^2)</code></li>
 </ul>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] data)</span> </span>&#123;</div><div class="line">        sort(data, data.length);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] data, <span class="keyword">int</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line">    Comparable key;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; len; i++) &#123;</div><div class="line">        key = data[i];</div><div class="line">        <span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</div><div class="line">            <span class="keyword">int</span> cmp = data[j].compareTo(key);</div><div class="line">            <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) data[j + <span class="number">1</span>] = data[j];</div><div class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        data[j + <span class="number">1</span>] = key;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -434,8 +435,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/20/Shadowsocks介绍及搭建/" rel="prev" title="Shadowsocks介绍及搭建">
-                Shadowsocks介绍及搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/11/二叉树的遍历/" rel="prev" title="二叉树遍历">
+                二叉树遍历 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -513,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -524,7 +525,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -535,7 +536,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
