@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="最近由于需要做一个获取学生课表的项目，就去研究了下如何模拟登录，并用Python成功模拟登录。在此记录一下自己的分析过程。&amp;lt;!--more--&amp;gt;     登录分析使用Chrome登录教务网，打开调试模式，使用NetWork记录点击“登录按钮”后发生的过程  点击登录后浏览器请求的地址为http://dean.vatuu.com/vatuu/UserLoginAction，这就是我们需要">
+<meta name="description" content="最近由于需要做一个获取学生课表的项目，就去研究了下如何模拟登录，并用Python成功模拟登录。在此记录一下自己的分析过程。">
 <meta name="keywords" content="爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="西南交大教务模拟登陆">
 <meta property="og:url" content="http://yoursite.com/2019/01/29/西南交大教务模拟登陆/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="最近由于需要做一个获取学生课表的项目，就去研究了下如何模拟登录，并用Python成功模拟登录。在此记录一下自己的分析过程。&amp;lt;!--more--&amp;gt;     登录分析使用Chrome登录教务网，打开调试模式，使用NetWork记录点击“登录按钮”后发生的过程  点击登录后浏览器请求的地址为http://dean.vatuu.com/vatuu/UserLoginAction，这就是我们需要">
+<meta property="og:description" content="最近由于需要做一个获取学生课表的项目，就去研究了下如何模拟登录，并用Python成功模拟登录。在此记录一下自己的分析过程。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-29T11:24:09.973Z">
+<meta property="og:updated_time" content="2019-01-29T11:27:46.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西南交大教务模拟登陆">
-<meta name="twitter:description" content="最近由于需要做一个获取学生课表的项目，就去研究了下如何模拟登录，并用Python成功模拟登录。在此记录一下自己的分析过程。&amp;lt;!--more--&amp;gt;     登录分析使用Chrome登录教务网，打开调试模式，使用NetWork记录点击“登录按钮”后发生的过程  点击登录后浏览器请求的地址为http://dean.vatuu.com/vatuu/UserLoginAction，这就是我们需要">
+<meta name="twitter:description" content="最近由于需要做一个获取学生课表的项目，就去研究了下如何模拟登录，并用Python成功模拟登录。在此记录一下自己的分析过程。">
 
 
 
@@ -385,8 +385,9 @@
       
 
       
-        <pre><code>最近由于需要做一个获取学生课表的项目，就去研究了下如何模拟登录，并用Python成功模拟登录。在此记录一下自己的分析过程。&lt;!--more--&gt;    
-</code></pre><h2 id="登录分析"><a href="#登录分析" class="headerlink" title="登录分析"></a>登录分析</h2><p>使用Chrome登录<a href="http://dean.vatuu.com/service/login.html" target="_blank" rel="noopener">教务网</a>，打开调试模式，使用NetWork记录点击“登录按钮”后发生的过程</p>
+        <p>最近由于需要做一个获取学生课表的项目，就去研究了下如何模拟登录，并用Python成功模拟登录。在此记录一下自己的分析过程。</p>
+<a id="more"></a>    
+<h2 id="登录分析"><a href="#登录分析" class="headerlink" title="登录分析"></a>登录分析</h2><p>使用Chrome登录<a href="http://dean.vatuu.com/service/login.html" target="_blank" rel="noopener">教务网</a>，打开调试模式，使用NetWork记录点击“登录按钮”后发生的过程</p>
 <ul>
 <li>点击登录后浏览器请求的地址为<code>http://dean.vatuu.com/vatuu/UserLoginAction</code>，这就是我们需要记录的一个url，模拟登录时就向改网址发送请求；</li>
 <li>我们需要重点分析Header和cookie。查看<code>Response Header</code>，该网址返回的Header信息有个<code>Set-Cookie</code>字段；在<code>Request-Headers</code>中，有一个<code>JSESSIONID</code></li>
