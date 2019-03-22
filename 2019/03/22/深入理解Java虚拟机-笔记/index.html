@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="Java运行时数据区分为：程序计数器，Java虚拟机栈，本地方法区，Java堆，方法区 程序计数器，Java虚拟机，本地方法区是线程私有，随线程而生，随线程而灭。 程序计数器记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法则为空），分支，跳转，异常处理都需要计数器完成。 Java虚拟机栈每个方法在执行的同时会创建一个栈帧用于存储局部变量表，操作数栈，常量池引用等信息。每一个方法从调用">
+<meta name="description" content="《深入理解Java虚拟机》读书笔记">
 <meta name="keywords" content="Java,JVM,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解Java虚拟机-笔记">
 <meta property="og:url" content="http://yoursite.com/2019/03/22/深入理解Java虚拟机-笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Java运行时数据区分为：程序计数器，Java虚拟机栈，本地方法区，Java堆，方法区 程序计数器，Java虚拟机，本地方法区是线程私有，随线程而生，随线程而灭。 程序计数器记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法则为空），分支，跳转，异常处理都需要计数器完成。 Java虚拟机栈每个方法在执行的同时会创建一个栈帧用于存储局部变量表，操作数栈，常量池引用等信息。每一个方法从调用">
+<meta property="og:description" content="《深入理解Java虚拟机》读书笔记">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/03/22/深入理解Java虚拟机-笔记/F:/Hexo/source/_posts/assets/garbaecollection.jpg">
-<meta property="og:updated_time" content="2019-03-22T12:34:48.252Z">
+<meta property="og:updated_time" content="2019-03-22T12:38:54.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java虚拟机-笔记">
-<meta name="twitter:description" content="Java运行时数据区分为：程序计数器，Java虚拟机栈，本地方法区，Java堆，方法区 程序计数器，Java虚拟机，本地方法区是线程私有，随线程而生，随线程而灭。 程序计数器记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法则为空），分支，跳转，异常处理都需要计数器完成。 Java虚拟机栈每个方法在执行的同时会创建一个栈帧用于存储局部变量表，操作数栈，常量池引用等信息。每一个方法从调用">
+<meta name="twitter:description" content="《深入理解Java虚拟机》读书笔记">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/22/深入理解Java虚拟机-笔记/F:/Hexo/source/_posts/assets/garbaecollection.jpg">
 
 
@@ -387,7 +387,9 @@
       
 
       
-        <h2 id="Java运行时数据区"><a href="#Java运行时数据区" class="headerlink" title="Java运行时数据区"></a>Java运行时数据区</h2><p>分为：程序计数器，Java虚拟机栈，本地方法区，Java堆，方法区</p>
+        <p>《深入理解Java虚拟机》读书笔记</p>
+<a id="more"></a>    
+<h2 id="Java运行时数据区"><a href="#Java运行时数据区" class="headerlink" title="Java运行时数据区"></a>Java运行时数据区</h2><p>分为：程序计数器，Java虚拟机栈，本地方法区，Java堆，方法区</p>
 <p>程序计数器，Java虚拟机，本地方法区是线程私有，随线程而生，随线程而灭。</p>
 <h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法则为空），分支，跳转，异常处理都需要计数器完成。</p>
 <h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>每个方法在执行的同时会创建一个栈帧用于存储局部变量表，操作数栈，常量池引用等信息。每一个方法从调用到执行完成的过程，对应一个栈帧在虚拟机中入栈到出栈的过程。</p>
