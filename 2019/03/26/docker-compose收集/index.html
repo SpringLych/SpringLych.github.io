@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="介绍使用docker-compose安装Redis">
-<meta name="keywords" content="docker-compose,Redis">
+  <meta name="description" content="自己写的，收集整理的一些docker-compose.yml">
+<meta name="keywords" content="docker,docker-compose">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用docker-compose构建Redis">
-<meta property="og:url" content="http://yoursite.com/2019/03/23/使用docker-compose构建Redis/index.html">
+<meta property="og:title" content="docker-compose收集">
+<meta property="og:url" content="http://yoursite.com/2019/03/26/docker-compose收集/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="介绍使用docker-compose安装Redis">
+<meta property="og:description" content="自己写的，收集整理的一些docker-compose.yml">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-23T02:53:43.752Z">
+<meta property="og:updated_time" content="2019-03-26T12:43:33.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用docker-compose构建Redis">
-<meta name="twitter:description" content="介绍使用docker-compose安装Redis">
+<meta name="twitter:title" content="docker-compose收集">
+<meta name="twitter:description" content="自己写的，收集整理的一些docker-compose.yml">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/23/使用docker-compose构建Redis/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/26/docker-compose收集/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>使用docker-compose构建Redis | Hexo</title>
+  <title>docker-compose收集 | Hexo</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/使用docker-compose构建Redis/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/docker-compose收集/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SpringLi">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用docker-compose构建Redis
+          <h1 class="post-title" itemprop="name headline">docker-compose收集
 
               
             
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-03-23 10:50:17 / Modified: 10:53:43" itemprop="dateCreated datePublished" datetime="2019-03-23T10:50:17+08:00">2019-03-23</time>
+              <time title="Created: 2019-03-26 20:40:58 / Modified: 20:43:33" itemprop="dateCreated datePublished" datetime="2019-03-26T20:40:58+08:00">2019-03-26</time>
             
 
             
@@ -405,7 +405,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/docker-compose/" itemprop="url" rel="index"><span itemprop="name">docker-compose</span></a></span>
 
                 
                 
@@ -440,10 +440,9 @@
       
 
       
-        <p>介绍使用docker-compose安装Redis</p>
+        <p>自己写的，收集整理的一些docker-compose.yml</p>
 <a id="more"></a>
-<h2 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="number">6379</span><span class="string">:6379</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/data:/data</span>  </span><br><span class="line"><span class="attr">    restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="number">6379</span><span class="string">:6379</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/data:/data</span>  </span><br><span class="line"><span class="attr">    restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -467,9 +466,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker-compose/" rel="tag"># docker-compose</a>
+            <a href="/tags/docker/" rel="tag"># docker</a>
           
-            <a href="/tags/Redis/" rel="tag"># Redis</a>
+            <a href="/tags/docker-compose/" rel="tag"># docker-compose</a>
           
         </div>
       
@@ -482,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/22/深入理解Java虚拟机-笔记/" rel="next" title="深入理解Java虚拟机-笔记">
-                <i class="fa fa-chevron-left"></i> 深入理解Java虚拟机-笔记
+              <a href="/2019/03/24/设计模式-单例模式/" rel="next" title="设计模式-单例模式">
+                <i class="fa fa-chevron-left"></i> 设计模式-单例模式
               </a>
             
           </div>
@@ -491,10 +490,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/24/设计模式-单例模式/" rel="prev" title="设计模式-单例模式">
-                设计模式-单例模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -672,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose-yml"><span class="nav-number">1.</span> <span class="nav-text">docker-compose.yml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建"><span class="nav-number">2.</span> <span class="nav-text">创建</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">1.</span> <span class="nav-text">Redis</span></a></li></ol></div>
             
 
           </div>

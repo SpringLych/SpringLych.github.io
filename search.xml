@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title><![CDATA[docker-compose收集]]></title>
+      <url>/2019/03/26/docker-compose%E6%94%B6%E9%9B%86/</url>
+      <content type="html"><![CDATA[<p>自己写的，收集整理的一些docker-compose.yml</p>
+<a id="more"></a>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="number">6379</span><span class="string">:6379</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/data:/data</span>  </span><br><span class="line"><span class="attr">    restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> docker-compose </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> docker-compose </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[设计模式-单例模式]]></title>
       <url>/2019/03/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>保证一个类只有一个实例，提供一个访问他的全局访问点</p>
@@ -37,32 +62,6 @@
         <tags>
             
             <tag> 设计模式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[使用docker-compose构建Redis]]></title>
-      <url>/2019/03/23/%E4%BD%BF%E7%94%A8docker-compose%E6%9E%84%E5%BB%BARedis/</url>
-      <content type="html"><![CDATA[<p>介绍使用docker-compose安装Redis</p>
-<a id="more"></a>
-<h2 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="number">6379</span><span class="string">:6379</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/data:/data</span>  </span><br><span class="line"><span class="attr">    restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> docker </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> docker-compose </tag>
-            
-            <tag> Redis </tag>
             
         </tags>
         
@@ -223,7 +222,7 @@
       
         <categories>
             
-            <category> JVM </category>
+            <category> 笔记 </category>
             
         </categories>
         
