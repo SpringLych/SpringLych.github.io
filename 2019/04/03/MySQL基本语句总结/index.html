@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="学习《MySQL必知必会》，整理基本语句">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基本语句总结">
+<meta property="og:url" content="http://yoursite.com/2019/04/03/MySQL基本语句总结/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学习《MySQL必知必会》，整理基本语句">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-03T03:00:32.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL基本语句总结">
+<meta name="twitter:description" content="学习《MySQL必知必会》，整理基本语句">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/03/MySQL基本语句总结/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MySQL基本语句总结 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/MySQL基本语句总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SpringLi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL基本语句总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-03 09:55:51 / Modified: 11:00:32" itemprop="dateCreated datePublished" datetime="2019-04-03T09:55:51+08:00">2019-04-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习《MySQL必知必会》，整理基本语句</p>
+<a id="more"></a>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="普通查询"><a href="#普通查询" class="headerlink" title="普通查询"></a>普通查询</h3><h4 id="DISTINCT-返回唯一的结果"><a href="#DISTINCT-返回唯一的结果" class="headerlink" title="DISTINCT 返回唯一的结果"></a>DISTINCT 返回唯一的结果</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">id</span> </span><br><span class="line"><span class="keyword">FROM</span> products</span><br></pre></td></tr></table></figure>
+<h4 id="LIMIT-限制查询结果"><a href="#LIMIT-限制查询结果" class="headerlink" title="LIMIT 限制查询结果"></a>LIMIT 限制查询结果</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span> </span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIMIT 5,5</span><br></pre></td></tr></table></figure>
+<p>从5行开始的第五行。（检索的第一行为0为而不是1）</p>
+<h3 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h3><h4 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h4><p>默认按照升序排序。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span> </span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> age, <span class="keyword">name</span>;</span><br></pre></td></tr></table></figure>
+<p>首先按照age，在按照name，仅age 有多个相同的时候。</p>
+<h5 id="排序方向"><a href="#排序方向" class="headerlink" title="排序方向"></a>排序方向</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORDER BY age DESC, name</span><br></pre></td></tr></table></figure>
+<p>按照age降序排序。name 升序排序。</p>
+<h3 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h3><h4 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT id </span><br><span class="line">FROM products</span><br><span class="line">WHERE id = 3;</span><br></pre></td></tr></table></figure>
+<h5 id="BETWEEN"><a href="#BETWEEN" class="headerlink" title="BETWEEN"></a>BETWEEN</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE price BETWEEN 5 AND 10;</span><br></pre></td></tr></table></figure>
+<p>检索5-10之间。</p>
+<h5 id="AND"><a href="#AND" class="headerlink" title="AND"></a>AND</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE price age &lt; 10 AND price &gt; 5;</span><br></pre></td></tr></table></figure>
+<h5 id="OR"><a href="#OR" class="headerlink" title="OR"></a>OR</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE price age &lt; 10 OR price &gt; 5;</span><br></pre></td></tr></table></figure>
+<h5 id="计算次序"><a href="#计算次序" class="headerlink" title="计算次序"></a>计算次序</h5><p>WHERE可包含任意数目的AND和OR操作符。允许两者结合以进行复杂 和高级的过滤。 </p>
+<p>SQL（像多数语言一样）在处理OR操作符前，优先处理AND操 作符。AND在计算次序中优先级更高</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE (id = 1001 OR id = 1003) AND price &gt; 10;</span><br></pre></td></tr></table></figure>
+<p>因为圆括号具有较AND或OR操作符高 的计算次序，DBMS首先过滤圆括号内的OR条件。<br> 任何时候使用具有AND和OR操作 符的WHERE子句，都应该使用圆括号明确地分组操作符。</p>
+<h5 id="IN"><a href="#IN" class="headerlink" title="IN"></a>IN</h5><p>IN  WHERE子句中用来指定要匹配值的清单的关键字，功能与OR 相当。 </p>
+<p>IN操作符用来指定条件范 围，范围中的每个条件都可以进行匹配。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE id IN (1002, 1004);</span><br></pre></td></tr></table></figure></p>
+<p> IN操作符一般比OR操作符清单执行更快。 </p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h3><ul>
+<li>AVG()</li>
+<li>COUNT</li>
+<li>MAX</li>
+<li>MIN()</li>
+<li>SUM()</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT AVG(age) AS avg_price</span><br></pre></td></tr></table></figure>
+<h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><h3 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT id, COUNT(*) AS num_prods</span><br><span class="line">FROM products</span><br><span class="line">GROUP BY id;</span><br></pre></td></tr></table></figure>
+<p>将分别计算每个id的数量。</p>
+<h3 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h3><p>大部分类型的WHERE子句都可以用HAVING来替代。唯一的差别是 WHERE过滤行，而HAVING过滤分组。<br>HAVING支持所有WHERE操作符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT id, COUNT(*) AS orders</span><br><span class="line">FROM orders</span><br><span class="line">GROUP BY id</span><br><span class="line">HAVING COUNT(*) &gt;= 2;</span><br></pre></td></tr></table></figure></p>
+<p>HAVING子句，它过滤COUNT(*) &gt;=2（两个以上的订单）的那些<br>分组。</p>
+<p>有另一种理解方法，WHERE在数据 分组前进行过滤，HAVING在数据分组后进行过滤。这是一个重 要的区别，WHERE排除的行不包括在分组中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT id, COUNT(*) AS orders</span><br><span class="line">FROM orders</span><br><span class="line">WHERE price &gt;= 10</span><br><span class="line">GROUP BY id</span><br><span class="line">HAVING COUNT(*) &gt;= 2;</span><br></pre></td></tr></table></figure>
+<p>第一行是使用了聚集函数的基本SELECT，它与前 面的例子很相像。WHERE子句过滤所有prod_price至少为10的 行。然后按vend_id分组数据，HAVING子句过滤计数为2或2以上的分组。 </p>
+<h3 id="分组和排序"><a href="#分组和排序" class="headerlink" title="分组和排序"></a>分组和排序</h3><p>一般在使用GROUP BY子句时，应该也给 出ORDER BY子句。这是保证数据正确排序的唯一方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT order_num, SUM(quantity*item_price) AS ordertotal</span><br><span class="line">FROM orderitems</span><br><span class="line">GROUP BY order_num</span><br><span class="line">HAVING SUM(quantity*item_price) &gt;= 50</span><br><span class="line">ORDER BY ordertotal</span><br></pre></td></tr></table></figure>
+<p>GROUP BY子句用来按订单号（order_num列） 分组数据，以便SUM(*)函数能够返回总计订单价格。HAVING子 句过滤数据，使得只返回总计订单价格大于等于50的订单。后，用ORDER BY子句排序输出。 </p>
+<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT order_num</span><br><span class="line">FROM orderitems</span><br><span class="line">WHERE prod_id = &apos;TNT2&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT cust_id</span><br><span class="line">FROM orders</span><br><span class="line">WHERE order_num IN (20005, 20007)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT cust_id</span><br><span class="line">FROM orders</span><br><span class="line">WHERE order_num IN (</span><br><span class="line">	SELECT order_num</span><br><span class="line">    FROM orderitems</span><br><span class="line">    WHERE prod_id = &apos;TNT2&apos;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>首先执行括号中的查询</p>
+<h2 id="联结"><a href="#联结" class="headerlink" title="联结"></a>联结</h2><p>外键（foreign key）  外键为某个表中的一列，它包含另一个表 的主键值，定义了两个表之间的关系</p>
+<h3 id="创建联结"><a href="#创建联结" class="headerlink" title="创建联结"></a>创建联结</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT vent_name, prod_name, prod_price</span><br><span class="line">FROM vendors, products</span><br><span class="line">WHERE vendors.vend_id = products.vend_id</span><br><span class="line">ORDER BY vend_name, prod_name</span><br></pre></td></tr></table></figure>
+<p>WHERE子句 指示MySQL匹配vendors表中的vend_id和products表中的vend_id。 </p>
+<h3 id="内部联结"><a href="#内部联结" class="headerlink" title="内部联结"></a>内部联结</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT vend_name, prod_name, prod_price</span><br><span class="line">FROM vendors INNER JOIN products</span><br><span class="line">ON vendors.vend_id = products.vend_id</span><br></pre></td></tr></table></figure>
+<p>与前面语句相同。两个表之间的关系是FROM子句的组成部分，以INNER JOIN指定。联结条件用特定的ON子句而不是WHERE 子句给出。传递给ON的实际条件与传递给WHERE的相同。 </p>
+<p>首选 INNER JOIN</p>
+<h2 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h2><p>可用UNION操作符来组合数条SQL查询。利用UNION，可给出多条SELECT语句，将它们的结果组合成单个结果集。 </p>
+<h3 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT vend_id, prod_id, prod_price</span><br><span class="line">FROM products</span><br><span class="line">WHERE prod_price &lt;=5</span><br><span class="line">UNION</span><br><span class="line">SELECT vend_id, prod_id, prod_price</span><br><span class="line">FROM products</span><br><span class="line">WHERE vend_id IN (1001, 1002)</span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT vend_id, prod_id, prod_price</span><br><span class="line">FROM products</span><br><span class="line">WHERE prod_price &lt;=5 OR vend_id IN (1001, 1002)</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>UNION中的每个查询必须包含相同的列、表达式或聚集函数</li>
+<li>UNION必须由两条或两条以上的SELECT语句组成，语句之间用关 键字UNION分隔（因此，如果组合4条SELECT语句，将要使用3个 UNION关键字） </li>
+</ul>
+<h3 id="UNION-ALL"><a href="#UNION-ALL" class="headerlink" title="UNION ALL"></a>UNION ALL</h3><p>UNION默认去除重复的行，使用UNION ALL 避免。</p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>SELECT语句的输出用ORDER BY子句排序。在用UNION组合查询时，只 能使用一条ORDER BY子句，它必须出现在最后一条SELECT语句之后。对 于结果集，不存在用一种方式排序一部分，而又用另一种方式排序另一 部分的情况，因此不允许使用多条ORDER BY子句。 </p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>《MySQL必知必会》</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/28/Java并发学习-三/" rel="next" title="Java并发学习-三">
+                <i class="fa fa-chevron-left"></i> Java并发学习-三
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">SpringLi</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/SpringLych" title="GitHub &rarr; https://github.com/SpringLych" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查询"><span class="nav-number">1.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通查询"><span class="nav-number">1.1.</span> <span class="nav-text">普通查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DISTINCT-返回唯一的结果"><span class="nav-number">1.1.1.</span> <span class="nav-text">DISTINCT 返回唯一的结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LIMIT-限制查询结果"><span class="nav-number">1.1.2.</span> <span class="nav-text">LIMIT 限制查询结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序查询"><span class="nav-number">1.2.</span> <span class="nav-text">排序查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ORDER-BY"><span class="nav-number">1.2.1.</span> <span class="nav-text">ORDER BY</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#排序方向"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">排序方向</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤数据"><span class="nav-number">1.3.</span> <span class="nav-text">过滤数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WHERE"><span class="nav-number">1.3.1.</span> <span class="nav-text">WHERE</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BETWEEN"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">BETWEEN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AND"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">AND</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OR"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">OR</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算次序"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">计算次序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IN"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">IN</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚集函数"><span class="nav-number">2.1.</span> <span class="nav-text">聚集函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组"><span class="nav-number">3.</span> <span class="nav-text">分组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GROUP-BY"><span class="nav-number">3.1.</span> <span class="nav-text">GROUP BY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HAVING"><span class="nav-number">3.2.</span> <span class="nav-text">HAVING</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组和排序"><span class="nav-number">3.3.</span> <span class="nav-text">分组和排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询"><span class="nav-number">4.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联结"><span class="nav-number">5.</span> <span class="nav-text">联结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建联结"><span class="nav-number">5.1.</span> <span class="nav-text">创建联结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部联结"><span class="nav-number">5.2.</span> <span class="nav-text">内部联结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合查询"><span class="nav-number">6.</span> <span class="nav-text">组合查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UNION"><span class="nav-number">6.1.</span> <span class="nav-text">UNION</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNION-ALL"><span class="nav-number">6.2.</span> <span class="nav-text">UNION ALL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">6.3.</span> <span class="nav-text">排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SpringLi</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
