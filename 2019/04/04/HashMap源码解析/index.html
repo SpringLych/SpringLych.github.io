@@ -104,12 +104,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="基于JDK1.8分析HashMap的底层实现。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/04/04/HashMap源码解析/F:/Hexo/source/_posts/assets/hashmap1-1554360880850.jpg">
-<meta property="og:updated_time" content="2019-04-04T06:54:48.702Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/04/HashMap源码解析/hashmap1.jpg">
+<meta property="og:updated_time" content="2019-04-04T07:31:23.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap源码解析">
 <meta name="twitter:description" content="基于JDK1.8分析HashMap的底层实现。">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/04/HashMap源码解析/F:/Hexo/source/_posts/assets/hashmap1-1554360880850.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/04/HashMap源码解析/hashmap1.jpg">
 
 
 
@@ -385,7 +385,7 @@
                 
               
 
-              <time title="Created: 2019-04-04 09:16:18 / Modified: 14:54:48" itemprop="dateCreated datePublished" datetime="2019-04-04T09:16:18+08:00">2019-04-04</time>
+              <time title="Created: 2019-04-04 09:16:18 / Modified: 15:31:23" itemprop="dateCreated datePublished" datetime="2019-04-04T09:16:18+08:00">2019-04-04</time>
             
 
             
@@ -481,7 +481,7 @@
 <li>因为扩容是容量翻倍，所以原链表上的每个节点，现在可能存放在原来的下标，即low位， 或者扩容后的下标，即high位。 high位= low位+原哈希桶容量</li>
 </ul>
 <p>resize是很费时间的操作，因此最好在HashMap初始化时指定大小，尽量减少调用resize方法。</p>
-<p><img src="/2019/04/04/HashMap源码解析/F:/Hexo\source\_posts\assets\hashmap1-1554360880850.jpg" alt=""></p>
+<p><img src="/2019/04/04/HashMap源码解析/hashmap1.jpg" alt=""></p>
 <h2 id="get操作"><a href="#get操作" class="headerlink" title="get操作"></a>get操作</h2><h3 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt; e;</span><br><span class="line">    <span class="keyword">return</span> (e = getNode(hash(key), key)) == <span class="keyword">null</span> ? <span class="keyword">null</span> : e.value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传入扰动后的hash 和 key查找</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> Node&lt;K,V&gt; <span class="title">getNode</span><span class="params">(<span class="keyword">int</span> hash, Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; <span class="keyword">int</span> n; K k;</span><br><span class="line">    <span class="comment">// 哈希表不为空，根据hash计算下标，该下标有节点的话</span></span><br><span class="line">    <span class="keyword">if</span> ((tab = table) != <span class="keyword">null</span> &amp;&amp; (n = tab.length) &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">        (first = tab[(n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 如果链表头结点就是要查找的节点，直接返回</span></span><br><span class="line">        <span class="keyword">if</span> (first.hash == hash &amp;&amp; <span class="comment">// always check first node</span></span><br><span class="line">            ((k = first.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">            <span class="keyword">return</span> first;</span><br><span class="line">        <span class="comment">// 链表头结点的下一个节点不为空</span></span><br><span class="line">        <span class="keyword">if</span> ((e = first.next) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 是红黑树树节点，使用红黑树的查找</span></span><br><span class="line">            <span class="keyword">if</span> (first <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                <span class="keyword">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(hash, key);</span><br><span class="line">            <span class="comment">// 是链表，遍历链表</span></span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                    ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                    <span class="keyword">return</span> e;</span><br><span class="line">            &#125; <span class="keyword">while</span> ((e = e.next) != <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 没有找到，返回null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>保证在O(1)的时间里查找：</p>
 <ul>
@@ -541,6 +541,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/04/使用aiohttp进行异步爬虫/" rel="prev" title="使用aiohttp进行异步爬虫">
+                使用aiohttp进行异步爬虫 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -609,7 +613,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -640,7 +644,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -679,7 +685,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
