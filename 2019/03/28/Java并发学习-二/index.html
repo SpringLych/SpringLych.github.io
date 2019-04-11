@@ -104,12 +104,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Java内存模型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/03/28/Java并发学习-二/F:/Hexo/source/_posts/assets/20160921182337904">
-<meta property="og:updated_time" content="2019-03-28T07:30:54.829Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/Java并发学习-二/20160921182337904">
+<meta property="og:updated_time" content="2019-04-11T06:08:11.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发学习-二">
 <meta name="twitter:description" content="Java内存模型">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/28/Java并发学习-二/F:/Hexo/source/_posts/assets/20160921182337904">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/28/Java并发学习-二/20160921182337904">
 
 
 
@@ -385,12 +385,24 @@
                 
               
 
-              <time title="Created: 2019-03-28 14:24:58 / Modified: 15:30:54" itemprop="dateCreated datePublished" datetime="2019-03-28T14:24:58+08:00">2019-03-28</time>
+              <time title="Created: 2019-03-28 14:24:58" itemprop="dateCreated datePublished" datetime="2019-03-28T14:24:58+08:00">2019-03-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-11 14:08:11" itemprop="dateModified" datetime="2019-04-11T14:08:11+08:00">2019-04-11</time>
               
             
           </span>
@@ -457,7 +469,7 @@
 <p>Java并发采用共享内存。  </p>
 <p>Java线程之间的通信有Java内存模型（JMM）控制，他决定了一个线程的共享变量的写入何时对另一个线程可见。</p>
 <p>从抽象角度：JMM定义了线程和主内存之间的抽象关系，线程之间的共享变量存储在主内存中，每个线程都有一个私有本地内存，本地内存中存储了该线程共享变量的副本。本地内存并不真实存在。</p>
-<p><img src="/2019/03/28/Java并发学习-二/F:/Hexo\source\_posts\assets\20160921182337904" alt=""></p>
+<p><img src="/2019/03/28/Java并发学习-二/20160921182337904" alt=""></p>
 <p>两个线程，A和B通信，经历步骤：</p>
 <ol>
 <li>线程A将本地内存A中更新过的共享变量刷新到主内存中</li>
@@ -613,7 +625,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -646,7 +658,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -689,7 +703,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
