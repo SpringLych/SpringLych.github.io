@@ -105,7 +105,8 @@
 <meta property="og:description" content="ConcurrentHashMap是HashMap的线程安全版，基于JDK1.8分析其源码。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/ConcurrentHashMap源码分析/image.jpg">
-<meta property="og:updated_time" content="2019-04-10T08:40:46.385Z">
+<meta property="og:image" content="https://www.javadoop.com/blogimages/map/3.png">
+<meta property="og:updated_time" content="2019-04-11T01:44:08.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ConcurrentHashMap源码分析">
 <meta name="twitter:description" content="ConcurrentHashMap是HashMap的线程安全版，基于JDK1.8分析其源码。">
@@ -385,12 +386,24 @@
                 
               
 
-              <time title="Created: 2019-04-10 09:06:35 / Modified: 16:40:46" itemprop="dateCreated datePublished" datetime="2019-04-10T09:06:35+08:00">2019-04-10</time>
+              <time title="Created: 2019-04-10 09:06:35" itemprop="dateCreated datePublished" datetime="2019-04-10T09:06:35+08:00">2019-04-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-11 09:44:08" itemprop="dateModified" datetime="2019-04-11T09:44:08+08:00">2019-04-11</time>
               
             
           </span>
@@ -483,6 +496,10 @@
 </ol>
 </li>
 </ol>
+<h1 id="1-7中的ConcurrentHashMap"><a href="#1-7中的ConcurrentHashMap" class="headerlink" title="1.7中的ConcurrentHashMap"></a>1.7中的ConcurrentHashMap</h1><p>1.7中主要使用Segment实现线程安全。</p>
+<p>整个ConcurrentHashMap有一个个Segment组成，即ConcurrentHashMap是一个Segment数组，Segment通过集成ReentrantLock进行加锁，每次锁住一个segment。</p>
+<p>Segment数组不能扩容，扩容是Segment数组某个位置内部数组HashEntry进行扩容。</p>
+<p><img src="https://www.javadoop.com/blogimages/map/3.png" alt=""></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="https://blog.csdn.net/u010723709/article/details/48007881" target="_blank" rel="noopener">CSDN-ConcurrentHashMap源码分析（JDK8版本）</a></li>
 <li><a href="https://juejin.im/entry/59fc786d518825297f3fa968" target="_blank" rel="noopener">掘金-Java 8 ConcurrentHashMap源码分析</a></li>
@@ -535,6 +552,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/11/Java并发学习-四/" rel="prev" title="Java并发学习-四">
+                Java并发学习-四 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -603,7 +624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -677,7 +698,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -730,7 +753,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化"><span class="nav-number">2.</span> <span class="nav-text">初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sizeCtl"><span class="nav-number">2.1.</span> <span class="nav-text">sizeCtl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node"><span class="nav-number">2.2.</span> <span class="nav-text">Node</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unsafe与CAS"><span class="nav-number">3.</span> <span class="nav-text">Unsafe与CAS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三个核心方法"><span class="nav-number">3.1.</span> <span class="nav-text">三个核心方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#put方法"><span class="nav-number">4.</span> <span class="nav-text">put方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#get"><span class="nav-number">5.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化"><span class="nav-number">2.</span> <span class="nav-text">初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sizeCtl"><span class="nav-number">2.1.</span> <span class="nav-text">sizeCtl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node"><span class="nav-number">2.2.</span> <span class="nav-text">Node</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unsafe与CAS"><span class="nav-number">3.</span> <span class="nav-text">Unsafe与CAS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三个核心方法"><span class="nav-number">3.1.</span> <span class="nav-text">三个核心方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#put方法"><span class="nav-number">4.</span> <span class="nav-text">put方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#get"><span class="nav-number">5.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-7中的ConcurrentHashMap"><span class="nav-number">6.</span> <span class="nav-text">1.7中的ConcurrentHashMap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
