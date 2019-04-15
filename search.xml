@@ -42,7 +42,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>Java，并发</tag>
+        <tag>Java</tag>
+        <tag>并发</tag>
       </tags>
   </entry>
   <entry>
@@ -65,8 +66,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>爬虫</tag>
         <tag>Python</tag>
+        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
