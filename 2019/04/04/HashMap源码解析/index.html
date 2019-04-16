@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/04/HashMap源码解析/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/04/HashMap源码解析/hashmap1.jpg">
-<meta property="og:updated_time" content="2019-04-15T07:53:58.478Z">
+<meta property="og:updated_time" content="2019-04-16T12:46:09.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap源码解析">
 <meta name="twitter:description" content="基于JDK1.8分析HashMap的底层实现。">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-15 15:53:58" itemprop="dateModified" datetime="2019-04-15T15:53:58+08:00">2019-04-15</time>
+                <time title="Modified: 2019-04-16 20:46:09" itemprop="dateModified" datetime="2019-04-16T20:46:09+08:00">2019-04-16</time>
               
             
           </span>
@@ -506,6 +506,11 @@
 <li>便利链表，找到相等的key</li>
 </ol>
 <p>以上在O(1)的时间里查找执行完</p>
+<h2 id="7与8的一些不同"><a href="#7与8的一些不同" class="headerlink" title="7与8的一些不同"></a>7与8的一些不同</h2><ul>
+<li>7是数组+链表的结构；8是数组+链表+红黑树，链表长度大于8转化为红黑树</li>
+<li>插入时7是头插法；8是尾插法。一种原因是防止形成链表环</li>
+<li>7是先计算size后插入；8是先插入后计算</li>
+</ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/Java%20%E5%AE%B9%E5%99%A8.md#hashmap" target="_blank" rel="noopener">CS-Notes-HashMap</a></li>
 <li><a href="https://juejin.im/post/599652796fb9a0249975a318" target="_blank" rel="noopener">掘金-面试必备：HashMap源码解析（JDK8）</a></li>
@@ -664,9 +669,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -709,9 +712,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -764,7 +765,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表节点Node"><span class="nav-number">2.</span> <span class="nav-text">链表节点Node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">3.</span> <span class="nav-text">构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重要参数："><span class="nav-number">3.1.</span> <span class="nav-text">重要参数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tableSizeFor，计算数组容量"><span class="nav-number">3.2.</span> <span class="nav-text">tableSizeFor，计算数组容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#putMapEntries"><span class="nav-number">3.3.</span> <span class="nav-text">putMapEntries()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#put操作"><span class="nav-number">4.</span> <span class="nav-text">put操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#put"><span class="nav-number">4.1.</span> <span class="nav-text">put()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash"><span class="nav-number">4.2.</span> <span class="nav-text">hash()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resize-重点"><span class="nav-number">4.3.</span> <span class="nav-text">resize() 重点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get操作"><span class="nav-number">5.</span> <span class="nav-text">get操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">5.1.</span> <span class="nav-text">get()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表节点Node"><span class="nav-number">2.</span> <span class="nav-text">链表节点Node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">3.</span> <span class="nav-text">构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重要参数："><span class="nav-number">3.1.</span> <span class="nav-text">重要参数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tableSizeFor，计算数组容量"><span class="nav-number">3.2.</span> <span class="nav-text">tableSizeFor，计算数组容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#putMapEntries"><span class="nav-number">3.3.</span> <span class="nav-text">putMapEntries()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#put操作"><span class="nav-number">4.</span> <span class="nav-text">put操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#put"><span class="nav-number">4.1.</span> <span class="nav-text">put()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash"><span class="nav-number">4.2.</span> <span class="nav-text">hash()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resize-重点"><span class="nav-number">4.3.</span> <span class="nav-text">resize() 重点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get操作"><span class="nav-number">5.</span> <span class="nav-text">get操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">5.1.</span> <span class="nav-text">get()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7与8的一些不同"><span class="nav-number">6.</span> <span class="nav-text">7与8的一些不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
