@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/11/Java并发学习-四/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/04/11/Java并发学习-四/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/04/11/Java并发学习-四/3.jpg">
-<meta property="og:updated_time" content="2019-04-15T13:31:15.071Z">
+<meta property="og:updated_time" content="2019-04-17T12:01:09.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发学习-四">
 <meta name="twitter:description" content="线程池">
@@ -404,7 +404,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-15 21:31:15" itemprop="dateModified" datetime="2019-04-15T21:31:15+08:00">2019-04-15</time>
+                <time title="Modified: 2019-04-17 20:01:09" itemprop="dateModified" datetime="2019-04-17T20:01:09+08:00">2019-04-17</time>
               
             
           </span>
@@ -490,6 +490,14 @@
 <li><strong>Terminated</strong>：terminated()结束后</li>
 </ul>
 <p><img src="/2019/04/11/Java并发学习-四/3.jpg" alt=""></p>
+<h3 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h3><p>队列和线程池都满了，线程池饱和，采取一种策略处理提交的新任务。</p>
+<p>线程池框架提供四种策略：</p>
+<ol>
+<li>AbortPolicy：直接抛出异常。（默认策略）</li>
+<li>CallerRunsPolicy：只用调用者所在线程来运行任务。</li>
+<li>DiscardOldestPolicy：丢弃队列里最近的一个任务，并执行当前任务</li>
+<li>DiscardPolicy：不处理，丢弃。</li>
+</ol>
 <h2 id="Executors"><a href="#Executors" class="headerlink" title="Executors"></a>Executors</h2><p>工具类，提供工厂方法创建不同类型的线程池。</p>
 <h3 id="四种常用线程池"><a href="#四种常用线程池" class="headerlink" title="四种常用线程池"></a>四种常用线程池</h3><ul>
 <li><strong>newFixedThreadPool(int Threads)</strong>：创建固定数目线程的线程池</li>
@@ -502,11 +510,17 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executor = <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">10</span>, <span class="number">10</span>,</span><br><span class="line">        <span class="number">60L</span>, TimeUnit.SECONDS,</span><br><span class="line">        <span class="keyword">new</span> ArrayBlockingQueue(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
 <p>使用Guava的ThreadFactoryBuilder创建，不仅可以避免OOM的问题，还可以自定义线程名称，更加方便的出错的时候溯源。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExecutorsDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ThreadFactory namedThreadFactory = <span class="keyword">new</span> ThreadFactoryBuilder()</span><br><span class="line">        .setNameFormat(<span class="string">"demo-pool-%d"</span>).build();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ExecutorService pool = <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">5</span>, <span class="number">200</span>,</span><br><span class="line">        <span class="number">0L</span>, TimeUnit.MILLISECONDS,</span><br><span class="line">        <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;(<span class="number">1024</span>), namedThreadFactory, <span class="keyword">new</span> ThreadPoolExecutor.AbortPolicy());</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Integer.MAX_VALUE; i++) &#123;</span><br><span class="line">            pool.execute(<span class="keyword">new</span> SubThread());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="线程创建时机"><a href="#线程创建时机" class="headerlink" title="线程创建时机"></a>线程创建时机</h2><ol>
+<li>当前线程数少于corePoolSize，提交任务时新建一个新线程，有该线程执行这个任务</li>
+<li>如果当前线程数已经达到corePoolSize，将提交的任务添加到队列中，等待线程池中的线程取队列中取任务。</li>
+<li>如果队列已满，就创建新的线程执行任务，需要保证线程池中的线程数不超过maximumPoolSize，如果超过，执行拒绝策略。</li>
+</ol>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="https://www.javadoop.com/post/java-thread-pool" target="_blank" rel="noopener">Javadoop - 深度解读 java 线程池设计思想及源码实现</a></li>
 <li><a href="https://juejin.im/entry/58fada5d570c350058d3aaad" target="_blank" rel="noopener">掘金 - 深入理解 Java 线程池：ThreadPoolExecutor</a></li>
 <li><a href="https://juejin.im/post/5c99c29ee51d4559bb5c6541" target="_blank" rel="noopener">掘金 - 重走JAVA之路（五）：面试又被问线程池原理？教你如何反击</a></li>
 <li><a href="https://www.hollischuang.com/archives/2888" target="_blank" rel="noopener">Java中线程池，你真的会用吗？</a></li>
+<li>方腾飞等. Java并发编程的艺术. 机械工业出版社, 2015.</li>
 </ul>
 
       
@@ -627,7 +641,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -660,7 +674,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -703,7 +719,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -756,7 +774,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用线程池好处"><span class="nav-number">1.1.</span> <span class="nav-text">使用线程池好处</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executor框架接口"><span class="nav-number">2.</span> <span class="nav-text">Executor框架接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor接口"><span class="nav-number">2.1.</span> <span class="nav-text">Executor接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ExecutorService接口"><span class="nav-number">2.2.</span> <span class="nav-text">ExecutorService接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor"><span class="nav-number">2.3.</span> <span class="nav-text">ThreadPoolExecutor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数及重要属性"><span class="nav-number">2.3.1.</span> <span class="nav-text">构造函数及重要属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池状态"><span class="nav-number">2.3.2.</span> <span class="nav-text">线程池状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executors"><span class="nav-number">2.4.</span> <span class="nav-text">Executors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#四种常用线程池"><span class="nav-number">2.4.1.</span> <span class="nav-text">四种常用线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">2.4.2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确创建线程池"><span class="nav-number">2.4.3.</span> <span class="nav-text">正确创建线程池</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用线程池好处"><span class="nav-number">1.1.</span> <span class="nav-text">使用线程池好处</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executor框架接口"><span class="nav-number">2.</span> <span class="nav-text">Executor框架接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor接口"><span class="nav-number">2.1.</span> <span class="nav-text">Executor接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ExecutorService接口"><span class="nav-number">2.2.</span> <span class="nav-text">ExecutorService接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor"><span class="nav-number">2.3.</span> <span class="nav-text">ThreadPoolExecutor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数及重要属性"><span class="nav-number">2.3.1.</span> <span class="nav-text">构造函数及重要属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池状态"><span class="nav-number">2.3.2.</span> <span class="nav-text">线程池状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拒绝策略"><span class="nav-number">2.3.3.</span> <span class="nav-text">拒绝策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executors"><span class="nav-number">2.4.</span> <span class="nav-text">Executors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#四种常用线程池"><span class="nav-number">2.4.1.</span> <span class="nav-text">四种常用线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">2.4.2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确创建线程池"><span class="nav-number">2.4.3.</span> <span class="nav-text">正确创建线程池</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程创建时机"><span class="nav-number">3.1.</span> <span class="nav-text">线程创建时机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
