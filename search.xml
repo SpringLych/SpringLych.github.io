@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Redis详解]]></title>
-    <url>%2F2019%2F04%2F17%2FRedis%E8%AF%A6%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[主要学习Redis底层实现。 概述Redis是一种非关系型数据库NoSQL，内存键值数据库。 键的类型只能是String，值有String，List，Set，Sorted Set，Hash 数据结构String可以存储字符串，整数或浮点数。 参考 黄建宏. Redis设计与实现 [M]. 机械工业出版社, 2014 CS - Notes - Redis]]></content>
+    <title><![CDATA[Redis常用命令学习]]></title>
+    <url>%2F2019%2F04%2F27%2FRedis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[学习Redis基本命令 字符串 SET set key value [expiration EX seconds|PX milliseconds][NX|XX] 将字符串值 value 关联到 key 。如果 key 已经持有其他值， SET 就覆写旧值， 无视类型。当 SET 命令对一个带有生存时间（TTL）的键进行设置之后， 该键原有的 TTL 将被清除。 从 Redis 2.6.12 版本开始， SET 命令只在设置操作成功完成时才返回 OK ； 如果命令使用了 NX或者 XX 选项， 但是因为条件没达到而造成设置操作未执行， 那么命令将返回空批量回复（NULL Bulk Reply）。 SET key “value”GET key SET key “value” EX seconds：将键的过期时间设置为 seconds 秒。 执行 SET key value EX seconds 的效果等同于执行 SETEX key seconds value 。 SET key “value” NX：只在键不存在时， 才对键进行设置操作。 执行 SET key value NX 的效果等同于执行 SETNX key value 。 SET key “value” XX：只在键已经存在时， 才对键进行设置操作。 GET 返回与键 key 相关联的字符串值。 GETSET 将键 key 的值设为 value ， 并返回键 key 在被设置之前的旧值。 键 key 在被设置之前并不存在， 那么命令返回 nil 。 STRLEN key 返回键 key 储存的字符串值的长度。当键 key 不存在时， 命令返回 0 。 APPEND 如果键 key 已经存在并且它的值是一个字符串， APPEND 命令将把 value 追加到键 key 现有值的末尾。如果 key 不存在， APPEND 就简单地将键 key 的值设为 value ， 就像执行 SET key value 一样。 SETRANGE SETRANGE key offset value 从偏移量 offset 开始， 用 value 参数覆写(overwrite)键 key 储存的字符串值。不存在的键 key 当作空白字符串处理。 GETRANGE GETRANGE key start end 返回键 key 储存的字符串值的指定部分， 字符串的截取范围由 start 和 end 两个偏移量决定 (包括 start 和 end 在内)。 INCR 为键 key 储存的数字值加上一。如果键 key 不存在， 那么它的值会先被初始化为 0 ， 然后再执行 INCR 命令。如果键 key 储存的值不能被解释为数字， 那么 INCR 命令将返回一个错误。 INCRBY INCRBY key increment 为键 key 储存的数字值加上增量 increment 。如果键 key 不存在， 那么键 key 的值会先被初始化为 0 ， 然后再执行 INCRBY 命令。 List LPUSH 将一个或多个值 value 插入到列表 key 的表头。如果有多个 value 值，那么各个 value 值按从左到右的顺序依次插入到表头： 比如说，对空列表 mylist 执行命令 LPUSH mylist a b c ，列表的值将是 c b a ，这等同于原子性地执行 LPUSH mylist a 、 LPUSH mylist b 和 LPUSH mylist c 三个命令。 LPUSHX 将值 value 插入到列表 key 的表头，当且仅当 key 存在并且是一个列表。 RPUSH 参考 redisdoc]]></content>
       <categories>
-        <category>数据库</category>
+        <category>Redis</category>
       </categories>
       <tags>
         <tag>Redis</tag>

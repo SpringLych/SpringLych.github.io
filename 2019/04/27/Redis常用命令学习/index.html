@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="主要学习Redis底层实现。">
+  <meta name="description" content="学习Redis基本命令">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis详解">
-<meta property="og:url" content="http://yoursite.com/2019/04/17/Redis详解/index.html">
+<meta property="og:title" content="Redis常用命令学习">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/Redis常用命令学习/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="主要学习Redis底层实现。">
+<meta property="og:description" content="学习Redis基本命令">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-17T13:15:20.409Z">
+<meta property="og:updated_time" content="2019-05-07T13:24:03.213Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis详解">
-<meta name="twitter:description" content="主要学习Redis底层实现。">
+<meta name="twitter:title" content="Redis常用命令学习">
+<meta name="twitter:description" content="学习Redis基本命令">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/17/Redis详解/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/27/Redis常用命令学习/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Redis详解 | Hexo</title>
+  <title>Redis常用命令学习 | Hexo</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/Redis详解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/Redis常用命令学习/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SpringLi">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis详解
+          <h1 class="post-title" itemprop="name headline">Redis常用命令学习
 
               
             
@@ -383,12 +383,24 @@
                 
               
 
-              <time title="Created: 2019-04-17 21:05:19 / Modified: 21:15:20" itemprop="dateCreated datePublished" datetime="2019-04-17T21:05:19+08:00">2019-04-17</time>
+              <time title="Created: 2019-04-27 14:24:00" itemprop="dateCreated datePublished" datetime="2019-04-27T14:24:00+08:00">2019-04-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-07 21:24:03" itemprop="dateModified" datetime="2019-05-07T21:24:03+08:00">2019-05-07</time>
               
             
           </span>
@@ -405,7 +417,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a></span>
 
                 
                 
@@ -440,14 +452,75 @@
       
 
       
-        <p>主要学习Redis底层实现。</p>
+        <p> 学习Redis基本命令</p>
 <a id="more"></a>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Redis是一种非关系型数据库NoSQL，内存键值数据库。</p>
-<p>键的类型只能是String，值有String，List，Set，Sorted Set，Hash</p>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>可以存储字符串，整数或浮点数。</p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><ul>
+<li>SET</li>
+</ul>
+<blockquote>
+<p>set key value [expiration EX seconds|PX milliseconds][NX|XX]</p>
+</blockquote>
+<p>将字符串值 <code>value</code> 关联到 <code>key</code> 。如果 <code>key</code> 已经持有其他值， <code>SET</code> 就覆写旧值， 无视类型。当 <code>SET</code> 命令对一个带有生存时间（TTL）的键进行设置之后， 该键原有的 TTL 将被清除。</p>
+<p>从 Redis 2.6.12 版本开始， <code>SET</code> 命令只在设置操作成功完成时才返回 <code>OK</code> ； 如果命令使用了 <code>NX</code>或者 <code>XX</code> 选项， 但是因为条件没达到而造成设置操作未执行， 那么命令将返回空批量回复（NULL Bulk Reply）。</p>
+<blockquote>
+<p>SET key “value”<br>GET key</p>
+<p>SET     key “value” EX seconds：将键的过期时间设置为 <code>seconds</code> 秒。 执行 <code>SET key value EX seconds</code> 的效果等同于执行 <code>SETEX key seconds value</code> 。</p>
+<p>SET key “value” NX：只在键不存在时， 才对键进行设置操作。 执行 <code>SET key value NX</code> 的效果等同于执行 <code>SETNX key value</code> 。</p>
+<p>SET key “value” XX：只在键已经存在时， 才对键进行设置操作。</p>
+</blockquote>
+<ul>
+<li>GET</li>
+</ul>
+<p>返回与键 <code>key</code> 相关联的字符串值。</p>
+<ul>
+<li>GETSET</li>
+</ul>
+<p>将键 <code>key</code> 的值设为 <code>value</code> ， 并返回键 <code>key</code> 在被设置之前的旧值。 键 <code>key</code> 在被设置之前并不存在， 那么命令返回 <code>nil</code> 。</p>
+<ul>
+<li>STRLEN key</li>
+</ul>
+<p>返回键 <code>key</code> 储存的字符串值的长度。当键 <code>key</code> 不存在时， 命令返回 <code>0</code> 。</p>
+<ul>
+<li>APPEND</li>
+</ul>
+<p>如果键 <code>key</code> 已经存在并且它的值是一个字符串， <code>APPEND</code> 命令将把 <code>value</code> 追加到键 <code>key</code> 现有值的末尾。如果 <code>key</code> 不存在， <code>APPEND</code> 就简单地将键 <code>key</code> 的值设为 <code>value</code> ， 就像执行 <code>SET key value</code> 一样。</p>
+<ul>
+<li>SETRANGE</li>
+</ul>
+<blockquote>
+<p> SETRANGE key offset value</p>
+</blockquote>
+<p>从偏移量 <code>offset</code> 开始， 用 <code>value</code> 参数覆写(overwrite)键 <code>key</code> 储存的字符串值。不存在的键 <code>key</code> 当作空白字符串处理。</p>
+<ul>
+<li>GETRANGE</li>
+</ul>
+<blockquote>
+<p> GETRANGE key start end</p>
+</blockquote>
+<p>返回键 <code>key</code> 储存的字符串值的指定部分， 字符串的截取范围由 <code>start</code> 和 <code>end</code> 两个偏移量决定 (包括 <code>start</code> 和 <code>end</code> 在内)。</p>
+<ul>
+<li>INCR</li>
+</ul>
+<p>为键 <code>key</code> 储存的数字值加上一。如果键 <code>key</code> 不存在， 那么它的值会先被初始化为 <code>0</code> ， 然后再执行 <code>INCR</code> 命令。如果键 <code>key</code> 储存的值不能被解释为数字， 那么 <code>INCR</code> 命令将返回一个错误。</p>
+<ul>
+<li>INCRBY</li>
+</ul>
+<p>INCRBY key increment</p>
+<p>为键 <code>key</code> 储存的数字值加上增量 <code>increment</code> 。如果键 <code>key</code> 不存在， 那么键 <code>key</code> 的值会先被初始化为 <code>0</code> ， 然后再执行 <code>INCRBY</code> 命令。</p>
+<h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><ul>
+<li>LPUSH</li>
+</ul>
+<p>将一个或多个值 <code>value</code> 插入到列表 <code>key</code> 的表头。如果有多个 <code>value</code> 值，那么各个 <code>value</code> 值按从左到右的顺序依次插入到表头： 比如说，对空列表 <code>mylist</code> 执行命令 <code>LPUSH mylist a b c</code> ，列表的值将是 <code>c b a</code> ，这等同于原子性地执行 <code>LPUSH mylist a</code> 、 <code>LPUSH mylist b</code> 和 <code>LPUSH mylist c</code> 三个命令。</p>
+<ul>
+<li>LPUSHX</li>
+</ul>
+<p>将值 <code>value</code> 插入到列表 <code>key</code> 的表头，当且仅当 <code>key</code> 存在并且是一个列表。</p>
+<ul>
+<li>RPUSH</li>
+</ul>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="http://redisbook.com/index.html" target="_blank" rel="noopener">黄建宏. Redis设计与实现 [M]. 机械工业出版社, 2014 </a></li>
-<li><a href="https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/Redis.md" target="_blank" rel="noopener">CS - Notes - Redis</a></li>
+<li><a href="http://redisdoc.com/" target="_blank" rel="noopener">redisdoc</a></li>
+<li></li>
 </ul>
 
       
@@ -695,7 +768,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">2.1.</span> <span class="nav-text">String</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-number">2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
