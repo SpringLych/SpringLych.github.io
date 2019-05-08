@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="学习Redis基本命令">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-07T13:24:03.213Z">
+<meta property="og:updated_time" content="2019-05-08T12:57:11.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis常用命令学习">
 <meta name="twitter:description" content="学习Redis基本命令">
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-07 21:24:03" itemprop="dateModified" datetime="2019-05-07T21:24:03+08:00">2019-05-07</time>
+                <time title="Modified: 2019-05-08 20:57:11" itemprop="dateModified" datetime="2019-05-08T20:57:11+08:00">2019-05-08</time>
               
             
           </span>
@@ -454,10 +454,7 @@
       
         <p> 学习Redis基本命令</p>
 <a id="more"></a>
-<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><ul>
-<li>SET</li>
-</ul>
-<blockquote>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h3 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h3><blockquote>
 <p>set key value [expiration EX seconds|PX milliseconds][NX|XX]</p>
 </blockquote>
 <p>将字符串值 <code>value</code> 关联到 <code>key</code> 。如果 <code>key</code> 已经持有其他值， <code>SET</code> 就覆写旧值， 无视类型。当 <code>SET</code> 命令对一个带有生存时间（TTL）的键进行设置之后， 该键原有的 TTL 将被清除。</p>
@@ -468,59 +465,94 @@
 <p>SET key “value” NX：只在键不存在时， 才对键进行设置操作。 执行 <code>SET key value NX</code> 的效果等同于执行 <code>SETNX key value</code> 。</p>
 <p>SET key “value” XX：只在键已经存在时， 才对键进行设置操作。</p>
 </blockquote>
-<ul>
-<li>GET</li>
-</ul>
-<p>返回与键 <code>key</code> 相关联的字符串值。</p>
-<ul>
-<li>GETSET</li>
-</ul>
-<p>将键 <code>key</code> 的值设为 <code>value</code> ， 并返回键 <code>key</code> 在被设置之前的旧值。 键 <code>key</code> 在被设置之前并不存在， 那么命令返回 <code>nil</code> 。</p>
-<ul>
-<li>STRLEN key</li>
-</ul>
-<p>返回键 <code>key</code> 储存的字符串值的长度。当键 <code>key</code> 不存在时， 命令返回 <code>0</code> 。</p>
-<ul>
-<li>APPEND</li>
-</ul>
-<p>如果键 <code>key</code> 已经存在并且它的值是一个字符串， <code>APPEND</code> 命令将把 <code>value</code> 追加到键 <code>key</code> 现有值的末尾。如果 <code>key</code> 不存在， <code>APPEND</code> 就简单地将键 <code>key</code> 的值设为 <code>value</code> ， 就像执行 <code>SET key value</code> 一样。</p>
-<ul>
-<li>SETRANGE</li>
-</ul>
-<blockquote>
+<h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p>返回与键 <code>key</code> 相关联的字符串值。</p>
+<h3 id="GETSET"><a href="#GETSET" class="headerlink" title="GETSET"></a>GETSET</h3><p>将键 <code>key</code> 的值设为 <code>value</code> ， 并返回键 <code>key</code> 在被设置之前的旧值。 键 <code>key</code> 在被设置之前并不存在， 那么命令返回 <code>nil</code> 。</p>
+<h3 id="STRLEN-key"><a href="#STRLEN-key" class="headerlink" title="STRLEN key"></a>STRLEN key</h3><p>返回键 <code>key</code> 储存的字符串值的长度。当键 <code>key</code> 不存在时， 命令返回 <code>0</code> 。</p>
+<h3 id="APPEND"><a href="#APPEND" class="headerlink" title="APPEND"></a>APPEND</h3><p>如果键 <code>key</code> 已经存在并且它的值是一个字符串， <code>APPEND</code> 命令将把 <code>value</code> 追加到键 <code>key</code> 现有值的末尾。如果 <code>key</code> 不存在， <code>APPEND</code> 就简单地将键 <code>key</code> 的值设为 <code>value</code> ， 就像执行 <code>SET key value</code> 一样。</p>
+<h3 id="SETRANGE"><a href="#SETRANGE" class="headerlink" title="SETRANGE"></a>SETRANGE</h3><blockquote>
 <p> SETRANGE key offset value</p>
 </blockquote>
 <p>从偏移量 <code>offset</code> 开始， 用 <code>value</code> 参数覆写(overwrite)键 <code>key</code> 储存的字符串值。不存在的键 <code>key</code> 当作空白字符串处理。</p>
-<ul>
-<li>GETRANGE</li>
-</ul>
-<blockquote>
+<h3 id="GETRANGE"><a href="#GETRANGE" class="headerlink" title="GETRANGE"></a>GETRANGE</h3><blockquote>
 <p> GETRANGE key start end</p>
 </blockquote>
 <p>返回键 <code>key</code> 储存的字符串值的指定部分， 字符串的截取范围由 <code>start</code> 和 <code>end</code> 两个偏移量决定 (包括 <code>start</code> 和 <code>end</code> 在内)。</p>
+<h3 id="INCR"><a href="#INCR" class="headerlink" title="INCR"></a>INCR</h3><p>为键 <code>key</code> 储存的数字值加上一。如果键 <code>key</code> 不存在， 那么它的值会先被初始化为 <code>0</code> ， 然后再执行 <code>INCR</code> 命令。如果键 <code>key</code> 储存的值不能被解释为数字， 那么 <code>INCR</code> 命令将返回一个错误。</p>
+<h3 id="INCRBY-key-increment"><a href="#INCRBY-key-increment" class="headerlink" title="INCRBY key increment"></a>INCRBY key increment</h3><p>为键 <code>key</code> 储存的数字值加上增量 <code>increment</code> 。如果键 <code>key</code> 不存在， 那么键 <code>key</code> 的值会先被初始化为 <code>0</code> ， 然后再执行 <code>INCRBY</code> 命令。</p>
+<h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><h3 id="LPUSH-key-value"><a href="#LPUSH-key-value" class="headerlink" title="LPUSH key value"></a>LPUSH key value</h3><p>将一个或多个值 <code>value</code> 插入到列表 <code>key</code> 的表头。如果有多个 <code>value</code> 值，那么各个 <code>value</code> 值按从左到右的顺序依次插入到表头： 比如说，对空列表 <code>mylist</code> 执行命令 <code>LPUSH mylist a b c</code> ，列表的值将是 <code>c b a</code> ，这等同于原子性地执行 <code>LPUSH mylist a</code> 、 <code>LPUSH mylist b</code> 和 <code>LPUSH mylist c</code> 三个命令。</p>
+<h3 id="LPUSHX-key-value"><a href="#LPUSHX-key-value" class="headerlink" title="LPUSHX key value"></a>LPUSHX key value</h3><p>将值 <code>value</code> 插入到列表 <code>key</code> 的表头，当且仅当 <code>key</code> 存在并且是一个列表。</p>
+<p>和 LPUSH key value [value …] 命令相反，当 <code>key</code> 不存在时， <a href="http://redisdoc.com/list/lpushx.html#lpushx" target="_blank" rel="noopener">LPUSHX</a> 命令什么也不做。</p>
+<h3 id="RPUSH-key-value-value-…"><a href="#RPUSH-key-value-value-…" class="headerlink" title="RPUSH key value [value …]"></a>RPUSH key value [value …]</h3><h3 id="LPOP-key"><a href="#LPOP-key" class="headerlink" title="LPOP key"></a><strong>LPOP key</strong></h3><p>移除并返回列表 key的头元素</p>
+<h3 id="RPOP"><a href="#RPOP" class="headerlink" title="RPOP"></a>RPOP</h3><h3 id="RPOPLPUSH-source-destination"><a href="#RPOPLPUSH-source-destination" class="headerlink" title="RPOPLPUSH source destination"></a>RPOPLPUSH source destination</h3><p>执行两个动作：1. 将列表source中的最后一个元素弹出并返回给客户端 2. source弹出的元素插入destination，作为destination的头元素。</p>
+<p>如果 <code>source</code> 和 <code>destination</code> 相同，则列表中的表尾元素被移动到表头，并返回该元素，可以把这种特殊情况视作列表的旋转(rotation)操作。</p>
+<h3 id="LREM-key-count-value"><a href="#LREM-key-count-value" class="headerlink" title="LREM key count value"></a>LREM key count value</h3><p>根据count 的值，移除列表中与 value相等的元素  </p>
 <ul>
-<li>INCR</li>
+<li><code>count &gt; 0</code> : 从表头开始向表尾搜索，移除与 <code>value</code> 相等的元素，数量为 <code>count</code> 。</li>
+<li><code>count &lt; 0</code> : 从表尾开始向表头搜索，移除与 <code>value</code> 相等的元素，数量为 <code>count</code> 的绝对值。` </li>
+<li><code>count = 0</code> : 移除表中所有与 <code>value</code> 相等的值。</li>
 </ul>
-<p>为键 <code>key</code> 储存的数字值加上一。如果键 <code>key</code> 不存在， 那么它的值会先被初始化为 <code>0</code> ， 然后再执行 <code>INCR</code> 命令。如果键 <code>key</code> 储存的值不能被解释为数字， 那么 <code>INCR</code> 命令将返回一个错误。</p>
+<h3 id="LLEN-key"><a href="#LLEN-key" class="headerlink" title="LLEN key"></a>LLEN key</h3><p>返回key的长度</p>
+<h3 id="LINDEX-key-index"><a href="#LINDEX-key-index" class="headerlink" title="LINDEX key index"></a>LINDEX key index</h3><p>返回列表中，下表为index的元素。0表示第一个元素，-1表示倒数第一个，-2 表示倒数第二个。越界返回nil.</p>
+<h3 id="LINSERT-key-BEFORE-AFTER-pivot-value"><a href="#LINSERT-key-BEFORE-AFTER-pivot-value" class="headerlink" title="LINSERT key BEFORE|AFTER pivot value"></a>LINSERT key BEFORE|AFTER pivot value</h3><p>将值 <code>value</code> 插入到列表 <code>key</code> 当中，位于值 <code>pivot</code> 之前或之后。当 <code>pivot</code> 不存在于列表 <code>key</code> 时，不执行任何操作。当 <code>key</code> 不存在时， <code>key</code> 被视为空列表，不执行任何操作。</p>
+<h3 id="LSET-key-index-value"><a href="#LSET-key-index-value" class="headerlink" title="LSET key index value"></a>LSET key index value</h3><p>将列表 <code>key</code> 下标为 <code>index</code> 的元素的值设置为 <code>value</code> </p>
+<h3 id="LRANGE-key-start-stop"><a href="#LRANGE-key-start-stop" class="headerlink" title="LRANGE key start stop"></a>LRANGE key start stop</h3><p>返回列表 <code>key</code> 中指定区间内的元素，区间以偏移量 <code>start</code> 和 <code>stop</code> 指定。</p>
+<p> <code>stop</code> 下标也在 <a href="http://redisdoc.com/list/lrange.html#lrange" target="_blank" rel="noopener">LRANGE</a> 命令的取值范围之内(闭区间)</p>
+<p>超出范围的下标值不会引起错误。</p>
+<p>如果 <code>start</code> 下标比列表的最大下标 <code>end</code> ( <code>LLEN list</code> 减去 <code>1</code> )还要大，那么 <a href="http://redisdoc.com/list/lrange.html#lrange" target="_blank" rel="noopener">LRANGE</a> 返回一个空列表。</p>
+<p>如果 <code>stop</code> 下标比 <code>end</code> 下标还要大，Redis将 <code>stop</code> 的值设置为 <code>end</code> 。</p>
+<p>查看key中的所有元素：<code>LRANGE key 0 -1</code></p>
+<h3 id="LTRIM-key-start-stop"><a href="#LTRIM-key-start-stop" class="headerlink" title="LTRIM key start stop"></a>LTRIM key start stop</h3><p>对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。</p>
+<h1 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h1><h3 id="HSET-hash-field-value"><a href="#HSET-hash-field-value" class="headerlink" title="HSET hash field value"></a>HSET hash field value</h3><p>将哈希表 <code>hash</code> 中域 <code>field</code> 的值设置为 <code>value</code> 。</p>
+<p>如果给定的哈希表并不存在， 那么一个新的哈希表将被创建并执行 <code>HSET</code> 操作。</p>
+<p>如果域 <code>field</code> 已经存在于哈希表中， 那么它的旧值将被新值 <code>value</code> 覆盖。</p>
+<h3 id="HSETNX-hash-field-value"><a href="#HSETNX-hash-field-value" class="headerlink" title="HSETNX hash field value"></a>HSETNX hash field value</h3><p>当且仅当域 <code>field</code> 尚未存在于哈希表的情况下， 将它的值设置为 <code>value</code> 。</p>
+<p>如果给定域已经存在于哈希表当中， 那么命令将放弃执行设置操作。</p>
+<p>如果哈希表 <code>hash</code> 不存在， 那么一个新的哈希表将被创建并执行 <code>HSETNX</code> 命令。</p>
+<h3 id="HGET-hash-field"><a href="#HGET-hash-field" class="headerlink" title="HGET hash field"></a>HGET hash field</h3><p>返回哈希表中给定域的值</p>
+<h3 id="HEXISTS-hash-field"><a href="#HEXISTS-hash-field" class="headerlink" title="HEXISTS hash field"></a>HEXISTS hash field</h3><p>检查field是否存在于hash中，存在返回1，否则0</p>
+<h3 id="HDEL-key-field-field-…"><a href="#HDEL-key-field-field-…" class="headerlink" title="HDEL key field [field …]"></a>HDEL key field [field …]</h3><p>删除</p>
+<h3 id="HLEN-key"><a href="#HLEN-key" class="headerlink" title="HLEN key"></a>HLEN key</h3><h3 id="HSTRLEN-key-field"><a href="#HSTRLEN-key-field" class="headerlink" title="HSTRLEN key field"></a>HSTRLEN key field</h3><p>返回哈希表 <code>key</code> 中， 与给定域 <code>field</code> 相关联的值的字符串长度（string length）。</p>
+<h3 id="HINCRBY-key-field-increment"><a href="#HINCRBY-key-field-increment" class="headerlink" title="HINCRBY key field increment"></a>HINCRBY key field increment</h3><p>哈希表 <code>key</code> 中的域 <code>field</code> 的值加上增量 <code>increment</code> 。</p>
+<p>增量也可以为负数，相当于对给定域进行减法操作。</p>
+<p>如果 <code>key</code> 不存在，一个新的哈希表被创建并执行 <a href="http://redisdoc.com/hash/hincrby.html#hincrby" target="_blank" rel="noopener">HINCRBY</a> 命令。</p>
+<p>如果域 <code>field</code> 不存在，那么在执行命令前，域的值被初始化为 <code>0</code> 。</p>
+<h3 id="HINCRBYFLOAT-key-field-increment"><a href="#HINCRBYFLOAT-key-field-increment" class="headerlink" title="HINCRBYFLOAT key field increment"></a>HINCRBYFLOAT key field increment</h3><p>为哈希表 <code>key</code> 中的域 <code>field</code> 加上浮点数增量 <code>increment</code> 。</p>
+<h3 id="HMSET-key-field-value-field-value-…"><a href="#HMSET-key-field-value-field-value-…" class="headerlink" title="HMSET key field value [field value …]"></a>HMSET key field value [field value …]</h3><p>同时将多个field-value 设置到哈希表中</p>
+<h3 id="HMGET-key-field-field-…"><a href="#HMGET-key-field-field-…" class="headerlink" title="HMGET key field [field …]"></a>HMGET key field [field …]</h3><p>返回哈希表中，一个或多个给定的值</p>
+<h3 id="HKEYS-key"><a href="#HKEYS-key" class="headerlink" title="HKEYS key"></a>HKEYS key</h3><p>返回哈希表 <code>key</code> 中的所有域。</p>
+<h3 id="HVALS-key"><a href="#HVALS-key" class="headerlink" title="HVALS key"></a>HVALS key</h3><p>返回哈希表 <code>key</code> 中所有域的值。</p>
+<h3 id="HGETALL-key"><a href="#HGETALL-key" class="headerlink" title="HGETALL key"></a>HGETALL key</h3><p>返回哈希表中，所有的域和值，以列表形式。在返回值里，紧跟每个域名(field name)之后是域的值(value)，所以返回值的长度是哈希表大小的两倍。</p>
+<h1 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h1><h3 id="SADD-key-member-member-…"><a href="#SADD-key-member-member-…" class="headerlink" title="SADD key member [member …]"></a>SADD key member [member …]</h3><p>将一个或多个 <code>member</code> 元素加入到集合 <code>key</code> 当中，已经存在于集合的 <code>member</code> 元素将被忽略。</p>
+<h3 id="SISMEMBER-key-member"><a href="#SISMEMBER-key-member" class="headerlink" title="SISMEMBER key member"></a>SISMEMBER key member</h3><p>判断 <code>member</code> 元素是否集合 <code>key</code> 的成员。是，返回1，不是或key不存在，0.</p>
+<h3 id="SPOP-key"><a href="#SPOP-key" class="headerlink" title="SPOP key"></a>SPOP key</h3><p>移除并返回集合中的一个随机元素。</p>
+<h3 id="SRANDMEMBER-key-count"><a href="#SRANDMEMBER-key-count" class="headerlink" title="SRANDMEMBER key [count]"></a>SRANDMEMBER key [count]</h3><p>如果命令执行时，只提供了 <code>key</code> 参数，那么返回集合中的一个随机元素。</p>
 <ul>
-<li>INCRBY</li>
+<li>如果 <code>count</code> 为正数，且小于集合基数，那么命令返回一个包含 <code>count</code> 个元素的数组，数组中的元素<strong>各不相同</strong>。如果 <code>count</code> 大于等于集合基数，那么返回整个集合。</li>
+<li>如果 <code>count</code> 为负数，那么命令返回一个数组，数组中的元素<strong>可能会重复出现多次</strong>，而数组的长度为 <code>count</code> 的绝对值。</li>
 </ul>
-<p>INCRBY key increment</p>
-<p>为键 <code>key</code> 储存的数字值加上增量 <code>increment</code> 。如果键 <code>key</code> 不存在， 那么键 <code>key</code> 的值会先被初始化为 <code>0</code> ， 然后再执行 <code>INCRBY</code> 命令。</p>
-<h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><ul>
-<li>LPUSH</li>
-</ul>
-<p>将一个或多个值 <code>value</code> 插入到列表 <code>key</code> 的表头。如果有多个 <code>value</code> 值，那么各个 <code>value</code> 值按从左到右的顺序依次插入到表头： 比如说，对空列表 <code>mylist</code> 执行命令 <code>LPUSH mylist a b c</code> ，列表的值将是 <code>c b a</code> ，这等同于原子性地执行 <code>LPUSH mylist a</code> 、 <code>LPUSH mylist b</code> 和 <code>LPUSH mylist c</code> 三个命令。</p>
-<ul>
-<li>LPUSHX</li>
-</ul>
-<p>将值 <code>value</code> 插入到列表 <code>key</code> 的表头，当且仅当 <code>key</code> 存在并且是一个列表。</p>
-<ul>
-<li>RPUSH</li>
-</ul>
+<h3 id="SREM-key-member"><a href="#SREM-key-member" class="headerlink" title="SREM key member"></a>SREM key member</h3><p>移除key中的一个或多个元素，不存在的将被忽略</p>
+<h1 id="SMOVE-source-destination-member"><a href="#SMOVE-source-destination-member" class="headerlink" title="SMOVE source destination member"></a>SMOVE source destination member</h1><p>将 <code>member</code> 元素从 <code>source</code> 集合移动到 <code>destination</code> 集合。</p>
+<p><a href="http://redisdoc.com/set/smove.html#smove" target="_blank" rel="noopener">SMOVE</a> 是原子性操作。</p>
+<h3 id="SCARD-key"><a href="#SCARD-key" class="headerlink" title="SCARD key"></a>SCARD key</h3><p>返回集合元素数量。key不存在，返回0.</p>
+<h3 id="SMEMBERS-key"><a href="#SMEMBERS-key" class="headerlink" title="SMEMBERS key"></a>SMEMBERS key</h3><p>返回集合 <code>key</code> 中的所有成员。不存在的 <code>key</code> 被视为空集合。</p>
+<h3 id="SINTER-key-key-…"><a href="#SINTER-key-key-…" class="headerlink" title="SINTER key [key …]"></a>SINTER key [key …]</h3><p>返回所有集合的交集成员。</p>
+<h3 id="SINTERSTORE-destination-key-key-…"><a href="#SINTERSTORE-destination-key-key-…" class="headerlink" title="SINTERSTORE destination key [key …]"></a>SINTERSTORE destination key [key …]</h3><p>这个命令类似于 <a href="http://redisdoc.com/set/sinter.html#sinter" target="_blank" rel="noopener">SINTER key [key …]</a> 命令，但它将结果保存到 <code>destination</code> 集合，而不是简单地返回结果集。</p>
+<p><code>destination</code> 可以是 <code>key</code> 本身。</p>
+<h3 id="SUNION-key-key-…"><a href="#SUNION-key-key-…" class="headerlink" title="SUNION key [key …]"></a>SUNION key [key …]</h3><p>返回一个集合的全部成员，该集合是所有给定集合的并集。</p>
+<h3 id="SUNIONSTORE-destination-key-key-…"><a href="#SUNIONSTORE-destination-key-key-…" class="headerlink" title="SUNIONSTORE destination key [key …]"></a>SUNIONSTORE destination key [key …]</h3><h3 id="SDIFF"><a href="#SDIFF" class="headerlink" title="SDIFF"></a>SDIFF</h3><p>返回多个集合的差集</p>
+<h3 id="SDIFFSTORE-destination-key-key-…"><a href="#SDIFFSTORE-destination-key-key-…" class="headerlink" title="SDIFFSTORE destination key [key …]"></a>SDIFFSTORE destination key [key …]</h3><p>这个命令的作用和 <a href="http://redisdoc.com/set/sdiff.html#sdiff" target="_blank" rel="noopener">SDIFF key [key …]</a> 类似，但它将结果保存到 <code>destination</code> 集合，而不是简单地返回结果集。</p>
+<p>#Sorted Sets</p>
+<h3 id="ZADD-key-score-member-score-member-score-member-…"><a href="#ZADD-key-score-member-score-member-score-member-…" class="headerlink" title="ZADD key score member [[score member][score member] …]"></a>ZADD key score member [[score member][score member] …]</h3><p>将一个或多个 <code>member</code> 元素及其 <code>score</code> 值加入到有序集 <code>key</code> 当中。</p>
+<p>如果某个 <code>member</code> 已经是有序集的成员，那么更新这个 <code>member</code> 的 <code>score</code> 值，并通过重新插入这个 <code>member</code> 元素，来保证该 <code>member</code> 在正确的位置上。</p>
+<p><code>score</code> 值可以是整数值或双精度浮点数。</p>
+<h3 id="ZSCORE-key-member"><a href="#ZSCORE-key-member" class="headerlink" title="ZSCORE key member"></a>ZSCORE key member</h3><p>返回有序集 <code>key</code> 中，成员 <code>member</code> 的 <code>score</code> 值。</p>
+<h3 id="ZINCRBY-key-increment-member"><a href="#ZINCRBY-key-increment-member" class="headerlink" title="ZINCRBY key increment member"></a>ZINCRBY key increment member</h3><p>为有序集 <code>key</code> 的成员 <code>member</code> 的 <code>score</code> 值加上增量 <code>increment</code> 。</p>
+<p>可以通过传递一个负数值 <code>increment</code> ，让 <code>score</code> 减去相应的值，比如 <code>ZINCRBY key -5 member</code> ，就是让 <code>member</code> 的 <code>score</code> 值减去 <code>5</code> 。</p>
+<p>当 <code>key</code> 不存在，或 <code>member</code> 不是 <code>key</code> 的成员时， <code>ZINCRBY key increment member</code> 等同于 <code>ZADD key increment member</code> 。</p>
+<h1 id="DB"><a href="#DB" class="headerlink" title="DB"></a>DB</h1><p>查看所有key：<code>keys *</code></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="http://redisdoc.com/" target="_blank" rel="noopener">redisdoc</a></li>
-<li></li>
+<li><a href="https://redis.io/commands" target="_blank" rel="noopener">redis-commands</a></li>
 </ul>
 
       
@@ -768,7 +800,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-number">2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SET"><span class="nav-number">1.0.1.</span> <span class="nav-text">SET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET"><span class="nav-number">1.0.2.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GETSET"><span class="nav-number">1.0.3.</span> <span class="nav-text">GETSET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STRLEN-key"><span class="nav-number">1.0.4.</span> <span class="nav-text">STRLEN key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APPEND"><span class="nav-number">1.0.5.</span> <span class="nav-text">APPEND</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SETRANGE"><span class="nav-number">1.0.6.</span> <span class="nav-text">SETRANGE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GETRANGE"><span class="nav-number">1.0.7.</span> <span class="nav-text">GETRANGE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INCR"><span class="nav-number">1.0.8.</span> <span class="nav-text">INCR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INCRBY-key-increment"><span class="nav-number">1.0.9.</span> <span class="nav-text">INCRBY key increment</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-number">2.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LPUSH-key-value"><span class="nav-number">2.0.1.</span> <span class="nav-text">LPUSH key value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LPUSHX-key-value"><span class="nav-number">2.0.2.</span> <span class="nav-text">LPUSHX key value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPUSH-key-value-value-…"><span class="nav-number">2.0.3.</span> <span class="nav-text">RPUSH key value [value …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LPOP-key"><span class="nav-number">2.0.4.</span> <span class="nav-text">LPOP key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPOP"><span class="nav-number">2.0.5.</span> <span class="nav-text">RPOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPOPLPUSH-source-destination"><span class="nav-number">2.0.6.</span> <span class="nav-text">RPOPLPUSH source destination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LREM-key-count-value"><span class="nav-number">2.0.7.</span> <span class="nav-text">LREM key count value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LLEN-key"><span class="nav-number">2.0.8.</span> <span class="nav-text">LLEN key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINDEX-key-index"><span class="nav-number">2.0.9.</span> <span class="nav-text">LINDEX key index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINSERT-key-BEFORE-AFTER-pivot-value"><span class="nav-number">2.0.10.</span> <span class="nav-text">LINSERT key BEFORE|AFTER pivot value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSET-key-index-value"><span class="nav-number">2.0.11.</span> <span class="nav-text">LSET key index value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LRANGE-key-start-stop"><span class="nav-number">2.0.12.</span> <span class="nav-text">LRANGE key start stop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LTRIM-key-start-stop"><span class="nav-number">2.0.13.</span> <span class="nav-text">LTRIM key start stop</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash"><span class="nav-number">3.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HSET-hash-field-value"><span class="nav-number">3.0.1.</span> <span class="nav-text">HSET hash field value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HSETNX-hash-field-value"><span class="nav-number">3.0.2.</span> <span class="nav-text">HSETNX hash field value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HGET-hash-field"><span class="nav-number">3.0.3.</span> <span class="nav-text">HGET hash field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEXISTS-hash-field"><span class="nav-number">3.0.4.</span> <span class="nav-text">HEXISTS hash field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDEL-key-field-field-…"><span class="nav-number">3.0.5.</span> <span class="nav-text">HDEL key field [field …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HLEN-key"><span class="nav-number">3.0.6.</span> <span class="nav-text">HLEN key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HSTRLEN-key-field"><span class="nav-number">3.0.7.</span> <span class="nav-text">HSTRLEN key field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINCRBY-key-field-increment"><span class="nav-number">3.0.8.</span> <span class="nav-text">HINCRBY key field increment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINCRBYFLOAT-key-field-increment"><span class="nav-number">3.0.9.</span> <span class="nav-text">HINCRBYFLOAT key field increment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HMSET-key-field-value-field-value-…"><span class="nav-number">3.0.10.</span> <span class="nav-text">HMSET key field value [field value …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HMGET-key-field-field-…"><span class="nav-number">3.0.11.</span> <span class="nav-text">HMGET key field [field …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HKEYS-key"><span class="nav-number">3.0.12.</span> <span class="nav-text">HKEYS key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HVALS-key"><span class="nav-number">3.0.13.</span> <span class="nav-text">HVALS key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HGETALL-key"><span class="nav-number">3.0.14.</span> <span class="nav-text">HGETALL key</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sets"><span class="nav-number">4.</span> <span class="nav-text">Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SADD-key-member-member-…"><span class="nav-number">4.0.1.</span> <span class="nav-text">SADD key member [member …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SISMEMBER-key-member"><span class="nav-number">4.0.2.</span> <span class="nav-text">SISMEMBER key member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPOP-key"><span class="nav-number">4.0.3.</span> <span class="nav-text">SPOP key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SRANDMEMBER-key-count"><span class="nav-number">4.0.4.</span> <span class="nav-text">SRANDMEMBER key [count]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SREM-key-member"><span class="nav-number">4.0.5.</span> <span class="nav-text">SREM key member</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SMOVE-source-destination-member"><span class="nav-number">5.</span> <span class="nav-text">SMOVE source destination member</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SCARD-key"><span class="nav-number">5.0.1.</span> <span class="nav-text">SCARD key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMEMBERS-key"><span class="nav-number">5.0.2.</span> <span class="nav-text">SMEMBERS key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SINTER-key-key-…"><span class="nav-number">5.0.3.</span> <span class="nav-text">SINTER key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SINTERSTORE-destination-key-key-…"><span class="nav-number">5.0.4.</span> <span class="nav-text">SINTERSTORE destination key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUNION-key-key-…"><span class="nav-number">5.0.5.</span> <span class="nav-text">SUNION key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUNIONSTORE-destination-key-key-…"><span class="nav-number">5.0.6.</span> <span class="nav-text">SUNIONSTORE destination key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDIFF"><span class="nav-number">5.0.7.</span> <span class="nav-text">SDIFF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDIFFSTORE-destination-key-key-…"><span class="nav-number">5.0.8.</span> <span class="nav-text">SDIFFSTORE destination key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZADD-key-score-member-score-member-score-member-…"><span class="nav-number">5.0.9.</span> <span class="nav-text">ZADD key score member [[score member][score member] …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSCORE-key-member"><span class="nav-number">5.0.10.</span> <span class="nav-text">ZSCORE key member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZINCRBY-key-increment-member"><span class="nav-number">5.0.11.</span> <span class="nav-text">ZINCRBY key increment member</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DB"><span class="nav-number">6.</span> <span class="nav-text">DB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></div>
             
 
           </div>
