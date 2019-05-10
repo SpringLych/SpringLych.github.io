@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="《Redis设计与实现》读书笔记。">
+  <meta name="description" content="《Redis设计与实现》读书笔记，和其他资料">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis设计与实现-笔记">
 <meta property="og:url" content="http://yoursite.com/2019/05/09/Redis设计与实现-笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="《Redis设计与实现》读书笔记。">
+<meta property="og:description" content="《Redis设计与实现》读书笔记，和其他资料">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-09T13:08:35.589Z">
+<meta property="og:updated_time" content="2019-05-10T08:54:48.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis设计与实现-笔记">
-<meta name="twitter:description" content="《Redis设计与实现》读书笔记。">
+<meta name="twitter:description" content="《Redis设计与实现》读书笔记，和其他资料">
 
 
 
@@ -383,12 +383,24 @@
                 
               
 
-              <time title="Created: 2019-05-09 20:18:40 / Modified: 21:08:35" itemprop="dateCreated datePublished" datetime="2019-05-09T20:18:40+08:00">2019-05-09</time>
+              <time title="Created: 2019-05-09 20:18:40" itemprop="dateCreated datePublished" datetime="2019-05-09T20:18:40+08:00">2019-05-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-10 16:54:48" itemprop="dateModified" datetime="2019-05-10T16:54:48+08:00">2019-05-10</time>
               
             
           </span>
@@ -440,10 +452,16 @@
       
 
       
-        <p>《Redis设计与实现》读书笔记。</p>
+        <p>《Redis设计与实现》读书笔记，和其他资料</p>
 <a id="more"></a>
-<p>Redis五种值的数据结构底层实现：</p>
-<p>String：simple dynamic string，SDS，简单动态字符串 </p>
+<h2 id="Redis使用场景"><a href="#Redis使用场景" class="headerlink" title="Redis使用场景"></a>Redis使用场景</h2><h3 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a>计数器</h3><p>对String进行自增自减。Redis 这种内存型数据库的读写性能非常高，很适合存储频繁读写的计数量。</p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>将热点数据放到内存中，设置内存的最大使用量以及淘汰策略来保证缓存的命中率。</p>
+<h3 id="查找表"><a href="#查找表" class="headerlink" title="查找表"></a>查找表</h3><p>例如 DNS 记录就很适合使用 Redis 进行存储。</p>
+<p>查找表和缓存类似，也是利用了 Redis 快速的查找特性。但是查找表的内容不能失效，而缓存的内容可以失效，因为缓存不作为可靠的数据来源。</p>
+<h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><p>List 是一个双向链表，可以通过 lpush 和 rpop 写入和读取消息</p>
+<p>不过最好使用 Kafka、RabbitMQ 等消息中间件。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>Set 可以实现交集、并集等操作，从而实现共同好友等功能。</p>
+<p>ZSet 可以实现有序性操作，从而实现排行榜等功能。</p>
 <h2 id="简单动态字符串"><a href="#简单动态字符串" class="headerlink" title="简单动态字符串"></a>简单动态字符串</h2><p>相比于C字符串，SDS的优点：</p>
 <ol>
 <li>O(1)时间复杂度获取字符串长度</li>
@@ -475,6 +493,71 @@
 <li>同一个跳跃表中，多个节点可以有相同的分值，成员对象必须是唯一的。</li>
 <li>跳跃表中节点按分值大小排序，分值相同，节点按照成员对象大小排序。</li>
 </ol>
+<p>与红黑树相比，跳跃表的优点：</p>
+<ol>
+<li>实现简单</li>
+<li>插入速度快速，不需要进行旋转</li>
+<li>支持无锁操作。31</li>
+</ol>
+<h2 id="整数集合"><a href="#整数集合" class="headerlink" title="整数集合"></a>整数集合</h2><ol>
+<li>是集合键的底层实现之一</li>
+<li>底层为数组，有序，无重复的保存集合元素，有需要时，会根据新添加元素的类型，改变数组的类型。</li>
+<li>升级好处：提升灵活性（不必担心类型错误），节约内存。</li>
+<li>只支持升级，不支持降级。</li>
+</ol>
+<h2 id="压缩列表"><a href="#压缩列表" class="headerlink" title="压缩列表"></a>压缩列表</h2><ol>
+<li>为节约内存而开发的顺序型数据结构</li>
+<li>列表建和哈希键的底层实现之一</li>
+<li>添加新节点，或者删除新节点，可能引发连锁更新（每个节点previous_entry_length更新），但出现几率不高。</li>
+<li>可以包含多个节点，每个节点可以保存一个字节数组或者整数值。 </li>
+</ol>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><ol>
+<li>数据库中每个键值对的键和值都是一个对象。</li>
+<li>Redis共享值为0-9999的字符串对象。 </li>
+</ol>
+<h3 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h3><p>编码：int, raw, embstr</p>
+<p>long类型的整数—int</p>
+<p>long double类型的浮点数 — embstr或raw</p>
+<p>字符串值或长度大的long类型 — embstr或raw。</p>
+<p>embstr编码的对象被修改时总会变成raw编码。</p>
+<h3 id="列表对象"><a href="#列表对象" class="headerlink" title="列表对象"></a>列表对象</h3><p>编码：ziplist或linkedlist(底层使用双端列表)</p>
+<p>使用ziplist编码的条件：列表对象所有字符串长度都不小于64字节。列表对象保存的元素数量小于512个。</p>
+<h3 id="哈希对象"><a href="#哈希对象" class="headerlink" title="哈希对象"></a>哈希对象</h3><p>编码：ziplist（底层压缩列表）或hashtable（字典）</p>
+<h3 id="集合对象"><a href="#集合对象" class="headerlink" title="集合对象"></a>集合对象</h3><p>编码：intset(底层整数集合)或hashtable(底层字典)</p>
+<h3 id="有序集合对象"><a href="#有序集合对象" class="headerlink" title="有序集合对象"></a>有序集合对象</h3><p>编码：ziplist 或 skiplist</p>
+<h3 id="内存回收"><a href="#内存回收" class="headerlink" title="内存回收"></a>内存回收</h3><p>使用<strong>引用计数</strong>实现内存回收机制。对象不再被使用时就回收。</p>
+<p>对象的生命周期：创建对象，操作对象，释放对象。</p>
+<h3 id="对象共享"><a href="#对象共享" class="headerlink" title="对象共享"></a>对象共享</h3><p>通过对象的引用计数属性实现。</p>
+<p>多个键共享一个值对象：</p>
+<ol>
+<li>数据库键的值指向一个现有值对象</li>
+<li>被共享的值对象引用计数增一。</li>
+</ol>
+<p>Redis在初始化时，创建一万个字符串对象(0 - 9999的整数值)。用到时，服务器共享这些对象。</p>
+<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="RDB持久化"><a href="#RDB持久化" class="headerlink" title="RDB持久化"></a>RDB持久化</h3><ul>
+<li><p>将某个时间点的所有数据都存放到硬盘上。</p>
+</li>
+<li><p>可以将快照复制到其它服务器从而创建具有相同数据的服务器副本。</p>
+</li>
+<li><p>如果系统发生故障，将会丢失最后一次创建快照之后的数据。</p>
+</li>
+<li><p>如果数据量很大，保存快照的时间会很长。</p>
+</li>
+<li><p>两种生成RDB文件的命令：SAVE, BGSAVE</p>
+</li>
+<li><p>SAVE命令由服务器进程执行操作，会阻塞服务器。BGSAVE命令由子进程执行，不会阻塞服务器。</p>
+</li>
+<li><p>RDB文件是一个经过压缩的文件</p>
+</li>
+<li><p>如果开启了AOF持久化，会首先使用AOF文件</p>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a href="http://redisbook.com/index.html" target="_blank" rel="noopener">黄健宏. Redis 设计与实现 [M]. 机械工业出版社, 2014.</a></p>
+</li>
+<li><p><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md" target="_blank" rel="noopener">CS-Notes - Redis</a></p>
+</li>
+</ul>
 
       
     </div>
@@ -721,7 +804,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单动态字符串"><span class="nav-number">1.</span> <span class="nav-text">简单动态字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">2.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典"><span class="nav-number">3.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳跃表"><span class="nav-number">4.</span> <span class="nav-text">跳跃表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis使用场景"><span class="nav-number">1.</span> <span class="nav-text">Redis使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计数器"><span class="nav-number">1.1.</span> <span class="nav-text">计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">1.2.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找表"><span class="nav-number">1.3.</span> <span class="nav-text">查找表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列"><span class="nav-number">1.4.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">1.5.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单动态字符串"><span class="nav-number">2.</span> <span class="nav-text">简单动态字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">3.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典"><span class="nav-number">4.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳跃表"><span class="nav-number">5.</span> <span class="nav-text">跳跃表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数集合"><span class="nav-number">6.</span> <span class="nav-text">整数集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩列表"><span class="nav-number">7.</span> <span class="nav-text">压缩列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">8.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串对象"><span class="nav-number">8.1.</span> <span class="nav-text">字符串对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表对象"><span class="nav-number">8.2.</span> <span class="nav-text">列表对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希对象"><span class="nav-number">8.3.</span> <span class="nav-text">哈希对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合对象"><span class="nav-number">8.4.</span> <span class="nav-text">集合对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序集合对象"><span class="nav-number">8.5.</span> <span class="nav-text">有序集合对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存回收"><span class="nav-number">8.6.</span> <span class="nav-text">内存回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象共享"><span class="nav-number">8.7.</span> <span class="nav-text">对象共享</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">9.</span> <span class="nav-text">持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB持久化"><span class="nav-number">9.1.</span> <span class="nav-text">RDB持久化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">10.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
