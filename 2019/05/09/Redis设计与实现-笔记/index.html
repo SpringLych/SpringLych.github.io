@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="《Redis设计与实现》读书笔记，和其他资料">
+  <meta name="description" content="《Redis设计与实现》读书笔记，和其他资料，">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis设计与实现-笔记">
 <meta property="og:url" content="http://yoursite.com/2019/05/09/Redis设计与实现-笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="《Redis设计与实现》读书笔记，和其他资料">
+<meta property="og:description" content="《Redis设计与实现》读书笔记，和其他资料，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-10T08:54:48.036Z">
+<meta property="og:updated_time" content="2019-05-11T07:09:14.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis设计与实现-笔记">
-<meta name="twitter:description" content="《Redis设计与实现》读书笔记，和其他资料">
+<meta name="twitter:description" content="《Redis设计与实现》读书笔记，和其他资料，">
 
 
 
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-10 16:54:48" itemprop="dateModified" datetime="2019-05-10T16:54:48+08:00">2019-05-10</time>
+                <time title="Modified: 2019-05-11 15:09:14" itemprop="dateModified" datetime="2019-05-11T15:09:14+08:00">2019-05-11</time>
               
             
           </span>
@@ -452,7 +452,7 @@
       
 
       
-        <p>《Redis设计与实现》读书笔记，和其他资料</p>
+        <p>《Redis设计与实现》读书笔记，和其他资料，</p>
 <a id="more"></a>
 <h2 id="Redis使用场景"><a href="#Redis使用场景" class="headerlink" title="Redis使用场景"></a>Redis使用场景</h2><h3 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a>计数器</h3><p>对String进行自增自减。Redis 这种内存型数据库的读写性能非常高，很适合存储频繁读写的计数量。</p>
 <h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>将热点数据放到内存中，设置内存的最大使用量以及淘汰策略来保证缓存的命中率。</p>
@@ -460,6 +460,7 @@
 <p>查找表和缓存类似，也是利用了 Redis 快速的查找特性。但是查找表的内容不能失效，而缓存的内容可以失效，因为缓存不作为可靠的数据来源。</p>
 <h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><p>List 是一个双向链表，可以通过 lpush 和 rpop 写入和读取消息</p>
 <p>不过最好使用 Kafka、RabbitMQ 等消息中间件。</p>
+<h3 id="实时消息系统"><a href="#实时消息系统" class="headerlink" title="实时消息系统"></a>实时消息系统</h3><p>通过发布与订阅实现</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>Set 可以实现交集、并集等操作，从而实现共同好友等功能。</p>
 <p>ZSet 可以实现有序性操作，从而实现排行榜等功能。</p>
 <h2 id="简单动态字符串"><a href="#简单动态字符串" class="headerlink" title="简单动态字符串"></a>简单动态字符串</h2><p>相比于C字符串，SDS的优点：</p>
@@ -535,7 +536,7 @@
 </ol>
 <p>Redis在初始化时，创建一万个字符串对象(0 - 9999的整数值)。用到时，服务器共享这些对象。</p>
 <h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="RDB持久化"><a href="#RDB持久化" class="headerlink" title="RDB持久化"></a>RDB持久化</h3><ul>
-<li><p>将某个时间点的所有数据都存放到硬盘上。</p>
+<li><p>将某个时间点的所有数据都存放到硬盘上。保存数据库中的键值对</p>
 </li>
 <li><p>可以将快照复制到其它服务器从而创建具有相同数据的服务器副本。</p>
 </li>
@@ -551,6 +552,25 @@
 </li>
 <li><p>如果开启了AOF持久化，会首先使用AOF文件</p>
 </li>
+</ul>
+<h3 id="AOF持久化"><a href="#AOF持久化" class="headerlink" title="AOF持久化"></a>AOF持久化</h3><ul>
+<li>通过保存Redis服务器所执行的写命令记录数据库状态</li>
+<li>AOF文件所有命令都以Redis命令请求协议格式保存。</li>
+<li>appendfsync选项对AOF持久化功能的安全性和Redis服务器的性能有很大影响。</li>
+<li>服务器载入并执行AOF文件中的命令还原数据库。</li>
+<li>AOF重写产生性的AOF文件，保存状态一样，体积更小</li>
+<li>AOF重写通过读取数据库中的键值对实现，</li>
+<li>使用 BGREWRITEAOF命令，完成AOF文件重写。</li>
+</ul>
+<h2 id="对比Memchached"><a href="#对比Memchached" class="headerlink" title="对比Memchached"></a>对比Memchached</h2><p>两者都属于内存 键值关系型数据库。</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>Redis支持五中数据类型，Memchached仅支持字符串类型。</p>
+<h3 id="持久化-1"><a href="#持久化-1" class="headerlink" title="持久化"></a>持久化</h3><p>Redis支持AOF日志和RDB快照两种持久化策略，memchached不支持。</p>
+<h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><p>Redis Cluster实现分布式支持。Memchached不支持。</p>
+<h3 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h3><p>在 Redis 中，并不是所有数据都一直存储在内存中，可以将一些很久没用的 value 交换到磁盘，而 Memcached 的数据则会一直在内存中。</p>
+<p>Memcached 将内存分割成特定长度的块来存储数据，以完全解决内存碎片的问题。但是这种方式会使得内存的利用率不高，例如块的大小为 128 bytes，只存储 100 bytes 的数据，那么剩下的 28 bytes 就浪费掉了。</p>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><ul>
+<li>Redis中的事务具有ACID的特性</li>
+<li>多个命令进入到事务队列中，按照FIFO顺序执行。</li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><p><a href="http://redisbook.com/index.html" target="_blank" rel="noopener">黄健宏. Redis 设计与实现 [M]. 机械工业出版社, 2014.</a></p>
@@ -603,6 +623,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/12/IDEA构建第一个Spring-Boot项目/" rel="prev" title="IDEA构建第一个Spring Boot项目">
+                IDEA构建第一个Spring Boot项目 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -671,7 +695,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -706,7 +730,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -751,7 +777,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -804,7 +832,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis使用场景"><span class="nav-number">1.</span> <span class="nav-text">Redis使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计数器"><span class="nav-number">1.1.</span> <span class="nav-text">计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">1.2.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找表"><span class="nav-number">1.3.</span> <span class="nav-text">查找表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列"><span class="nav-number">1.4.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">1.5.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单动态字符串"><span class="nav-number">2.</span> <span class="nav-text">简单动态字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">3.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典"><span class="nav-number">4.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳跃表"><span class="nav-number">5.</span> <span class="nav-text">跳跃表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数集合"><span class="nav-number">6.</span> <span class="nav-text">整数集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩列表"><span class="nav-number">7.</span> <span class="nav-text">压缩列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">8.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串对象"><span class="nav-number">8.1.</span> <span class="nav-text">字符串对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表对象"><span class="nav-number">8.2.</span> <span class="nav-text">列表对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希对象"><span class="nav-number">8.3.</span> <span class="nav-text">哈希对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合对象"><span class="nav-number">8.4.</span> <span class="nav-text">集合对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序集合对象"><span class="nav-number">8.5.</span> <span class="nav-text">有序集合对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存回收"><span class="nav-number">8.6.</span> <span class="nav-text">内存回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象共享"><span class="nav-number">8.7.</span> <span class="nav-text">对象共享</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">9.</span> <span class="nav-text">持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB持久化"><span class="nav-number">9.1.</span> <span class="nav-text">RDB持久化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">10.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis使用场景"><span class="nav-number">1.</span> <span class="nav-text">Redis使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计数器"><span class="nav-number">1.1.</span> <span class="nav-text">计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">1.2.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找表"><span class="nav-number">1.3.</span> <span class="nav-text">查找表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列"><span class="nav-number">1.4.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实时消息系统"><span class="nav-number">1.5.</span> <span class="nav-text">实时消息系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">1.6.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单动态字符串"><span class="nav-number">2.</span> <span class="nav-text">简单动态字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">3.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典"><span class="nav-number">4.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳跃表"><span class="nav-number">5.</span> <span class="nav-text">跳跃表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数集合"><span class="nav-number">6.</span> <span class="nav-text">整数集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩列表"><span class="nav-number">7.</span> <span class="nav-text">压缩列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">8.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串对象"><span class="nav-number">8.1.</span> <span class="nav-text">字符串对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表对象"><span class="nav-number">8.2.</span> <span class="nav-text">列表对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希对象"><span class="nav-number">8.3.</span> <span class="nav-text">哈希对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合对象"><span class="nav-number">8.4.</span> <span class="nav-text">集合对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序集合对象"><span class="nav-number">8.5.</span> <span class="nav-text">有序集合对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存回收"><span class="nav-number">8.6.</span> <span class="nav-text">内存回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象共享"><span class="nav-number">8.7.</span> <span class="nav-text">对象共享</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">9.</span> <span class="nav-text">持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB持久化"><span class="nav-number">9.1.</span> <span class="nav-text">RDB持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF持久化"><span class="nav-number">9.2.</span> <span class="nav-text">AOF持久化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对比Memchached"><span class="nav-number">10.</span> <span class="nav-text">对比Memchached</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">10.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#持久化-1"><span class="nav-number">10.2.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式"><span class="nav-number">10.3.</span> <span class="nav-text">分布式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存管理"><span class="nav-number">10.4.</span> <span class="nav-text">内存管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">11.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">12.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

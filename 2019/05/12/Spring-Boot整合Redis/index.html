@@ -96,21 +96,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="建立项目 使用IDEA新建Spring Boot项目，依赖选择 web-web，NoSQL-redis。  application.properties 123456789101112131415161718192021## Spring Boot启动端口号server.port=8080# Redis服务器地址spring.redis.host=149.129.78.187# Redis端口s">
+<meta name="keywords" content="Spring Boot,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot整合Redis">
+<meta property="og:url" content="http://yoursite.com/2019/05/12/Spring-Boot整合Redis/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="建立项目 使用IDEA新建Spring Boot项目，依赖选择 web-web，NoSQL-redis。  application.properties 123456789101112131415161718192021## Spring Boot启动端口号server.port=8080# Redis服务器地址spring.redis.host=149.129.78.187# Redis端口s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-25T04:26:43.806Z">
+<meta property="og:updated_time" content="2019-05-12T09:02:13.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Spring Boot整合Redis">
+<meta name="twitter:description" content="建立项目 使用IDEA新建Spring Boot项目，依赖选择 web-web，NoSQL-redis。  application.properties 123456789101112131415161718192021## Spring Boot启动端口号server.port=8080# Redis服务器地址spring.redis.host=149.129.78.187# Redis端口s">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/12/Spring-Boot整合Redis/">
 
 
 
@@ -120,7 +124,7 @@
   };
 </script>
 
-  <title>categories | Hexo</title>
+  <title>Spring Boot整合Redis | Hexo</title>
   
 
 
@@ -257,7 +261,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -316,122 +320,204 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Spring-Boot整合Redis/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SpringLi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">categories
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
+          <h1 class="post-title" itemprop="name headline">Spring Boot整合Redis
+
               
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-              10 categories in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring-Boot/">Spring Boot</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker-compose/">docker-compose</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学校/">学校</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">2</span></li></ul>
-            </div>
-          </div>
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-12 16:01:22 / Modified: 17:02:13" itemprop="dateCreated datePublished" datetime="2019-05-12T16:01:22+08:00">2019-05-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot/" itemprop="url" rel="index"><span itemprop="name">Spring Boot</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <a id="more"></a>
+<h2 id="建立项目"><a href="#建立项目" class="headerlink" title="建立项目"></a>建立项目</h2><ol>
+<li><p>使用IDEA新建Spring Boot项目，依赖选择 web-web，NoSQL-redis。</p>
+</li>
+<li><p>application.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">## Spring Boot启动端口号</span><br><span class="line">server.port=8080</span><br><span class="line"></span><br><span class="line"># Redis服务器地址</span><br><span class="line">spring.redis.host=149.129.78.187</span><br><span class="line"># Redis端口</span><br><span class="line">spring.redis.port=6379</span><br><span class="line"># Redis密码</span><br><span class="line">spring.redis.password=</span><br><span class="line"># Redis数据库索引</span><br><span class="line">spring.redis.database=0</span><br><span class="line"># 连接池最大连接数</span><br><span class="line">spring.redis.jedis.pool.max-active=8</span><br><span class="line"># 连接池最大阻塞等待时间 负值没有限制</span><br><span class="line">spring.redis.jedis.pool.max-wait=-1</span><br><span class="line"># 连接池最大空闲连接</span><br><span class="line">spring.redis.jedis.pool.max-idle=8</span><br><span class="line"># 最小空闲连接</span><br><span class="line">spring.redis.jedis.pool.min-idle=0</span><br><span class="line"># 连接超时时间</span><br><span class="line">spring.redis.timeout=100</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试用例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">"a"</span>, <span class="string">"aaa"</span>);</span><br><span class="line">        Assert.assertEquals(<span class="string">"aaa"</span>, redisTemplate.opsForValue().get(<span class="string">"a"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单的测试与Redis的连接，使用自动配置的<code>StringRedisTemplate</code>对象进行Redis的读写操作</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://juejin.im/post/5ad6acb4f265da239e4e9906" target="_blank" rel="noopener">掘金-SpringBoot整合Redis</a></li>
+<li><a href="http://www.spring4all.com/article/254" target="_blank" rel="noopener">Spring Boot 使用NoSQL数据库 Redis</a></li>
+</ul>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+            <a href="/tags/Redis/" rel="tag"># Redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/12/IDEA构建第一个Spring-Boot项目/" rel="next" title="IDEA构建第一个Spring Boot项目">
+                <i class="fa fa-chevron-left"></i> IDEA构建第一个Spring Boot项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -460,8 +546,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -602,6 +697,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#建立项目"><span class="nav-number">1.</span> <span class="nav-text">建立项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
