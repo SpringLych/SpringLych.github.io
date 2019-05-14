@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用Scoop管理Windows软件]]></title>
+    <url>%2F2019%2F05%2F14%2F%E4%BD%BF%E7%94%A8Scoop%E7%AE%A1%E7%90%86Windows%E8%BD%AF%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[体验了一下Scoop这款Windows上的软件包管理器，记录下其安装，配置过程。 安装 官方网址 快速入门 我的电脑是Windows 10 1903，满足基础环境。打开PowerShell 保证允许本地脚本运行 1set-executionpolicy remotesigned -scope currentuser 如果你不想将scoop将软件默认安装到C盘，可以自定义scoop包安装路径 12$env:SCOOP='D:\scoop'[environment]::setEnvironmentVariable('SCOOP',$env:SCOOP,'User') 安装scoop 1iex (new-object net.webclient).downloadstring('https://get.scoop.sh') 安装完成，使用 scoop help验证。出现“Usage: scoop [] Some useful commands are…”等字样说明安装成功。 之后可以使用 scoop help查看命令参考 使用安装软件：scoop install 软件名 更新：scoop update 移除所有旧版本：scoop cleanup * 卸载：scoop uninstall 软件名 软件仓库Scoop默认仓库（main bucket）是有限的，但是可以添加仓库。 最常见的bucket - extras，其包含各个版本的 Firefox、福昕阅读器、Geek Uninstaller、Inkscape、Snipaste 等等 添加：scoop bucket add extras 查找官方维护的仓库：scoop bucket known 关于更多Scoop仓库的信息，可以参考少数派这篇文章 参考 少数派 - 「一行代码」搞定软件安装卸载，用 Scoop 管理你的 Windows 软件 Windows | Scoop软件包管理神器 少数派 - 给 Scoop 加上这些软件仓库，让它变成强大的 Windows 软件管理器]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Spring Boot整合Redis]]></title>
     <url>%2F2019%2F05%2F12%2FSpring-Boot%E6%95%B4%E5%90%88Redis%2F</url>
-    <content type="text"><![CDATA[建立项目 使用IDEA新建Spring Boot项目，依赖选择 web-web，NoSQL-redis。 application.properties 123456789101112131415161718192021## Spring Boot启动端口号server.port=8080# Redis服务器地址spring.redis.host=149.129.78.187# Redis端口spring.redis.port=6379# Redis密码spring.redis.password=# Redis数据库索引spring.redis.database=0# 连接池最大连接数spring.redis.jedis.pool.max-active=8# 连接池最大阻塞等待时间 负值没有限制spring.redis.jedis.pool.max-wait=-1# 连接池最大空闲连接spring.redis.jedis.pool.max-idle=8# 最小空闲连接spring.redis.jedis.pool.min-idle=0# 连接超时时间spring.redis.timeout=100 测试用例 12345678910111213@RunWith(SpringRunner.class)@SpringBootTestpublic class DemoApplicationTests &#123; @Autowired private StringRedisTemplate redisTemplate; @Test public void test() throws Exception&#123; redisTemplate.opsForValue().set("a", "aaa"); Assert.assertEquals("aaa", redisTemplate.opsForValue().get("a")); &#125;&#125; 简单的测试与Redis的连接，使用自动配置的StringRedisTemplate对象进行Redis的读写操作 参考 掘金-SpringBoot整合Redis Spring Boot 使用NoSQL数据库 Redis]]></content>
+    <content type="text"><![CDATA[Spring Boot整合Redis 建立项目 使用IDEA新建Spring Boot项目，依赖选择 web-web，NoSQL-redis。 application.properties 123456789101112131415161718192021## Spring Boot启动端口号server.port=8080# Redis服务器地址spring.redis.host=149.129.78.187# Redis端口spring.redis.port=6379# Redis密码spring.redis.password=# Redis数据库索引spring.redis.database=0# 连接池最大连接数spring.redis.jedis.pool.max-active=8# 连接池最大阻塞等待时间 负值没有限制spring.redis.jedis.pool.max-wait=-1# 连接池最大空闲连接spring.redis.jedis.pool.max-idle=8# 最小空闲连接spring.redis.jedis.pool.min-idle=0# 连接超时时间spring.redis.timeout=100 测试用例 12345678910111213@RunWith(SpringRunner.class)@SpringBootTestpublic class DemoApplicationTests &#123; @Autowired private StringRedisTemplate redisTemplate; @Test public void test() throws Exception&#123; redisTemplate.opsForValue().set("a", "aaa"); Assert.assertEquals("aaa", redisTemplate.opsForValue().get("a")); &#125;&#125; 简单的测试与Redis的连接，使用自动配置的StringRedisTemplate对象进行Redis的读写操作 参考 掘金-SpringBoot整合Redis Spring Boot 使用NoSQL数据库 Redis]]></content>
       <categories>
         <category>Spring Boot</category>
       </categories>
