@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="使用IDEA快速构建一个Spring Boot项目。">
+  <meta name="description" content="使用IDEA快速构建一个Spring Boot项目，并将其打包成jar文件。">
 <meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IDEA构建第一个Spring Boot项目">
 <meta property="og:url" content="http://yoursite.com/2019/05/12/IDEA构建第一个Spring-Boot项目/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="使用IDEA快速构建一个Spring Boot项目。">
+<meta property="og:description" content="使用IDEA快速构建一个Spring Boot项目，并将其打包成jar文件。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-12T07:59:46.762Z">
+<meta property="og:updated_time" content="2019-05-14T15:06:53.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IDEA构建第一个Spring Boot项目">
-<meta name="twitter:description" content="使用IDEA快速构建一个Spring Boot项目。">
+<meta name="twitter:description" content="使用IDEA快速构建一个Spring Boot项目，并将其打包成jar文件。">
 
 
 
@@ -383,12 +383,24 @@
                 
               
 
-              <time title="Created: 2019-05-12 15:34:51 / Modified: 15:59:46" itemprop="dateCreated datePublished" datetime="2019-05-12T15:34:51+08:00">2019-05-12</time>
+              <time title="Created: 2019-05-12 15:34:51" itemprop="dateCreated datePublished" datetime="2019-05-12T15:34:51+08:00">2019-05-12</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-14 23:06:53" itemprop="dateModified" datetime="2019-05-14T23:06:53+08:00">2019-05-14</time>
               
             
           </span>
@@ -440,7 +452,7 @@
       
 
       
-        <p>使用IDEA快速构建一个Spring Boot项目。</p>
+        <p>使用IDEA快速构建一个Spring Boot项目，并将其打包成jar文件。</p>
 <a id="more"></a>
 <h2 id="HelloWorld实战"><a href="#HelloWorld实战" class="headerlink" title="HelloWorld实战"></a>HelloWorld实战</h2><ol>
 <li><p>新建项目。IDEA中选择Spring Initializ，填写Group等信息。选择依赖，选择web-web，finnish完成项目创建。</p>
@@ -467,8 +479,20 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldControllerTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        assertEquals(<span class="string">"Hello World"</span>, <span class="keyword">new</span> HelloWorldController().hello());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><ol>
+<li><p>在<code>pom.xml</code>中添加<code>&lt;packaging&gt;jar&lt;/packaging&gt;</code>，指定打成的包为jar。</p>
+</li>
+<li><p>整个pom.xml文件为</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.4.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.demo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Demo project for Spring Boot<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>与 pom.xml文件同级运行 <code>mvn clean package</code>，首先要确保Maven正确安装。打包成功后，在项目目录下target文件夹中生成jar</p>
+</li>
+<li><p>进入target文件夹，使用<code>java -jar jar包名称</code>即可运行Spring Boot项目</p>
+</li>
+</ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://www.bysocket.com/archives/1124/spring-boot-%e4%b9%8b-helloworld%e8%af%a6%e8%a7%a3" target="_blank" rel="noopener">Spring Boot 之 HelloWorld详解</a></li>
+<li><a href="https://juejin.im/post/5b71a72e51882561446fb1d2" target="_blank" rel="noopener">SpringBoot简单打包部署(附工程)</a></li>
 </ul>
 
       
@@ -730,7 +754,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HelloWorld实战"><span class="nav-number">1.</span> <span class="nav-text">HelloWorld实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HelloWorld实战"><span class="nav-number">1.</span> <span class="nav-text">HelloWorld实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包"><span class="nav-number">2.</span> <span class="nav-text">打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
