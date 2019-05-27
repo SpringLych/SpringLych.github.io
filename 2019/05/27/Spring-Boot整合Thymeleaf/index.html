@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="体验了一下Scoop这款Windows上的软件包管理器，记录下其安装，配置过程。">
-<meta name="keywords" content="Windows,软件">
+  <meta name="description" content="Thymeleaf是一个跟freemarker等类似的模板引擎，能够替代JSP，它也是springboot的官方推荐方案。">
+<meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Scoop管理Windows软件">
-<meta property="og:url" content="http://yoursite.com/2019/05/14/使用Scoop管理Windows软件/index.html">
+<meta property="og:title" content="Spring Boot整合Thymeleaf">
+<meta property="og:url" content="http://yoursite.com/2019/05/27/Spring-Boot整合Thymeleaf/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="体验了一下Scoop这款Windows上的软件包管理器，记录下其安装，配置过程。">
+<meta property="og:description" content="Thymeleaf是一个跟freemarker等类似的模板引擎，能够替代JSP，它也是springboot的官方推荐方案。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-14T11:28:56.454Z">
+<meta property="og:updated_time" content="2019-05-27T06:46:33.739Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Scoop管理Windows软件">
-<meta name="twitter:description" content="体验了一下Scoop这款Windows上的软件包管理器，记录下其安装，配置过程。">
+<meta name="twitter:title" content="Spring Boot整合Thymeleaf">
+<meta name="twitter:description" content="Thymeleaf是一个跟freemarker等类似的模板引擎，能够替代JSP，它也是springboot的官方推荐方案。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/14/使用Scoop管理Windows软件/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/27/Spring-Boot整合Thymeleaf/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>使用Scoop管理Windows软件 | Hexo</title>
+  <title>Spring Boot整合Thymeleaf | Hexo</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/使用Scoop管理Windows软件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/Spring-Boot整合Thymeleaf/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SpringLi">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用Scoop管理Windows软件
+          <h1 class="post-title" itemprop="name headline">Spring Boot整合Thymeleaf
 
               
             
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-05-14 18:42:12 / Modified: 19:28:56" itemprop="dateCreated datePublished" datetime="2019-05-14T18:42:12+08:00">2019-05-14</time>
+              <time title="Created: 2019-05-27 14:04:53 / Modified: 14:46:33" itemprop="dateCreated datePublished" datetime="2019-05-27T14:04:53+08:00">2019-05-27</time>
             
 
             
@@ -405,7 +405,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot/" itemprop="url" rel="index"><span itemprop="name">Spring Boot</span></a></span>
 
                 
                 
@@ -440,40 +440,32 @@
       
 
       
-        <p>体验了一下Scoop这款Windows上的软件包管理器，记录下其安装，配置过程。</p>
+        <p>Thymeleaf是一个跟freemarker等类似的模板引擎，能够替代JSP，它也是springboot的官方推荐方案。</p>
 <a id="more"></a>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li><a href="https://scoop.sh/" target="_blank" rel="noopener">官方网址</a></li>
-<li><a href="https://github.com/lukesampson/scoop/wiki/Quick-Start" target="_blank" rel="noopener">快速入门</a></li>
-</ul>
-<p>我的电脑是Windows 10 1903，满足基础环境。打开PowerShell</p>
-<ol>
-<li><p>保证允许本地脚本运行</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set-executionpolicy</span> remotesigned -scope currentuser</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果你不想将scoop将软件默认安装到C盘，可以自定义scoop包安装路径</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$env:SCOOP</span>=<span class="string">'D:\scoop'</span></span><br><span class="line">[environment]::setEnvironmentVariable(<span class="string">'SCOOP'</span>,<span class="variable">$env:SCOOP</span>,<span class="string">'User'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装scoop</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iex (<span class="built_in">new-object</span> net.webclient).downloadstring(<span class="string">'https://get.scoop.sh'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>安装完成，使用 <code>scoop help</code>验证。出现“Usage: scoop <command> [<args>]</args></p>
-<p>Some useful commands are…”等字样说明安装成功。</p>
-<p>之后可以使用 <code>scoop help</code>查看命令参考</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装软件：<code>scoop install 软件名</code></p>
-<p>更新：<code>scoop update</code></p>
-<p>移除所有旧版本：<code>scoop cleanup *</code></p>
-<p>卸载：<code>scoop uninstall 软件名</code></p>
-<h2 id="软件仓库"><a href="#软件仓库" class="headerlink" title="软件仓库"></a>软件仓库</h2><p>Scoop默认仓库（main bucket）是有限的，但是可以添加仓库。</p>
-<p>最常见的bucket - <a href="https://github.com/lukesampson/scoop-extras" target="_blank" rel="noopener">extras</a>，其包含各个版本的 Firefox、福昕阅读器、Geek Uninstaller、Inkscape、Snipaste 等等</p>
-<p>添加：<code>scoop bucket add extras</code></p>
-<p>查找官方维护的仓库：<code>scoop bucket known</code></p>
-<p>关于更多Scoop仓库的信息，可以参考少数派<a href="https://sspai.com/post/52710" target="_blank" rel="noopener">这篇文章</a></p>
+<p>但是我一般倾向于使用前后端分离的模式，前端使用Vus.js 等框架，这里学习Thymeleaf主要是快速实现一些网页，以便继续学习Spring Boot中需要用到网页的部分。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>使用IDEA新建Spring Boot项目，依赖中选择 Core-Lombok，Web- web, Template Engines-Thymeleaf。</p>
+<p>修改applicatiom.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  thymeleaf:</span></span><br><span class="line"><span class="attr">    mode:</span> <span class="string">LEGACYHTML5</span></span><br><span class="line"><span class="attr">    encoding:</span> <span class="string">UTF-8</span></span><br><span class="line"><span class="attr">    servlet:</span></span><br><span class="line"><span class="attr">      content-type:</span> <span class="string">text/html</span></span><br><span class="line"><span class="attr">    suffix:</span> <span class="string">.html</span></span><br><span class="line"><span class="attr">    cache:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>其中<code>spring.thymeleaf.mode = LEGACYHTML5</code>配置thymeleaf的模式，不要使用<code>spring.thymeleaf.mode = HTML5</code>，因为严格遵循HTML5规范会对非严格的报错，例如<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>，<code>&lt;meta&gt;</code>标签没有结束<code>&lt;meta /&gt;</code>就会报错。</p>
+<p>在 main/resources/templates新建<code>index.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is index page<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>若想要在HTML页面中使用Thymeleaf，需要<code>&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;</code></p>
+</blockquote>
+<p>新建RouterController.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RouterController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/index"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"index"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>return “index”</code>中的index 是指sources/template中的 <code>index.html</code>文件。如果是<code>templates/common/main.html</code>页面，就应该<code>return &quot;/common/main.html&quot;</code></p>
+<p>浏览器访问<code>http://localhost:8080/</code>便可看到刚才的页面。</p>
+<h2 id="Thymeleaf常用表达式"><a href="#Thymeleaf常用表达式" class="headerlink" title="Thymeleaf常用表达式"></a>Thymeleaf常用表达式</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p>${user.username}</p>
+</blockquote>
+<p>修改RouterController.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RouterController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">"demo"</span>, <span class="string">"一个测试"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"index"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Index<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is index page<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>表达式：<span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;demo&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>更多Thymeleaf相关可以参考<a href="http://www.ityouknow.com/springboot/2016/05/01/spring-boot-thymeleaf.html" target="_blank" rel="noopener">这里</a></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://sspai.com/post/52496" target="_blank" rel="noopener">少数派 - 「一行代码」搞定软件安装卸载，用 Scoop 管理你的 Windows 软件</a></li>
-<li><a href="https://www.limufang.com/post/569.html" target="_blank" rel="noopener">Windows | Scoop软件包管理神器</a></li>
-<li><a href="https://sspai.com/post/52710" target="_blank" rel="noopener">少数派 - 给 Scoop 加上这些软件仓库，让它变成强大的 Windows 软件管理器</a></li>
+<li><a href="https://github.com/TyCoding/spring-learn/tree/master/boot-thymeleaf" target="_blank" rel="noopener">TyCoding</a></li>
 </ul>
 
       
@@ -498,9 +490,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Windows/" rel="tag"># Windows</a>
-          
-            <a href="/tags/软件/" rel="tag"># 软件</a>
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
           
         </div>
       
@@ -513,8 +503,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/12/Spring-Boot整合Redis/" rel="next" title="Spring Boot整合Redis">
-                <i class="fa fa-chevron-left"></i> Spring Boot整合Redis
+              <a href="/2019/05/24/Spring-Boot整合MyBatis-Plus/" rel="next" title="Spring Boot整合MyBatis-Plus">
+                <i class="fa fa-chevron-left"></i> Spring Boot整合MyBatis-Plus
               </a>
             
           </div>
@@ -522,10 +512,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/21/Spring-Boot整合MyBatis/" rel="prev" title="Spring Boot整合MyBatis">
-                Spring Boot整合MyBatis <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -739,7 +725,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件仓库"><span class="nav-number">3.</span> <span class="nav-text">软件仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thymeleaf常用表达式"><span class="nav-number">2.</span> <span class="nav-text">Thymeleaf常用表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">2.1.</span> <span class="nav-text">变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
