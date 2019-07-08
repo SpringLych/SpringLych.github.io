@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/11/算法-排序/quick.gif">
 <meta property="og:image" content="http://yoursite.com/2019/04/11/算法-排序/heapsort.gif">
 <meta property="og:image" content="http://yoursite.com/2019/04/11/算法-排序/all.png">
-<meta property="og:updated_time" content="2019-05-31T12:10:53.260Z">
+<meta property="og:updated_time" content="2019-07-08T11:59:51.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法-排序">
 <meta name="twitter:description" content="整理常用排序算法。">
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-31 20:10:53" itemprop="dateModified" datetime="2019-05-31T20:10:53+08:00">2019-05-31</time>
+                <time title="Modified: 2019-07-08 19:59:51" itemprop="dateModified" datetime="2019-07-08T19:59:51+08:00">2019-07-08</time>
               
             
           </span>
@@ -552,7 +552,7 @@
 <p><a href="https://www.nowcoder.com/practice/6a296eb82cf844ca8539b57c23e6e9bf?tpId=13&amp;tqId=11182&amp;tPage=2&amp;rp=2&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="noopener">在线编程</a></p>
 <h3 id="利用堆解决"><a href="#利用堆解决" class="headerlink" title="利用堆解决"></a>利用堆解决</h3><p>使用最大堆保存这k个数，每次只和堆顶比，如果比堆顶小，删除堆顶，新数入堆。</p>
 <p>时间：O(nlogk)</p>
-<p>Java中的优先队列(<code>PriorityQueue</code>)是基于堆实现的。优先队列中的元素可以通过Compartor定义规则。</p>
+<p>Java中的优先队列(<code>PriorityQueue</code>)是基于堆实现的，默认是自然排序，即默认构造最小堆，如果要更改排序规则，可以在构造时使用<code>Comparator</code>指定。优先队列中的元素可以通过Compartor定义规则。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">GetLeastNumbers_Solution</span><span class="params">(<span class="keyword">int</span>[] input, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = input.length;</span><br><span class="line">        ArrayList&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (k &lt;= <span class="number">0</span> || len &lt; k) <span class="keyword">return</span> res;</span><br><span class="line">        PriorityQueue&lt;Integer&gt; maxHeap =</span><br><span class="line">                <span class="keyword">new</span> PriorityQueue&lt;&gt;(k, Comparator.reverseOrder());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将数组中的元素入堆</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> a : input) &#123;</span><br><span class="line">            <span class="keyword">if</span> (maxHeap.size() &lt; k) &#123;</span><br><span class="line">                maxHeap.offer(a);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxHeap.peek() &gt; a) &#123;</span><br><span class="line">                maxHeap.poll();</span><br><span class="line">                maxHeap.offer(a);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        res.addAll(maxHeap);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2019/04/11/算法-排序/all.png" alt=""></p>
 <p>稳定性定义：经过排序之后,能使值相同的数据保持原顺序中的相对位置不变</p>
@@ -565,6 +565,7 @@
 <li>《算法》第四版</li>
 <li><a href="https://www.cnblogs.com/onepixel/p/7674659.html" target="_blank" rel="noopener">博客园 - 十大经典排序算法（动图演示）</a></li>
 <li><a href="https://selfboot.cn/2016/09/01/lost_partition/" target="_blank" rel="noopener">被忽视的 partition 算法</a></li>
+<li><a href="https://my.oschina.net/leejun2005/blog/135085" target="_blank" rel="noopener">OSCHINA - 基于堆实现的优先级队列：PriorityQueue 解决 Top K 问题</a></li>
 </ul>
 
       

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="使用IDEA安装Lombok及其使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-23T07:43:33.258Z">
+<meta property="og:updated_time" content="2019-07-08T13:57:58.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lombok安装及使用">
 <meta name="twitter:description" content="使用IDEA安装Lombok及其使用。">
@@ -412,12 +412,24 @@
                 
               
 
-              <time title="Created: 2019-05-23 14:20:12 / Modified: 15:43:33" itemprop="dateCreated datePublished" datetime="2019-05-23T14:20:12+08:00">2019-05-23</time>
+              <time title="Created: 2019-05-23 14:20:12" itemprop="dateCreated datePublished" datetime="2019-05-23T14:20:12+08:00">2019-05-23</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-08 21:57:58" itemprop="dateModified" datetime="2019-07-08T21:57:58+08:00">2019-07-08</time>
               
             
           </span>
@@ -476,10 +488,6 @@
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先向<code>pom.xml</code>中添加依赖：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>其中 <code>scope=provided</code>，就说明 <code>Lombok</code> 只在编译阶段生效。也就是说，<code>Lombok</code> 会在编译期静悄悄地将带 <code>Lombok</code> 注解的源码文件正确编译为完整的 <code>class</code> 文件。</p>
-<ul>
-<li style="list-style: none"><input type="checkbox" checked> hello</li>
-<li style="list-style: none"><input type="checkbox" checked> hello </li>
-</ul>
 <h3 id="IDEA插件"><a href="#IDEA插件" class="headerlink" title="IDEA插件"></a>IDEA插件</h3><p>通过安装插件，让IDEA能够识别。安装过程可参考官网：<a href="https://projectlombok.org/setup/intellij" target="_blank" rel="noopener">setup - IntelliJ IDEA</a></p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>常用注解</p>
 <ul>
