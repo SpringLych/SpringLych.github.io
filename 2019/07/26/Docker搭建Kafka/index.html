@@ -96,20 +96,28 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/categories/MySQL/index.html">
+  <meta name="description" content="准备在项目中学习Kafka，因此准备在Linux环境下使用Docker搭建Kafka环境。">
+<meta name="keywords" content="Docker,docker-compose,Kafka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker搭建Kafka">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/Docker搭建Kafka/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="准备在项目中学习Kafka，因此准备在Linux环境下使用Docker搭建Kafka环境。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/Docker搭建Kafka/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/Docker搭建Kafka/2.png">
+<meta property="og:updated_time" content="2019-07-26T15:39:38.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Docker搭建Kafka">
+<meta name="twitter:description" content="准备在项目中学习Kafka，因此准备在Linux环境下使用Docker搭建Kafka环境。">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/26/Docker搭建Kafka/1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/MySQL/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/26/Docker搭建Kafka/">
 
 
 
@@ -119,7 +127,7 @@
   };
 </script>
 
-  <title>Category: MySQL | Hexo</title>
+  <title>Docker搭建Kafka | Hexo</title>
   
 
 
@@ -167,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -256,7 +264,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -344,83 +352,238 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>MySQL<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/26/Docker搭建Kafka/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SpringLi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/03/MySQL基本语句总结/" itemprop="url">
-            
-              <span itemprop="name">MySQL基本语句总结</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Docker搭建Kafka
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-03T09:55:51+08:00" content="2019-04-03">
-          04-03
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-26 22:41:30 / Modified: 23:39:38" itemprop="dateCreated datePublished" datetime="2019-07-26T22:41:30+08:00">2019-07-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>准备在项目中学习Kafka，因此准备在Linux环境下使用Docker搭建Kafka环境。</p>
+<a id="more"></a>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>我使用的是Ubuntu 16.04，已经安装好Docker和Docker Compose。Kafka没有官方镜像，但是有知名的第三方镜像<a href="https://hub.docker.com/r/wurstmeister/kafka" target="_blank" rel="noopener">wurstmeister/kafka </a>，同时，需要用zookeeper管理kafka，因此可以用<a href="https://hub.docker.com/r/wurstmeister/zookeeper" target="_blank" rel="noopener">wurstmeister/zookeeper </a></p>
+<h2 id="使用docker-compose"><a href="#使用docker-compose" class="headerlink" title="使用docker-compose"></a>使用docker-compose</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.0'</span></span><br><span class="line"><span class="attr">services:</span> </span><br><span class="line"><span class="attr">  zookeeper:</span> </span><br><span class="line"><span class="attr">    image:</span> <span class="string">wurstmeister/zookeeper</span></span><br><span class="line"><span class="attr">    ports:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">"2181:2181"</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">  kafka:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">wurstmeister/kafka</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"9092:9092"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line">      <span class="comment"># 注意这里填写宿主的ip</span></span><br><span class="line"><span class="attr">      KAFKA_ADVERTISED_HOST_NAME:</span> <span class="number">172.18</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">      KAFKA_ZOOKEEPER_CONNECT:</span> <span class="attr">zookeeper:2181</span></span><br><span class="line"><span class="attr">      KAFKA_HEAP_OPTS:</span> <span class="bullet">-Xmx256M</span> <span class="bullet">-Xms256M</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>指定<code>KAFKA_HEAP_OPTS</code>是由于我的主机内存小，需要限制内存，否则无法启动。如果主机内存足够，不需要限制</p>
+</li>
+<li><p><code>KAFKA_ADVERTISED_HOST_NAME</code>需要用到宿主机的IP。在Ubuntu18.04中，每次登陆都会显示系统信息，docker0就是填写的宿主机ip。</p>
+</li>
+</ul>
+<p><img src="/2019/07/26/Docker搭建Kafka/1.png" alt=""></p>
+<pre><code>在Ubuntu16.04中，可以使用下面的命令查询：
+</code></pre><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr show docker0</span><br></pre></td></tr></table></figure>
+<p>查询结果为：172.18.0.1</p>
+<p>启动kafka</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>之后通过 <code>docker ps</code>可以看到启动了一个zookeeper容器和一个kafka容器。</p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><ol>
+<li>进入到kafka容器中</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it kafka_kafka_1 /bin/bash</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建一个topic，</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash-4.4&gt; kafka-topics.sh --create --topic test --zookeeper kafka_zookeeper_1:2181 --replication-factor 1 --partitions 1</span><br><span class="line"><span class="meta">#</span><span class="bash"> Created topic <span class="built_in">test</span>.</span></span><br><span class="line">bash-4.4&gt; kafka-topics.sh --list --zookeeper kafka_zookeeper_1:2181</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">test</span></span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>发布几条消息</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bash-4.4&gt; kafka-console-producer.sh --topic=test --broker-list kafka_kafka_1:9092</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">hello this is kafka</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">wow awesome</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">hahah</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">hello r</span></span><br><span class="line">^c退出</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>接受消息</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bash-4.4&gt; kafka-consoconsumer.sh --bootstrap-server kafka_kafka_1:9092 --from-beginning --topic test</span><br><span class="line">hello this is kafka</span><br><span class="line">wow awesome</span><br><span class="line">hahah</span><br><span class="line">hello r</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/26/Docker搭建Kafka/2.png" alt=""></p>
+<p>接收到了发布的消息，部署正常。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://tomoyadeng.github.io/blog/2018/06/02/kafka-cluster-in-docker/index.html" target="_blank" rel="noopener">使用Docker快速搭建Kafka开发环境</a></li>
+<li><a href="https://stackoverflow.com/questions/21448907/kafka-8-and-memory-there-is-insufficient-memory-for-the-java-runtime-environme" target="_blank" rel="noopener">StackOverflow - kafka 8 and memory - There is insufficient memory for the Java Runtime Environment to continue</a></li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/docker-compose/" rel="tag"># docker-compose</a>
+          
+            <a href="/tags/Kafka/" rel="tag"># Kafka</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/12/算法-二叉树的遍历/" rel="next" title="二叉树的遍历-算法">
+                <i class="fa fa-chevron-left"></i> 二叉树的遍历-算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -440,8 +603,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -619,6 +791,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用docker-compose"><span class="nav-number">2.</span> <span class="nav-text">使用docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">3.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -750,6 +939,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -765,6 +958,8 @@
 
   
 
+
+  
 
 
   
