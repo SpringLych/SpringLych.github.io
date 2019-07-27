@@ -96,20 +96,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/categories/docker-compose/index.html">
+  <meta name="description" content="整合Kafka。">
+<meta name="keywords" content="Kafka,Spring Boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot整合Kafka">
+<meta property="og:url" content="http://yoursite.com/2019/07/27/Spring-Boot整合Kafka/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="整合Kafka。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-27T10:36:31.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Spring Boot整合Kafka">
+<meta name="twitter:description" content="整合Kafka。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/docker-compose/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/27/Spring-Boot整合Kafka/">
 
 
 
@@ -119,7 +124,7 @@
   };
 </script>
 
-  <title>Category: docker-compose | Hexo</title>
+  <title>Spring Boot整合Kafka | Hexo</title>
   
 
 
@@ -167,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -256,7 +261,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -344,83 +349,231 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>docker-compose<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/27/Spring-Boot整合Kafka/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SpringLi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/03/26/docker-compose收集/" itemprop="url">
-            
-              <span itemprop="name">docker-compose收集</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Spring Boot整合Kafka
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-26T20:40:58+08:00" content="2019-03-26">
-          03-26
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-27 15:17:55 / Modified: 18:36:31" itemprop="dateCreated datePublished" datetime="2019-07-27T15:17:55+08:00">2019-07-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot/" itemprop="url" rel="index"><span itemprop="name">Spring Boot</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>整合Kafka。</p>
+<a id="more"></a>
+<h2 id="Kafka介绍"><a href="#Kafka介绍" class="headerlink" title="Kafka介绍"></a>Kafka介绍</h2><p>Kafka是一种高吞吐量的分布式发布订阅消息系统，是消息中间件的一种。它一些基本术语：</p>
+<ol>
+<li>Kafka将消息以<strong>topic</strong>为单位进行归纳</li>
+<li>向Kafka topic发布消息的程序称为<strong>producers</strong></li>
+<li>预定topic并消费消息的程序称为<strong>consumer</strong></li>
+<li>Kafka以集群方式运行，可由一个或多个服务组成，每个服务叫做一个broker</li>
+</ol>
+<p>前面已经搭建好了Kafka，<a href="https://springlych.github.io/2019/07/26/Docker%E6%90%AD%E5%BB%BAKafka/" target="_blank" rel="noopener">搭建过程</a></p>
+<h2 id="Spring-Boot整合Kafka"><a href="#Spring-Boot整合Kafka" class="headerlink" title="Spring Boot整合Kafka"></a>Spring Boot整合Kafka</h2><p>使用IDEA构建项目Spring Boot项目，选择依赖message-Apache Kafka。</p>
+<h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Message</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String form;</span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Message</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Message</span><span class="params">(String form, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.form = form;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p><code>application.yml</code>。Spring Boot支持在application.yml中配置Kafka的生产者配置和消费者配置。当然也可以使用<code>@Configuration</code>使用Java类配置。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  kafka:</span></span><br><span class="line"><span class="attr">    consumer:</span></span><br><span class="line"><span class="attr">      bootstrap-servers:</span> <span class="attr">localhost:9092</span></span><br><span class="line"><span class="attr">      group-id:</span> <span class="string">test-consumer</span></span><br><span class="line"><span class="attr">      auto-offset-reset:</span> <span class="string">latest</span></span><br><span class="line"><span class="attr">      key-deserializer:</span> <span class="string">org.apache.kafka.common.serialization.StringDeserializer</span></span><br><span class="line"><span class="attr">      value-deserializer:</span> <span class="string">org.apache.kafka.common.serialization.StringDeserializer</span></span><br><span class="line"><span class="attr">    producer:</span></span><br><span class="line"><span class="attr">      bootstrap-servers:</span> <span class="attr">localhost:9092</span></span><br><span class="line"><span class="attr">      key-serializer:</span> <span class="string">org.apache.kafka.common.serialization.StringDeserializer</span></span><br><span class="line"><span class="attr">      value-serializer:</span> <span class="string">org.apache.kafka.common.serialization.StringDeserializer</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建生产者"><a href="#创建生产者" class="headerlink" title="创建生产者"></a>创建生产者</h3><p>发送消息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC = <span class="string">"users"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> KafkaTemplate&lt;String, String&gt; kafkaTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        ListenableFuture&lt;SendResult&lt;String, String&gt;&gt; future</span><br><span class="line">                = <span class="keyword">this</span>.kafkaTemplate.send(TOPIC, message);</span><br><span class="line">        future.addCallback(<span class="keyword">new</span> ListenableFutureCallback&lt;SendResult&lt;String, String&gt;&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Throwable ex)</span> </span>&#123;</span><br><span class="line">                logger.error(<span class="string">"消息：&#123;&#125; 发送失败，原因：&#123;&#125;"</span>, message, ex.getMessage());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(SendResult&lt;String, String&gt; result)</span> </span>&#123;</span><br><span class="line">                logger.info(<span class="string">"成功发送消息：&#123;&#125;, offset=[&#123;&#125;]"</span>, message, result.getRecordMetadata());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在send方法中，通过回调的方式确定消息是否发送成功。</p>
+<p>我们没有配置KafkaTemplate，因此使用<code>@Service</code>自动配置。</p>
+<h3 id="创建消费者"><a href="#创建消费者" class="headerlink" title="创建消费者"></a>创建消费者</h3><p>接受消息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line"></span><br><span class="line">    <span class="meta">@KafkaListener</span>(topics = <span class="string">"users"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">consumer</span><span class="params">(String message)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">        logger.info(<span class="string">"接受消息：&#123;&#125;"</span>, message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@KafkaListener</code>注解来监听名称为users的Topic</p>
+<p><code>bootstrap-servers</code>:生产者消费者的地址。</p>
+<p><code>key-deserializer</code>和<code>value-deserializer</code>指定了序列化策略，生产者指定为kafka提供的StringSerializer，用来发送简单的String类消息</p>
+<h3 id="发布消息"><a href="#发布消息" class="headerlink" title="发布消息"></a>发布消息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendMessageController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Producer producer;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    SendMessageController(Producer producer) &#123;</span><br><span class="line">        <span class="keyword">this</span>.producer = producer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"send/&#123;message&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(@PathVariable String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.producer.sendMessage(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p>启动后，访问<code>http://localhost:8080/send/hello</code>，发现报告一下错误：</p>
+<blockquote>
+<p>消息：hello,mrbird 发送失败，原因：Failed to send; nested exception is org.apache.kafka.common.errors.TimeoutException: Expiring 1 record(s) for users-0: 30047 ms has passed since batch creation plus linger time</p>
+<p>[Producer clientId=producer-1] Connection to node 1001 could not be established. Broker may not be available.</p>
+</blockquote>
+<p>猜测是由于使用Docker创建了Kafka，导致外网访问Kafka时没有配置好正确的IP。该问题待解决。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.confluent.io/blog/apache-kafka-spring-boot-application" target="_blank" rel="noopener">How to Work with Apache Kafka in Your Spring Boot Application</a></li>
+<li><a href="https://mrbird.cc/Spring-Boot-Kafka.html" target="_blank" rel="noopener">MrBird - Spring Boot整合Kafka</a></li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kafka/" rel="tag"># Kafka</a>
+          
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/26/Docker搭建Kafka/" rel="next" title="Docker搭建Kafka">
+                <i class="fa fa-chevron-left"></i> Docker搭建Kafka
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -440,8 +593,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -456,7 +618,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -560,7 +722,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -616,6 +780,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka介绍"><span class="nav-number">1.</span> <span class="nav-text">Kafka介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot整合Kafka"><span class="nav-number">2.</span> <span class="nav-text">Spring Boot整合Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实体类"><span class="nav-number">2.1.</span> <span class="nav-text">实体类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">2.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建生产者"><span class="nav-number">2.3.</span> <span class="nav-text">创建生产者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建消费者"><span class="nav-number">2.4.</span> <span class="nav-text">创建消费者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布消息"><span class="nav-number">2.5.</span> <span class="nav-text">发布消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误"><span class="nav-number">2.6.</span> <span class="nav-text">错误</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -748,6 +929,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -763,6 +948,8 @@
 
   
 
+
+  
 
 
   
