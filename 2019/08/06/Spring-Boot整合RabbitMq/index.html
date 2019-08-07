@@ -104,12 +104,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="整合RabbitMQ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/08/06/Spring-Boot整合RabbitMq/assets/1565096910459.png">
-<meta property="og:updated_time" content="2019-08-06T13:21:01.975Z">
+<meta property="og:image" content="http://yoursite.com/2019/08/06/Spring-Boot整合RabbitMq/1565096910459.png">
+<meta property="og:updated_time" content="2019-08-07T12:17:13.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot整合RabbitMq">
 <meta name="twitter:description" content="整合RabbitMQ">
-<meta name="twitter:image" content="http://yoursite.com/2019/08/06/Spring-Boot整合RabbitMq/assets/1565096910459.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/06/Spring-Boot整合RabbitMq/1565096910459.png">
 
 
 
@@ -414,12 +414,24 @@
                 
               
 
-              <time title="Created: 2019-08-06 20:32:27 / Modified: 21:21:01" itemprop="dateCreated datePublished" datetime="2019-08-06T20:32:27+08:00">2019-08-06</time>
+              <time title="Created: 2019-08-06 20:32:27" itemprop="dateCreated datePublished" datetime="2019-08-06T20:32:27+08:00">2019-08-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-07 20:17:13" itemprop="dateModified" datetime="2019-08-07T20:17:13+08:00">2019-08-07</time>
               
             
           </span>
@@ -484,7 +496,7 @@
 <p>通过@RabbitListener注解要接收消息的方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@RabbitListener</span>(queues = RabbitConst.QUEUE_ONE)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloReceiver</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RabbitHandler</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(String hello)</span> </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"HelloReceive &#123;&#125;"</span>, hello);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="高级使用"><a href="#高级使用" class="headerlink" title="高级使用"></a>高级使用</h2><h3 id="对象支持"><a href="#对象支持" class="headerlink" title="对象支持"></a>对象支持</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">发送者</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectSender</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AmqpTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ObjectSender</span><span class="params">(AmqpTemplate rabbitTemplate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.rabbitTemplate = rabbitTemplate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"-----ObjectSender send user: &#123;&#125;-----"</span>, user.toString());</span><br><span class="line">        rabbitTemplate.convertAndSend(RabbitConst.QUEUE_OBJECT, user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">接受者</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@RabbitListener</span>(queues = RabbitConst.QUEUE_OBJECT)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectReceiver</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RabbitHandler</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"-----receive user: &#123;&#125; -----"</span>, user.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/08/06/Spring-Boot整合RabbitMq/assets/1565096910459.png" alt="1565096910459"></p>
+<p><img src="/2019/08/06/Spring-Boot整合RabbitMq/1565096910459.png" alt="1565096910459"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="http://www.ityouknow.com/springboot/2016/11/30/spring-boot-rabbitMQ.html" target="_blank" rel="noopener">纯洁的微笑 - Spring Boot(八)：RabbitMQ 详解</a></li>
 </ul>
@@ -533,6 +545,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/07/Spring-Boot与MyBatis-Plus进阶使用/" rel="prev" title="Spring Boot与MyBatis-Plus进阶使用">
+                Spring Boot与MyBatis-Plus进阶使用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -601,7 +617,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
