@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="自己写的，收集整理的一些docker-compose.yml。 已有：Aria2,  filebrowser, MongoDB, Redis">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T02:21:34.384Z">
+<meta property="og:updated_time" content="2019-11-09T09:20:58.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-compose收集">
 <meta name="twitter:description" content="自己写的，收集整理的一些docker-compose.yml。 已有：Aria2,  filebrowser, MongoDB, Redis">
@@ -429,7 +429,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-22 10:21:34" itemprop="dateModified" datetime="2019-10-22T10:21:34+08:00">2019-10-22</time>
+                <time title="Modified: 2019-11-09 17:20:58" itemprop="dateModified" datetime="2019-11-09T17:20:58+08:00">2019-11-09</time>
               
             
           </span>
@@ -505,6 +505,7 @@
 <p>5672：rabbitmq服务端口</p>
 <p>1560：rabbitmq网页端口</p>
 <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="number">6379</span><span class="string">:6379</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/conf/redis/data:/data</span>  </span><br><span class="line"><span class="attr">    restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
+<h2 id="Webdav"><a href="#Webdav" class="headerlink" title="Webdav"></a>Webdav</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  webdav:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">bytemark/webdav</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">webdav</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"80:80"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      AUTH_TYPE:</span> <span class="string">Digest</span></span><br><span class="line"><span class="attr">      USERNAME:</span> <span class="string">username</span></span><br><span class="line"><span class="attr">      PASSWORD:</span> <span class="string">pass</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/media/download:/var/lib/dav/data</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -624,7 +625,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -667,7 +668,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -730,7 +733,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -797,7 +802,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Aria2"><span class="nav-number">1.</span> <span class="nav-text">Aria2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BaiduPCS-web"><span class="nav-number">2.</span> <span class="nav-text">BaiduPCS-web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filebrowser"><span class="nav-number">3.</span> <span class="nav-text">filebrowser</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kod"><span class="nav-number">4.</span> <span class="nav-text">Kod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka"><span class="nav-number">5.</span> <span class="nav-text">kafka</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB"><span class="nav-number">6.</span> <span class="nav-text">MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NextCloud"><span class="nav-number">7.</span> <span class="nav-text">NextCloud</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMq"><span class="nav-number">8.</span> <span class="nav-text">RabbitMq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">9.</span> <span class="nav-text">Redis</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Aria2"><span class="nav-number">1.</span> <span class="nav-text">Aria2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BaiduPCS-web"><span class="nav-number">2.</span> <span class="nav-text">BaiduPCS-web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filebrowser"><span class="nav-number">3.</span> <span class="nav-text">filebrowser</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kod"><span class="nav-number">4.</span> <span class="nav-text">Kod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka"><span class="nav-number">5.</span> <span class="nav-text">kafka</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB"><span class="nav-number">6.</span> <span class="nav-text">MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NextCloud"><span class="nav-number">7.</span> <span class="nav-text">NextCloud</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMq"><span class="nav-number">8.</span> <span class="nav-text">RabbitMq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">9.</span> <span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webdav"><span class="nav-number">10.</span> <span class="nav-text">Webdav</span></a></li></ol></div>
             
 
           </div>
