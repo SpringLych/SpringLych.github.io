@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="包括Docker, Docker-compose">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-30T06:43:26.776Z">
+<meta property="og:updated_time" content="2020-02-10T05:08:41.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用脚本收集">
 <meta name="twitter:description" content="包括Docker, Docker-compose">
@@ -412,12 +412,24 @@
                 
               
 
-              <time title="Created: 2019-05-30 09:58:49 / Modified: 14:43:26" itemprop="dateCreated datePublished" datetime="2019-05-30T09:58:49+08:00">2019-05-30</time>
+              <time title="Created: 2019-05-30 09:58:49" itemprop="dateCreated datePublished" datetime="2019-05-30T09:58:49+08:00">2019-05-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-02-10 13:08:41" itemprop="dateModified" datetime="2020-02-10T13:08:41+08:00">2020-02-10</time>
               
             
           </span>
@@ -471,6 +483,7 @@
       
         <p>包括Docker, Docker-compose</p>
 <a id="more"></a>
+<h2 id="服务器评测"><a href="#服务器评测" class="headerlink" title="服务器评测"></a>服务器评测</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- git.io/superbench.sh | bash</span><br></pre></td></tr></table></figure>
 <h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p>适用于Ubuntu 18.04</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apt-get remove docker docker-engine docker.io containerd runc</span><br><span class="line">apt-get update</span><br><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    gnupg-agent \</span><br><span class="line">    software-properties-common</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"</span><br><span class="line">sudo apt update</span><br><span class="line">apt-get install docker-ce docker-ce-cli containerd.io</span><br><span class="line">docker --version</span><br></pre></td></tr></table></figure>
 <p>如果出现 <code>unable to resolve host ubuntu</code>，首先查看<code>/etc/hostname</code>中的内容，之后编辑<code>/etc/hosts</code>，添加以下内容：<code>127.0.1.1        ubutnu</code></p>
@@ -791,7 +804,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Docker"><span class="nav-number">1.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">2.</span> <span class="nav-text">安装docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Miniconda"><span class="nav-number">3.</span> <span class="nav-text">安装 Miniconda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plus"><span class="nav-number">4.</span> <span class="nav-text">plus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rclone"><span class="nav-number">5.</span> <span class="nav-text">Rclone</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器评测"><span class="nav-number">1.</span> <span class="nav-text">服务器评测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Docker"><span class="nav-number">2.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">3.</span> <span class="nav-text">安装docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Miniconda"><span class="nav-number">4.</span> <span class="nav-text">安装 Miniconda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plus"><span class="nav-number">5.</span> <span class="nav-text">plus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rclone"><span class="nav-number">6.</span> <span class="nav-text">Rclone</span></a></li></ol></div>
             
 
           </div>
