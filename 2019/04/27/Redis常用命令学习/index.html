@@ -1,136 +1,56 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.0.1',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
 
   <meta name="description" content="学习Redis常用命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis常用命令学习">
 <meta property="og:url" content="http://yoursite.com/2019/04/27/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="SpringLych">
 <meta property="og:description" content="学习Redis常用命令">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-27T06:24:00.000Z">
 <meta property="article:modified_time" content="2019-10-17T12:30:30.719Z">
-<meta property="article:author" content="SpringLi">
+<meta property="article:author" content="SpringLych">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
 
 
+<link rel="canonical" href="http://yoursite.com/2019/04/27/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/">
 
 
-
-
-  <link rel="canonical" href="http://yoursite.com/2019/04/27/Redis常用命令学习/"/>
-
-
-
-<script id="page.configurations">
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
-  <title>Redis常用命令学习 | Hexo</title>
+  <title>Redis常用命令学习 | SpringLych</title>
   
-
-
-
-
-
-
 
 
 
@@ -139,351 +59,221 @@
 
   <noscript>
   <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
+  body { margin-top: 2rem; }
+
   .use-motion .menu-item,
-  .sidebar-inner,
+  .use-motion .sidebar,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header {
+    visibility: visible;
+  }
 
-  .use-motion .logo,
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
   .use-motion .site-title,
-  .use-motion .site-subtitle {
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
   </style>
 </noscript>
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+</head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-    
-  </div>
-
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">SpringLych</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
-<nav class="site-nav">
+
+
+
+
+</div>
+        
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
 
-    
-    
-    
-      
-    
+  <aside class="sidebar">
 
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>About</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>Categories</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
-
-  </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>Search</a>
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
         </li>
-      
-    </ul>
-  
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-  
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%84%E4%B8%AA%E7%BB%93%E6%9E%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">各个结构常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-number">1.3.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%A3%E5%88%97"><span class="nav-number">1.4.</span> <span class="nav-text">散列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-1"><span class="nav-number">2.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SET"><span class="nav-number">2.1.</span> <span class="nav-text">SET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET"><span class="nav-number">2.2.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GETSET"><span class="nav-number">2.3.</span> <span class="nav-text">GETSET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STRLEN-key"><span class="nav-number">2.4.</span> <span class="nav-text">STRLEN key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APPEND"><span class="nav-number">2.5.</span> <span class="nav-text">APPEND</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SETRANGE"><span class="nav-number">2.6.</span> <span class="nav-text">SETRANGE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GETRANGE"><span class="nav-number">2.7.</span> <span class="nav-text">GETRANGE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INCR"><span class="nav-number">2.8.</span> <span class="nav-text">INCR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INCRBY"><span class="nav-number">2.9.</span> <span class="nav-text">INCRBY</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LPUSH"><span class="nav-number">3.1.</span> <span class="nav-text">LPUSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LPUSHX"><span class="nav-number">3.2.</span> <span class="nav-text">LPUSHX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPUSH"><span class="nav-number">3.3.</span> <span class="nav-text">RPUSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LPOP"><span class="nav-number">3.4.</span> <span class="nav-text">LPOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPOP"><span class="nav-number">3.5.</span> <span class="nav-text">RPOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPOPLPUSH"><span class="nav-number">3.6.</span> <span class="nav-text">RPOPLPUSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LREM"><span class="nav-number">3.7.</span> <span class="nav-text">LREM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LLEN"><span class="nav-number">3.8.</span> <span class="nav-text">LLEN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINDEX-key-index"><span class="nav-number">3.9.</span> <span class="nav-text">LINDEX key index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINSERT-key-BEFORE-AFTER-pivot-value"><span class="nav-number">3.10.</span> <span class="nav-text">LINSERT key BEFORE|AFTER pivot value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSET-key-index-value"><span class="nav-number">3.11.</span> <span class="nav-text">LSET key index value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LRANGE-key-start-stop"><span class="nav-number">3.12.</span> <span class="nav-text">LRANGE key start stop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LTRIM-key-start-stop"><span class="nav-number">3.13.</span> <span class="nav-text">LTRIM key start stop</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">4.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HSET-hash-field-value"><span class="nav-number">4.1.</span> <span class="nav-text">HSET hash field value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HSETNX-hash-field-value"><span class="nav-number">4.2.</span> <span class="nav-text">HSETNX hash field value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HGET-hash-field"><span class="nav-number">4.3.</span> <span class="nav-text">HGET hash field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEXISTS-hash-field"><span class="nav-number">4.4.</span> <span class="nav-text">HEXISTS hash field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDEL-key-field-field-%E2%80%A6"><span class="nav-number">4.5.</span> <span class="nav-text">HDEL key field [field …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HLEN-key"><span class="nav-number">4.6.</span> <span class="nav-text">HLEN key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HSTRLEN-key-field"><span class="nav-number">4.7.</span> <span class="nav-text">HSTRLEN key field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINCRBY-key-field-increment"><span class="nav-number">4.8.</span> <span class="nav-text">HINCRBY key field increment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINCRBYFLOAT-key-field-increment"><span class="nav-number">4.9.</span> <span class="nav-text">HINCRBYFLOAT key field increment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HMSET-key-field-value-field-value-%E2%80%A6"><span class="nav-number">4.10.</span> <span class="nav-text">HMSET key field value [field value …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HMGET-key-field-field-%E2%80%A6"><span class="nav-number">4.11.</span> <span class="nav-text">HMGET key field [field …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HKEYS-key"><span class="nav-number">4.12.</span> <span class="nav-text">HKEYS key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HVALS-key"><span class="nav-number">4.13.</span> <span class="nav-text">HVALS key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HGETALL-key"><span class="nav-number">4.14.</span> <span class="nav-text">HGETALL key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sets"><span class="nav-number">5.</span> <span class="nav-text">Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SADD-key-member-member-%E2%80%A6"><span class="nav-number">5.1.</span> <span class="nav-text">SADD key member [member …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SISMEMBER-key-member"><span class="nav-number">5.2.</span> <span class="nav-text">SISMEMBER key member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPOP-key"><span class="nav-number">5.3.</span> <span class="nav-text">SPOP key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SRANDMEMBER-key-count"><span class="nav-number">5.4.</span> <span class="nav-text">SRANDMEMBER key [count]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SREM-key-member"><span class="nav-number">5.5.</span> <span class="nav-text">SREM key member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOVE-source-destination-member"><span class="nav-number">5.6.</span> <span class="nav-text">SMOVE source destination member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SCARD-key"><span class="nav-number">5.7.</span> <span class="nav-text">SCARD key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMEMBERS-key"><span class="nav-number">5.8.</span> <span class="nav-text">SMEMBERS key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SINTER-key-key-%E2%80%A6"><span class="nav-number">5.9.</span> <span class="nav-text">SINTER key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SINTERSTORE-destination-key-key-%E2%80%A6"><span class="nav-number">5.10.</span> <span class="nav-text">SINTERSTORE destination key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUNION-key-key-%E2%80%A6"><span class="nav-number">5.11.</span> <span class="nav-text">SUNION key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUNIONSTORE-destination-key-key-%E2%80%A6"><span class="nav-number">5.12.</span> <span class="nav-text">SUNIONSTORE destination key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDIFF"><span class="nav-number">5.13.</span> <span class="nav-text">SDIFF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDIFFSTORE-destination-key-key-%E2%80%A6"><span class="nav-number">5.14.</span> <span class="nav-text">SDIFFSTORE destination key [key …]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorted-Sets"><span class="nav-number">6.</span> <span class="nav-text">Sorted Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ZADD-key-score-member-score-member-score-member-%E2%80%A6"><span class="nav-number">6.1.</span> <span class="nav-text">ZADD key score member [[score member][score member] …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSCORE-key-member"><span class="nav-number">6.2.</span> <span class="nav-text">ZSCORE key member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZINCRBY-key-increment-member"><span class="nav-number">6.3.</span> <span class="nav-text">ZINCRBY key increment member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZCARD-key"><span class="nav-number">6.4.</span> <span class="nav-text">ZCARD key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZCOUNT-key-min-max"><span class="nav-number">6.5.</span> <span class="nav-text">ZCOUNT key min max</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZRANGE-key-start-stop-WITHSCORES"><span class="nav-number">6.6.</span> <span class="nav-text">ZRANGE key start stop [WITHSCORES]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREVRANGE-key-start-stop-WITHSCORES"><span class="nav-number">6.7.</span> <span class="nav-text">ZREVRANGE key start stop [WITHSCORES]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZRANGEBYSCORE-key-min-max-WITHSCORES-LIMIT-offset-count"><span class="nav-number">6.8.</span> <span class="nav-text">ZRANGEBYSCORE key min max [WITHSCORES][LIMIT offset count]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREVRANGEBYSCORE-key-min-max-WITHSCORES-LIMIT-offset-count"><span class="nav-number">6.9.</span> <span class="nav-text">ZREVRANGEBYSCORE key min max [WITHSCORES][LIMIT offset count]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZRANK"><span class="nav-number">6.10.</span> <span class="nav-text">ZRANK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREVRANK"><span class="nav-number">6.11.</span> <span class="nav-text">ZREVRANK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREM"><span class="nav-number">6.12.</span> <span class="nav-text">ZREM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREMRANGEBYRANK"><span class="nav-number">6.13.</span> <span class="nav-text">ZREMRANGEBYRANK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREMRANGEBYSCORE"><span class="nav-number">6.14.</span> <span class="nav-text">ZREMRANGEBYSCORE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZRANGEBYLEX"><span class="nav-number">6.15.</span> <span class="nav-text">ZRANGEBYLEX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZLEXCOUNT"><span class="nav-number">6.16.</span> <span class="nav-text">ZLEXCOUNT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREMRANGEBYLEX"><span class="nav-number">6.17.</span> <span class="nav-text">ZREMRANGEBYLEX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DB"><span class="nav-number">7.</span> <span class="nav-text">DB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EXISTS-key"><span class="nav-number">7.1.</span> <span class="nav-text">EXISTS  key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TYPE-key"><span class="nav-number">7.2.</span> <span class="nav-text">TYPE key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RENAME-key-newkey"><span class="nav-number">7.3.</span> <span class="nav-text">RENAME key newkey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RENAMENX"><span class="nav-number">7.4.</span> <span class="nav-text">RENAMENX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MOVE-key-db"><span class="nav-number">7.5.</span> <span class="nav-text">MOVE key db</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEL-key-key-%E2%80%A6"><span class="nav-number">7.6.</span> <span class="nav-text">DEL key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RANDOMKEY"><span class="nav-number">7.7.</span> <span class="nav-text">RANDOMKEY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBSIZE"><span class="nav-number">7.8.</span> <span class="nav-text">DBSIZE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KEYS-pattern"><span class="nav-number">7.9.</span> <span class="nav-text">KEYS pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SCAN"><span class="nav-number">7.10.</span> <span class="nav-text">SCAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SORT"><span class="nav-number">7.11.</span> <span class="nav-text">SORT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FLUSHDB"><span class="nav-number">7.12.</span> <span class="nav-text">FLUSHDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FLUSHALL"><span class="nav-number">7.13.</span> <span class="nav-text">FLUSHALL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SELECT-index"><span class="nav-number">7.14.</span> <span class="nav-text">SELECT index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OBJECT-ENCODING"><span class="nav-number">7.15.</span> <span class="nav-text">OBJECT ENCODING</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E8%BF%87%E6%9C%9F"><span class="nav-number">8.</span> <span class="nav-text">自动过期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EXPIRE"><span class="nav-number">8.1.</span> <span class="nav-text">EXPIRE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PEXPIRE"><span class="nav-number">8.2.</span> <span class="nav-text">PEXPIRE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXPIREAT"><span class="nav-number">8.3.</span> <span class="nav-text">EXPIREAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PEXPIREAT"><span class="nav-number">8.4.</span> <span class="nav-text">PEXPIREAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PERSIST"><span class="nav-number">8.5.</span> <span class="nav-text">PERSIST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TTL-key"><span class="nav-number">8.6.</span> <span class="nav-text">TTL key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">9.</span> <span class="nav-text">持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SAVE"><span class="nav-number">9.1.</span> <span class="nav-text">SAVE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BGSAVE"><span class="nav-number">9.2.</span> <span class="nav-text">BGSAVE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BGREWRITEAOF"><span class="nav-number">9.3.</span> <span class="nav-text">BGREWRITEAOF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85"><span class="nav-number">10.</span> <span class="nav-text">发布与订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PUBLISH"><span class="nav-number">10.1.</span> <span class="nav-text">PUBLISH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUBSCRIBE"><span class="nav-number">10.2.</span> <span class="nav-text">SUBSCRIBE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">11.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MULTI"><span class="nav-number">11.1.</span> <span class="nav-text">MULTI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXEC"><span class="nav-number">11.2.</span> <span class="nav-text">EXEC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DISCARD"><span class="nav-number">11.3.</span> <span class="nav-text">DISCARD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WATCH"><span class="nav-number">11.4.</span> <span class="nav-text">WATCH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">12.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
 
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">SpringLych</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SpringLych" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SpringLych" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
   </div>
-  <div id="local-search-result"></div>
-</div>
 
 
 
+      </section>
     </div>
-  
-</nav>
+  </aside>
+  <div class="sidebar-dimmer"></div>
 
 
-
-  
-
-
-
-</div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-            
+    <div class="main-inner post posts-expand">
+      
 
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
+      
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+<div class="post-block">
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SpringLi"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SpringLych">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo"/>
+      <meta itemprop="name" content="SpringLych">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Redis常用命令学习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-04-27 14:24:00" itemprop="dateCreated datePublished" datetime="2019-04-27T14:24:00+08:00">2019-04-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-10-17 20:30:30" itemprop="dateModified" datetime="2019-10-17T20:30:30+08:00">2019-10-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+        </span>
     </span>
 
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Redis常用命令学习
-
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-27 14:24:00" itemprop="dateCreated datePublished" datetime="2019-04-27T14:24:00+08:00">2019-04-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-10-17 20:30:30" itemprop="dateModified" datetime="2019-10-17T20:30:30+08:00">2019-10-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+</div>
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         <p> 学习Redis常用命令</p>
 <a id="more"></a>
+
 <h2 id="各个结构常用命令"><a href="#各个结构常用命令" class="headerlink" title="各个结构常用命令"></a>各个结构常用命令</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><ul>
 <li>SET</li>
 <li>GET</li>
@@ -537,7 +327,7 @@
 <p>LPUSHX key value</p>
 </blockquote>
 <p>将值 <code>value</code> 插入到列表 <code>key</code> 的表头，当且仅当 <code>key</code> 存在并且是一个列表。</p>
-<p>和 LPUSH key value [value …] 命令相反，当 <code>key</code> 不存在时， <a href="http://redisdoc.com/list/lpushx.html#lpushx" target="_blank" rel="noopener">LPUSHX</a> 命令什么也不做。</p>
+<p>和 LPUSH key value [value …] 命令相反，当 <code>key</code> 不存在时， <a target="_blank" rel="noopener" href="http://redisdoc.com/list/lpushx.html#lpushx">LPUSHX</a> 命令什么也不做。</p>
 <h3 id="RPUSH"><a href="#RPUSH" class="headerlink" title="RPUSH"></a>RPUSH</h3><blockquote>
 <p>RPUSH key value [value …]</p>
 </blockquote>
@@ -556,7 +346,7 @@
 </blockquote>
 <p>根据count 的值，移除列表中与 value相等的元素  </p>
 <ul>
-<li><code>count &gt; 0</code> : 从表头开始向表尾搜索，移除与 <code>value</code> 相等的元素，数量为 <code>count</code> 。</li>
+<li><code>        count &gt; 0</code> : 从表头开始向表尾搜索，移除与 <code>value</code> 相等的元素，数量为 <code>count</code> 。</li>
 <li><code>count &lt; 0</code> : 从表尾开始向表头搜索，移除与 <code>value</code> 相等的元素，数量为 <code>count</code> 的绝对值。` </li>
 <li><code>count = 0</code> : 移除表中所有与 <code>value</code> 相等的值。</li>
 </ul>
@@ -568,11 +358,11 @@
 <h3 id="LINSERT-key-BEFORE-AFTER-pivot-value"><a href="#LINSERT-key-BEFORE-AFTER-pivot-value" class="headerlink" title="LINSERT key BEFORE|AFTER pivot value"></a>LINSERT key BEFORE|AFTER pivot value</h3><p>将值 <code>value</code> 插入到列表 <code>key</code> 当中，位于值 <code>pivot</code> 之前或之后。当 <code>pivot</code> 不存在于列表 <code>key</code> 时，不执行任何操作。当 <code>key</code> 不存在时， <code>key</code> 被视为空列表，不执行任何操作。</p>
 <h3 id="LSET-key-index-value"><a href="#LSET-key-index-value" class="headerlink" title="LSET key index value"></a>LSET key index value</h3><p>将列表 <code>key</code> 下标为 <code>index</code> 的元素的值设置为 <code>value</code> </p>
 <h3 id="LRANGE-key-start-stop"><a href="#LRANGE-key-start-stop" class="headerlink" title="LRANGE key start stop"></a>LRANGE key start stop</h3><p>返回列表 <code>key</code> 中指定区间内的元素，区间以偏移量 <code>start</code> 和 <code>stop</code> 指定。</p>
-<p> <code>stop</code> 下标也在 <a href="http://redisdoc.com/list/lrange.html#lrange" target="_blank" rel="noopener">LRANGE</a> 命令的取值范围之内(闭区间)</p>
+<p> <code>stop</code> 下标也在 <a target="_blank" rel="noopener" href="http://redisdoc.com/list/lrange.html#lrange">LRANGE</a> 命令的取值范围之内(闭区间)</p>
 <p>超出范围的下标值不会引起错误。</p>
-<p>如果 <code>start</code> 下标比列表的最大下标 <code>end</code> ( <code>LLEN list</code> 减去 <code>1</code> )还要大，那么 <a href="http://redisdoc.com/list/lrange.html#lrange" target="_blank" rel="noopener">LRANGE</a> 返回一个空列表。</p>
+<p>如果 <code>start</code> 下标比列表的最大下标 <code>end</code> ( <code>LLEN list</code> 减去 <code>1</code> )还要大，那么 <a target="_blank" rel="noopener" href="http://redisdoc.com/list/lrange.html#lrange">LRANGE</a> 返回一个空列表。</p>
 <p>如果 <code>stop</code> 下标比 <code>end</code> 下标还要大，Redis将 <code>stop</code> 的值设置为 <code>end</code> 。</p>
-<p>查看key中的所有元素：<code>LRANGE key 0 -1</code></p>
+<p>查看key中的所有元素：<code>LRANGE key 0 -1 </code></p>
 <h3 id="LTRIM-key-start-stop"><a href="#LTRIM-key-start-stop" class="headerlink" title="LTRIM key start stop"></a>LTRIM key start stop</h3><p>对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。</p>
 <blockquote>
 <p>LRANGE fruit 0 -1</p>
@@ -589,7 +379,7 @@
 <h3 id="HLEN-key"><a href="#HLEN-key" class="headerlink" title="HLEN key"></a>HLEN key</h3><h3 id="HSTRLEN-key-field"><a href="#HSTRLEN-key-field" class="headerlink" title="HSTRLEN key field"></a>HSTRLEN key field</h3><p>返回哈希表 <code>key</code> 中， 与给定域 <code>field</code> 相关联的值的字符串长度（string length）。</p>
 <h3 id="HINCRBY-key-field-increment"><a href="#HINCRBY-key-field-increment" class="headerlink" title="HINCRBY key field increment"></a>HINCRBY key field increment</h3><p>哈希表 <code>key</code> 中的域 <code>field</code> 的值加上增量 <code>increment</code> 。</p>
 <p>增量也可以为负数，相当于对给定域进行减法操作。</p>
-<p>如果 <code>key</code> 不存在，一个新的哈希表被创建并执行 <a href="http://redisdoc.com/hash/hincrby.html#hincrby" target="_blank" rel="noopener">HINCRBY</a> 命令。</p>
+<p>如果 <code>key</code> 不存在，一个新的哈希表被创建并执行 <a target="_blank" rel="noopener" href="http://redisdoc.com/hash/hincrby.html#hincrby">HINCRBY</a> 命令。</p>
 <p>如果域 <code>field</code> 不存在，那么在执行命令前，域的值被初始化为 <code>0</code> 。</p>
 <h3 id="HINCRBYFLOAT-key-field-increment"><a href="#HINCRBYFLOAT-key-field-increment" class="headerlink" title="HINCRBYFLOAT key field increment"></a>HINCRBYFLOAT key field increment</h3><p>为哈希表 <code>key</code> 中的域 <code>field</code> 加上浮点数增量 <code>increment</code> 。</p>
 <h3 id="HMSET-key-field-value-field-value-…"><a href="#HMSET-key-field-value-field-value-…" class="headerlink" title="HMSET key field value [field value …]"></a>HMSET key field value [field value …]</h3><p>同时将多个field-value 设置到哈希表中</p>
@@ -608,15 +398,15 @@
 </ul>
 <h3 id="SREM-key-member"><a href="#SREM-key-member" class="headerlink" title="SREM key member"></a>SREM key member</h3><p>移除key中的一个或多个元素，不存在的将被忽略</p>
 <h3 id="SMOVE-source-destination-member"><a href="#SMOVE-source-destination-member" class="headerlink" title="SMOVE source destination member"></a>SMOVE source destination member</h3><p>将 <code>member</code> 元素从 <code>source</code> 集合移动到 <code>destination</code> 集合。</p>
-<p><a href="http://redisdoc.com/set/smove.html#smove" target="_blank" rel="noopener">SMOVE</a> 是原子性操作。</p>
+<p><a target="_blank" rel="noopener" href="http://redisdoc.com/set/smove.html#smove">SMOVE</a> 是原子性操作。</p>
 <h3 id="SCARD-key"><a href="#SCARD-key" class="headerlink" title="SCARD key"></a>SCARD key</h3><p>返回集合元素数量。key不存在，返回0.</p>
 <h3 id="SMEMBERS-key"><a href="#SMEMBERS-key" class="headerlink" title="SMEMBERS key"></a><strong>SMEMBERS</strong> key</h3><p>返回集合 <code>key</code> 中的所有成员。不存在的 <code>key</code> 被视为空集合。</p>
 <h3 id="SINTER-key-key-…"><a href="#SINTER-key-key-…" class="headerlink" title="SINTER key [key …]"></a>SINTER key [key …]</h3><p>返回所有集合的交集成员。</p>
-<h3 id="SINTERSTORE-destination-key-key-…"><a href="#SINTERSTORE-destination-key-key-…" class="headerlink" title="SINTERSTORE destination key [key …]"></a>SINTERSTORE destination key [key …]</h3><p>这个命令类似于 <a href="http://redisdoc.com/set/sinter.html#sinter" target="_blank" rel="noopener">SINTER key [key …]</a> 命令，但它将结果保存到 <code>destination</code> 集合，而不是简单地返回结果集。</p>
+<h3 id="SINTERSTORE-destination-key-key-…"><a href="#SINTERSTORE-destination-key-key-…" class="headerlink" title="SINTERSTORE destination key [key …]"></a>SINTERSTORE destination key [key …]</h3><p>这个命令类似于 [SINTER key <a target="_blank" rel="noopener" href="http://redisdoc.com/set/sinter.html#sinter">key …]</a> 命令，但它将结果保存到 <code>destination</code> 集合，而不是简单地返回结果集。</p>
 <p><code>destination</code> 可以是 <code>key</code> 本身。</p>
 <h3 id="SUNION-key-key-…"><a href="#SUNION-key-key-…" class="headerlink" title="SUNION key [key …]"></a>SUNION key [key …]</h3><p>返回一个集合的全部成员，该集合是所有给定集合的并集。</p>
 <h3 id="SUNIONSTORE-destination-key-key-…"><a href="#SUNIONSTORE-destination-key-key-…" class="headerlink" title="SUNIONSTORE destination key [key …]"></a>SUNIONSTORE destination key [key …]</h3><h3 id="SDIFF"><a href="#SDIFF" class="headerlink" title="SDIFF"></a>SDIFF</h3><p>返回多个集合的差集。返回存在于第一个集合而不在其他集合中的元素</p>
-<h3 id="SDIFFSTORE-destination-key-key-…"><a href="#SDIFFSTORE-destination-key-key-…" class="headerlink" title="SDIFFSTORE destination key [key …]"></a>SDIFFSTORE destination key [key …]</h3><p>这个命令的作用和 <a href="http://redisdoc.com/set/sdiff.html#sdiff" target="_blank" rel="noopener">SDIFF key [key …]</a> 类似，但它将结果保存到 <code>destination</code> 集合，而不是简单地返回结果集。</p>
+<h3 id="SDIFFSTORE-destination-key-key-…"><a href="#SDIFFSTORE-destination-key-key-…" class="headerlink" title="SDIFFSTORE destination key [key …]"></a>SDIFFSTORE destination key [key …]</h3><p>这个命令的作用和 [SDIFF key <a target="_blank" rel="noopener" href="http://redisdoc.com/set/sdiff.html#sdiff">key …]</a> 类似，但它将结果保存到 <code>destination</code> 集合，而不是简单地返回结果集。</p>
 <h2 id="Sorted-Sets"><a href="#Sorted-Sets" class="headerlink" title="Sorted Sets"></a>Sorted Sets</h2><h3 id="ZADD-key-score-member-score-member-score-member-…"><a href="#ZADD-key-score-member-score-member-score-member-…" class="headerlink" title="ZADD key score member [[score member][score member] …]"></a>ZADD key score member [[score member][score member] …]</h3><p>将一个或多个 <code>member</code> 元素及其 <code>score</code> 值加入到有序集 <code>key</code> 当中。</p>
 <p>如果某个 <code>member</code> 已经是有序集的成员，那么更新这个 <code>member</code> 的 <code>score</code> 值，并通过重新插入这个 <code>member</code> 元素，来保证该 <code>member</code> 在正确的位置上。</p>
 <p><code>score</code> 值可以是整数值或双精度浮点数。</p>
@@ -627,7 +417,7 @@
 <h3 id="ZCARD-key"><a href="#ZCARD-key" class="headerlink" title="ZCARD key"></a>ZCARD key</h3><p>返回key的长度</p>
 <h3 id="ZCOUNT-key-min-max"><a href="#ZCOUNT-key-min-max" class="headerlink" title="ZCOUNT key min max"></a>ZCOUNT key min max</h3><p>返回key中score在[min … max]中成员的数量</p>
 <h3 id="ZRANGE-key-start-stop-WITHSCORES"><a href="#ZRANGE-key-start-stop-WITHSCORES" class="headerlink" title="ZRANGE key start stop [WITHSCORES]"></a>ZRANGE key start stop [WITHSCORES]</h3><p>返回key中，指定区间内的成员，成员位置按照score值递增排序；相同score的成员按照字典顺序。</p>
-<p>如果你需要成员按 <code>score</code> 值递减(从大到小)来排列，请使用 ZREVRANGE key start stop <a href="http://redisdoc.com/sorted_set/zrevrange.html#zrevrange" target="_blank" rel="noopener">WITHSCORES]</a> 命令。</p>
+<p>如果你需要成员按 <code>score</code> 值递减(从大到小)来排列，请使用 ZREVRANGE key start stop <a target="_blank" rel="noopener" href="http://redisdoc.com/sorted_set/zrevrange.html#zrevrange">WITHSCORES]</a> 命令。</p>
 <h3 id="ZREVRANGE-key-start-stop-WITHSCORES"><a href="#ZREVRANGE-key-start-stop-WITHSCORES" class="headerlink" title="ZREVRANGE key start stop [WITHSCORES]"></a>ZREVRANGE key start stop [WITHSCORES]</h3><p>和ZRANGE 类似，只不过排序规则变为递减。</p>
 <h3 id="ZRANGEBYSCORE-key-min-max-WITHSCORES-LIMIT-offset-count"><a href="#ZRANGEBYSCORE-key-min-max-WITHSCORES-LIMIT-offset-count" class="headerlink" title="ZRANGEBYSCORE key min max [WITHSCORES][LIMIT offset count]"></a>ZRANGEBYSCORE key min max [WITHSCORES][LIMIT offset count]</h3><p>返回有序集 <code>key</code> 中，所有 <code>score</code> 值介于 <code>min</code> 和 <code>max</code> 之间(包括等于 <code>min</code> 或 <code>max</code> )的成员。有序集成员按 <code>score</code> 值递增(从小到大)次序排列。</p>
 <h3 id="ZREVRANGEBYSCORE-key-min-max-WITHSCORES-LIMIT-offset-count"><a href="#ZREVRANGEBYSCORE-key-min-max-WITHSCORES-LIMIT-offset-count" class="headerlink" title="ZREVRANGEBYSCORE key min max [WITHSCORES][LIMIT offset count]"></a>ZREVRANGEBYSCORE key min max [WITHSCORES][LIMIT offset count]</h3><h3 id="ZRANK"><a href="#ZRANK" class="headerlink" title="ZRANK"></a>ZRANK</h3><p>ZRANK key member</p>
@@ -682,8 +472,8 @@
 <li><code>KEYS h*llo</code> 匹配 <code>hllo</code> 和 <code>heeeeello</code> 等。</li>
 <li><code>KEYS h[ae]llo</code> 匹配 <code>hello</code> 和 <code>hallo</code> ，但不匹配 <code>hillo</code> 。</li>
 </ul>
-<h3 id="SCAN"><a href="#SCAN" class="headerlink" title="SCAN"></a>SCAN</h3><p><a href="http://redisdoc.com/database/scan.html" target="_blank" rel="noopener">redisdoc - SCNA</a></p>
-<h3 id="SORT"><a href="#SORT" class="headerlink" title="SORT"></a>SORT</h3><p><a href="http://redisdoc.com/database/sort.html" target="_blank" rel="noopener">redisdoc - sort</a></p>
+<h3 id="SCAN"><a href="#SCAN" class="headerlink" title="SCAN"></a>SCAN</h3><p><a target="_blank" rel="noopener" href="http://redisdoc.com/database/scan.html">redisdoc - SCNA</a></p>
+<h3 id="SORT"><a href="#SORT" class="headerlink" title="SORT"></a>SORT</h3><p><a target="_blank" rel="noopener" href="http://redisdoc.com/database/sort.html">redisdoc - sort</a></p>
 <h3 id="FLUSHDB"><a href="#FLUSHDB" class="headerlink" title="FLUSHDB"></a>FLUSHDB</h3><p>清空当前数据库。总是返回OK</p>
 <h3 id="FLUSHALL"><a href="#FLUSHALL" class="headerlink" title="FLUSHALL"></a>FLUSHALL</h3><p>清空整个Redis</p>
 <h3 id="SELECT-index"><a href="#SELECT-index" class="headerlink" title="SELECT index"></a>SELECT index</h3><p>切换到指定数据库</p>
@@ -709,11 +499,11 @@
 </blockquote>
 <p>移除key 的生存时间</p>
 <h3 id="TTL-key"><a href="#TTL-key" class="headerlink" title="TTL key"></a>TTL key</h3><p>以秒为单位返回剩余生存时间</p>
-<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="SAVE"><a href="#SAVE" class="headerlink" title="SAVE"></a>SAVE</h3><p><a href="http://redisdoc.com/persistence/save.html#save" target="_blank" rel="noopener">SAVE</a> 命令执行一个同步保存操作，将当前 Redis 实例的所有数据快照(snapshot)以 RDB 文件的形式保存到硬盘。</p>
+<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="SAVE"><a href="#SAVE" class="headerlink" title="SAVE"></a>SAVE</h3><p><a target="_blank" rel="noopener" href="http://redisdoc.com/persistence/save.html#save">SAVE</a> 命令执行一个同步保存操作，将当前 Redis 实例的所有数据快照(snapshot)以 RDB 文件的形式保存到硬盘。</p>
 <p>SAVE会阻塞所有客户端。</p>
 <h3 id="BGSAVE"><a href="#BGSAVE" class="headerlink" title="BGSAVE"></a>BGSAVE</h3><p>在后台异步(Asynchronously)保存当前数据库的数据到磁盘。</p>
-<p><a href="http://redisdoc.com/persistence/bgsave.html#bgsave" target="_blank" rel="noopener">BGSAVE</a> 命令执行之后立即返回 <code>OK</code> ，然后 Redis fork 出一个新子进程，原来的 Redis 进程(父进程)继续处理客户端请求，而子进程则负责将数据保存到磁盘，然后退出。</p>
-<h3 id="BGREWRITEAOF"><a href="#BGREWRITEAOF" class="headerlink" title="BGREWRITEAOF"></a>BGREWRITEAOF</h3><p>执行一个 <a href="http://redis.io/topics/persistence#append-only-file" target="_blank" rel="noopener">AOF文件</a> 重写操作。重写会创建一个当前 AOF 文件的体积优化版本。</p>
+<p><a target="_blank" rel="noopener" href="http://redisdoc.com/persistence/bgsave.html#bgsave">BGSAVE</a> 命令执行之后立即返回 <code>OK</code> ，然后 Redis fork 出一个新子进程，原来的 Redis 进程(父进程)继续处理客户端请求，而子进程则负责将数据保存到磁盘，然后退出。</p>
+<h3 id="BGREWRITEAOF"><a href="#BGREWRITEAOF" class="headerlink" title="BGREWRITEAOF"></a>BGREWRITEAOF</h3><p>执行一个 <a target="_blank" rel="noopener" href="http://redis.io/topics/persistence#append-only-file">AOF文件</a> 重写操作。重写会创建一个当前 AOF 文件的体积优化版本。</p>
 <h2 id="发布与订阅"><a href="#发布与订阅" class="headerlink" title="发布与订阅"></a>发布与订阅</h2><h3 id="PUBLISH"><a href="#PUBLISH" class="headerlink" title="PUBLISH"></a>PUBLISH</h3><blockquote>
 <p>PUBLISH channel message</p>
 </blockquote>
@@ -723,793 +513,115 @@
 </blockquote>
 <p>订阅给定的一个或多个频道的信息。</p>
 <h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><h3 id="MULTI"><a href="#MULTI" class="headerlink" title="MULTI"></a>MULTI</h3><p>标记一个事务块的开始。</p>
-<p>事务块内的多条命令会按照先后顺序被放进一个队列当中，最后由 <a href="http://redisdoc.com/transaction/exec.html#exec" target="_blank" rel="noopener">EXEC</a> 命令原子性(atomic)地执行。</p>
+<p>事务块内的多条命令会按照先后顺序被放进一个队列当中，最后由 <a target="_blank" rel="noopener" href="http://redisdoc.com/transaction/exec.html#exec">EXEC</a> 命令原子性(atomic)地执行。</p>
 <h3 id="EXEC"><a href="#EXEC" class="headerlink" title="EXEC"></a>EXEC</h3><p>执行所有事务块内的命令。</p>
 <h3 id="DISCARD"><a href="#DISCARD" class="headerlink" title="DISCARD"></a>DISCARD</h3><p>取消事务</p>
 <h3 id="WATCH"><a href="#WATCH" class="headerlink" title="WATCH"></a>WATCH</h3><p>监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://redisdoc.com/" target="_blank" rel="noopener">redisdoc</a></li>
-<li><a href="https://redis.io/commands" target="_blank" rel="noopener">redis-commands</a></li>
+<li><a target="_blank" rel="noopener" href="http://redisdoc.com/">redisdoc</a></li>
+<li><a target="_blank" rel="noopener" href="https://redis.io/commands">redis-commands</a></li>
 </ul>
 
-      
     </div>
 
     
-
     
-    
-    
-
-    
-
-    
-      
-    
-    
-
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Redis/" rel="tag"># Redis</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/04/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E5%9E%8B/" rel="next" title="设计模式-结构型">
-                <i class="fa fa-chevron-left"></i> 设计模式-结构型
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/09/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0-%E7%AC%94%E8%AE%B0/" rel="prev" title="Redis设计与实现-笔记">
-                Redis设计与实现-笔记 <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/04/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E5%9E%8B/" rel="prev" title="设计模式-结构型">
+                  <i class="fa fa-chevron-left"></i> 设计模式-结构型
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/05/09/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0-%E7%AC%94%E8%AE%B0/" rel="next" title="Redis设计与实现-笔记">
+                  Redis设计与实现-笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
-  </div>
-  
-  
-  
   </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">SpringLi</p>
-              <div class="site-description motion-element" itemprop="description"></div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/%20%7C%7C%20archive">
-                
-                    <span class="site-state-item-count">37</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/%20%7C%7C%20th">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">15</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/%20%7C%7C%20tags">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">25</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/SpringLych" title="GitHub &rarr; https://github.com/SpringLych" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                友情链接
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://blog.yangk.cc/" title="http://blog.yangk.cc/" rel="noopener" target="_blank">YangK</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#各个结构常用命令"><span class="nav-number">1.</span> <span class="nav-text">各个结构常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">1.2.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合"><span class="nav-number">1.3.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#散列"><span class="nav-number">1.4.</span> <span class="nav-text">散列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-1"><span class="nav-number">2.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SET"><span class="nav-number">2.1.</span> <span class="nav-text">SET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET"><span class="nav-number">2.2.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GETSET"><span class="nav-number">2.3.</span> <span class="nav-text">GETSET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STRLEN-key"><span class="nav-number">2.4.</span> <span class="nav-text">STRLEN key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APPEND"><span class="nav-number">2.5.</span> <span class="nav-text">APPEND</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SETRANGE"><span class="nav-number">2.6.</span> <span class="nav-text">SETRANGE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GETRANGE"><span class="nav-number">2.7.</span> <span class="nav-text">GETRANGE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INCR"><span class="nav-number">2.8.</span> <span class="nav-text">INCR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INCRBY"><span class="nav-number">2.9.</span> <span class="nav-text">INCRBY</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LPUSH"><span class="nav-number">3.1.</span> <span class="nav-text">LPUSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LPUSHX"><span class="nav-number">3.2.</span> <span class="nav-text">LPUSHX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPUSH"><span class="nav-number">3.3.</span> <span class="nav-text">RPUSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LPOP"><span class="nav-number">3.4.</span> <span class="nav-text">LPOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPOP"><span class="nav-number">3.5.</span> <span class="nav-text">RPOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPOPLPUSH"><span class="nav-number">3.6.</span> <span class="nav-text">RPOPLPUSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LREM"><span class="nav-number">3.7.</span> <span class="nav-text">LREM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LLEN"><span class="nav-number">3.8.</span> <span class="nav-text">LLEN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINDEX-key-index"><span class="nav-number">3.9.</span> <span class="nav-text">LINDEX key index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINSERT-key-BEFORE-AFTER-pivot-value"><span class="nav-number">3.10.</span> <span class="nav-text">LINSERT key BEFORE|AFTER pivot value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSET-key-index-value"><span class="nav-number">3.11.</span> <span class="nav-text">LSET key index value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LRANGE-key-start-stop"><span class="nav-number">3.12.</span> <span class="nav-text">LRANGE key start stop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LTRIM-key-start-stop"><span class="nav-number">3.13.</span> <span class="nav-text">LTRIM key start stop</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">4.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HSET-hash-field-value"><span class="nav-number">4.1.</span> <span class="nav-text">HSET hash field value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HSETNX-hash-field-value"><span class="nav-number">4.2.</span> <span class="nav-text">HSETNX hash field value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HGET-hash-field"><span class="nav-number">4.3.</span> <span class="nav-text">HGET hash field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEXISTS-hash-field"><span class="nav-number">4.4.</span> <span class="nav-text">HEXISTS hash field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDEL-key-field-field-…"><span class="nav-number">4.5.</span> <span class="nav-text">HDEL key field [field …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HLEN-key"><span class="nav-number">4.6.</span> <span class="nav-text">HLEN key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HSTRLEN-key-field"><span class="nav-number">4.7.</span> <span class="nav-text">HSTRLEN key field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINCRBY-key-field-increment"><span class="nav-number">4.8.</span> <span class="nav-text">HINCRBY key field increment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINCRBYFLOAT-key-field-increment"><span class="nav-number">4.9.</span> <span class="nav-text">HINCRBYFLOAT key field increment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HMSET-key-field-value-field-value-…"><span class="nav-number">4.10.</span> <span class="nav-text">HMSET key field value [field value …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HMGET-key-field-field-…"><span class="nav-number">4.11.</span> <span class="nav-text">HMGET key field [field …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HKEYS-key"><span class="nav-number">4.12.</span> <span class="nav-text">HKEYS key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HVALS-key"><span class="nav-number">4.13.</span> <span class="nav-text">HVALS key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HGETALL-key"><span class="nav-number">4.14.</span> <span class="nav-text">HGETALL key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sets"><span class="nav-number">5.</span> <span class="nav-text">Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SADD-key-member-member-…"><span class="nav-number">5.1.</span> <span class="nav-text">SADD key member [member …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SISMEMBER-key-member"><span class="nav-number">5.2.</span> <span class="nav-text">SISMEMBER key member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPOP-key"><span class="nav-number">5.3.</span> <span class="nav-text">SPOP key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SRANDMEMBER-key-count"><span class="nav-number">5.4.</span> <span class="nav-text">SRANDMEMBER key [count]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SREM-key-member"><span class="nav-number">5.5.</span> <span class="nav-text">SREM key member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOVE-source-destination-member"><span class="nav-number">5.6.</span> <span class="nav-text">SMOVE source destination member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SCARD-key"><span class="nav-number">5.7.</span> <span class="nav-text">SCARD key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMEMBERS-key"><span class="nav-number">5.8.</span> <span class="nav-text">SMEMBERS key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SINTER-key-key-…"><span class="nav-number">5.9.</span> <span class="nav-text">SINTER key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SINTERSTORE-destination-key-key-…"><span class="nav-number">5.10.</span> <span class="nav-text">SINTERSTORE destination key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUNION-key-key-…"><span class="nav-number">5.11.</span> <span class="nav-text">SUNION key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUNIONSTORE-destination-key-key-…"><span class="nav-number">5.12.</span> <span class="nav-text">SUNIONSTORE destination key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDIFF"><span class="nav-number">5.13.</span> <span class="nav-text">SDIFF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDIFFSTORE-destination-key-key-…"><span class="nav-number">5.14.</span> <span class="nav-text">SDIFFSTORE destination key [key …]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorted-Sets"><span class="nav-number">6.</span> <span class="nav-text">Sorted Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ZADD-key-score-member-score-member-score-member-…"><span class="nav-number">6.1.</span> <span class="nav-text">ZADD key score member [[score member][score member] …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSCORE-key-member"><span class="nav-number">6.2.</span> <span class="nav-text">ZSCORE key member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZINCRBY-key-increment-member"><span class="nav-number">6.3.</span> <span class="nav-text">ZINCRBY key increment member</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZCARD-key"><span class="nav-number">6.4.</span> <span class="nav-text">ZCARD key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZCOUNT-key-min-max"><span class="nav-number">6.5.</span> <span class="nav-text">ZCOUNT key min max</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZRANGE-key-start-stop-WITHSCORES"><span class="nav-number">6.6.</span> <span class="nav-text">ZRANGE key start stop [WITHSCORES]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREVRANGE-key-start-stop-WITHSCORES"><span class="nav-number">6.7.</span> <span class="nav-text">ZREVRANGE key start stop [WITHSCORES]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZRANGEBYSCORE-key-min-max-WITHSCORES-LIMIT-offset-count"><span class="nav-number">6.8.</span> <span class="nav-text">ZRANGEBYSCORE key min max [WITHSCORES][LIMIT offset count]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREVRANGEBYSCORE-key-min-max-WITHSCORES-LIMIT-offset-count"><span class="nav-number">6.9.</span> <span class="nav-text">ZREVRANGEBYSCORE key min max [WITHSCORES][LIMIT offset count]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZRANK"><span class="nav-number">6.10.</span> <span class="nav-text">ZRANK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREVRANK"><span class="nav-number">6.11.</span> <span class="nav-text">ZREVRANK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREM"><span class="nav-number">6.12.</span> <span class="nav-text">ZREM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREMRANGEBYRANK"><span class="nav-number">6.13.</span> <span class="nav-text">ZREMRANGEBYRANK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREMRANGEBYSCORE"><span class="nav-number">6.14.</span> <span class="nav-text">ZREMRANGEBYSCORE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZRANGEBYLEX"><span class="nav-number">6.15.</span> <span class="nav-text">ZRANGEBYLEX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZLEXCOUNT"><span class="nav-number">6.16.</span> <span class="nav-text">ZLEXCOUNT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZREMRANGEBYLEX"><span class="nav-number">6.17.</span> <span class="nav-text">ZREMRANGEBYLEX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DB"><span class="nav-number">7.</span> <span class="nav-text">DB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EXISTS-key"><span class="nav-number">7.1.</span> <span class="nav-text">EXISTS  key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TYPE-key"><span class="nav-number">7.2.</span> <span class="nav-text">TYPE key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RENAME-key-newkey"><span class="nav-number">7.3.</span> <span class="nav-text">RENAME key newkey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RENAMENX"><span class="nav-number">7.4.</span> <span class="nav-text">RENAMENX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MOVE-key-db"><span class="nav-number">7.5.</span> <span class="nav-text">MOVE key db</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEL-key-key-…"><span class="nav-number">7.6.</span> <span class="nav-text">DEL key [key …]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RANDOMKEY"><span class="nav-number">7.7.</span> <span class="nav-text">RANDOMKEY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBSIZE"><span class="nav-number">7.8.</span> <span class="nav-text">DBSIZE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KEYS-pattern"><span class="nav-number">7.9.</span> <span class="nav-text">KEYS pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SCAN"><span class="nav-number">7.10.</span> <span class="nav-text">SCAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SORT"><span class="nav-number">7.11.</span> <span class="nav-text">SORT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FLUSHDB"><span class="nav-number">7.12.</span> <span class="nav-text">FLUSHDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FLUSHALL"><span class="nav-number">7.13.</span> <span class="nav-text">FLUSHALL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SELECT-index"><span class="nav-number">7.14.</span> <span class="nav-text">SELECT index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OBJECT-ENCODING"><span class="nav-number">7.15.</span> <span class="nav-text">OBJECT ENCODING</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动过期"><span class="nav-number">8.</span> <span class="nav-text">自动过期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EXPIRE"><span class="nav-number">8.1.</span> <span class="nav-text">EXPIRE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PEXPIRE"><span class="nav-number">8.2.</span> <span class="nav-text">PEXPIRE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXPIREAT"><span class="nav-number">8.3.</span> <span class="nav-text">EXPIREAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PEXPIREAT"><span class="nav-number">8.4.</span> <span class="nav-text">PEXPIREAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PERSIST"><span class="nav-number">8.5.</span> <span class="nav-text">PERSIST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TTL-key"><span class="nav-number">8.6.</span> <span class="nav-text">TTL key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化"><span class="nav-number">9.</span> <span class="nav-text">持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SAVE"><span class="nav-number">9.1.</span> <span class="nav-text">SAVE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BGSAVE"><span class="nav-number">9.2.</span> <span class="nav-text">BGSAVE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BGREWRITEAOF"><span class="nav-number">9.3.</span> <span class="nav-text">BGREWRITEAOF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布与订阅"><span class="nav-number">10.</span> <span class="nav-text">发布与订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PUBLISH"><span class="nav-number">10.1.</span> <span class="nav-text">PUBLISH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUBSCRIBE"><span class="nav-number">10.2.</span> <span class="nav-text">SUBSCRIBE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">11.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MULTI"><span class="nav-number">11.1.</span> <span class="nav-text">MULTI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXEC"><span class="nav-number">11.2.</span> <span class="nav-text">EXEC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DISCARD"><span class="nav-number">11.3.</span> <span class="nav-text">DISCARD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WATCH"><span class="nav-number">11.4.</span> <span class="nav-text">WATCH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">12.</span> <span class="nav-text">参考</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">SpringLi</span>
-
-  
-
-  
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
-
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/affix.js?v=7.0.1"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
-
-
-
-  
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
-
-  
-
-
-  <script src="/js/src/next-boot.js?v=7.0.1"></script>
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
       
 
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
     }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
       }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
-  </script>
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SpringLych</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1517,27 +629,12 @@
 
   
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
-
-  
 
   
 
