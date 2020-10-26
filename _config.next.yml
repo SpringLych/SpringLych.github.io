@@ -164,7 +164,8 @@ links_settings:
   layout: block
 
 links:
-  #Title: https://example.com
+  zhaoshier: https://zhaoshier.top/
+  lynnwutong: https://www.lynnwutong.top/
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
