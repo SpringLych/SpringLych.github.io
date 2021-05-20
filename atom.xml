@@ -1,1 +1,165 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">SpringLych</title><subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle><updated>2021-05-19T16:01:58+00:00</updated><id>https://example.com/</id><link rel="alternate" type="text/html" href="https://example.com/"/><link rel="self" type="application/atom+xml" href="https://example.com/atom.xml"/><author><name>SpringLych</name><uri>https://example.com/</uri></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.83.1">Hugo</generator></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">SpringLych</title><subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle><updated>2021-05-20T13:30:00+00:00</updated><id>https://example.com/</id><link rel="alternate" type="text/html" href="https://example.com/"/><link rel="self" type="application/atom+xml" href="https://example.com/atom.xml"/><author><name>SpringLych</name><uri>https://example.com/</uri></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.83.1">Hugo</generator><entry><title type="text">从Hexo到Hugo</title><link rel="alternate" type="text/html" href="https://example.com/post/%E4%BB%8Ehexo%E5%88%B0hugo/"/><id>https://example.com/post/%E4%BB%8Ehexo%E5%88%B0hugo/</id><updated>2021-05-20T13:29:58+00:00</updated><published>2021-05-20T19:55:27+08:00</published><author><name>SpringLych</name><uri>https://example.com/</uri></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">​ 自去年某个节点后，博客几乎没有更新过，一个重要原因是，当时接触到了语雀，之前的博客……</summary><content type="html">&lt;p>​ 自去年某个节点后，博客几乎没有更新过，一个重要原因是，当时接触到了语雀，之前的博客也基本是承担了作为笔记的功能。相比于 Hexo，语雀更适合作为笔记：方便同步，有 Windows 和 Mac 客户端；方便记录，只需打开应用，记录即可。而 Hexo 则要麻烦的多：不仅多端同步是个问题，记录笔记的过程也略显复杂。因此，语雀成为了那段时间的主力工具。&lt;/p>
+&lt;p>​ 在这段时间里，趁着空闲时间学习了下 Go 语言，看好其在云领域的发展。学习中也了解到基于使用 Go 语言编写的 Hugo 框架，由于不太喜欢基于 Node 的 Hexo 所使用的包管理方式，便有了本文的迁移之旅。&lt;/p>
+&lt;h2 id="为什么拥抱-hugo">为什么拥抱 Hugo&lt;/h2>
+&lt;p>从 Hexo 转向 Hugo 有以下一些原因：&lt;/p>
+&lt;ol>
+&lt;li>对于 Go 语言本身的兴趣。如前所述，看好其未来的发展。同时逐渐将 Go 语言作为我的第二语言，因此尝试。&lt;/li>
+&lt;li>Hexo 自身的臃肿。Hexo 基于 Node 开发，Node 使用 npm 这种包管理方式，我个人不太喜欢这种包管理方式，不同的项目要单独下载一堆依赖，安装一个 Hexo 友要下载一堆 node_modules 依赖。相比于 Java 的 Maven，Python 的 pip 所使用的本地仓库，这种方式过于臃肿。而使用 Hugo 就很简洁，只需一个可执行文件。&lt;/li>
+&lt;li>编译速度。Hexo 不支持增量构建，编译时间略长，这一点从我编译之前的二三十篇博客就能感觉出来。得益于 Go 语言，Hugo 号称编译速度最快的博客，值得尝试。&lt;/li>
+&lt;/ol>
+&lt;p>以上就是本次迁移的主要原因。当然 Hexo 也属于它的优点，因为使用 Node 开发，前端用户很多，因此有很多漂亮实用的主题，例如流行最广的 next ；相比之下 Hugo 的主题虽然也不少，论美观程度，大部分是不如 Hexo 的。&lt;/p>
+&lt;h2 id="安装与配置-hugo">安装与配置 Hugo&lt;/h2>
+&lt;h3 id="安装-hugo">安装 Hugo&lt;/h3>
+&lt;p>使用 Go 语言开发的 Hugo 打包后是一个可执行文件，只需要下载该执行文件即可。我使用的系统为 Windows，并且已经安装过 Scoop，使用 Scoop 安装非常简单：&lt;/p>
+&lt;blockquote>
+&lt;p>scoop install hugo-extend&lt;/p>
+&lt;/blockquote>
+&lt;p>安装版本为 extend 版，以便于主题的安装。&lt;/p>
+&lt;h3 id="创建博客">创建博客&lt;/h3>
+&lt;p>安装完成后，开始创建博客站点。在任意目录执行一下命令即可创建一个博客站点&lt;/p>
+&lt;blockquote>
+&lt;p>hugo new site&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="安装主题">安装主题&lt;/h3>
+&lt;p>Hugo 自身不带任何主题，需要自己安装。我使用的主题是 &lt;a href="https://github.com/reuixiy/hugo-theme-meme">MemE&lt;/a> , 原因是：&lt;/p>
+&lt;ul>
+&lt;li>关注过作者一段时间，比较有想法&lt;/li>
+&lt;li>主题简洁，专注于博客本身&lt;/li>
+&lt;li>支持夜间模式&lt;/li>
+&lt;/ul>
+&lt;p>该主题文档可在 &lt;a href="https://io-oi.me/tech/documentation-of-hugo-theme-meme/#meme">这里&lt;/a> 找到。&lt;/p>
+&lt;p>进入到 博客文件夹，使用 git 方式安装：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">git init
+git submodule add --depth &lt;span class="m">1&lt;/span> https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>之后进行一些基础配置即可开始使用&lt;/p>
+&lt;h2 id="博客结构">博客结构&lt;/h2>
+&lt;p>博客采用的是 page-bundel 模式，即在 &lt;code>content/post&lt;/code> 目录下新建文件夹，文件夹名字为博客名称，博客内容在 &lt;code>index.md&lt;/code> 中，图片放在与 &lt;code>idnex.md&lt;/code> 同级的 &lt;code>img&lt;/code> 文件夹中。这样的好处是，博客和图片在同一个文件夹中，便于管理。&lt;/p>
+&lt;p>平时也使用 Typora 写作，在 &lt;code>偏好设置-&amp;gt;图像 &lt;/code> 中设置 插入图片时 - 复制到指定路径 指定&lt;code>./img/&lt;/code> ，之后粘贴图片，Typora 会自动将图片复制到 img 文件夹。&lt;/p>
+&lt;h2 id="部署至github">部署至Github&lt;/h2>
+&lt;h3 id="配置-github-page">配置 Github Page&lt;/h3>
+&lt;p>部署到 Github Page 过程和部署 Hexo 类似，我是直接利用之前 Hexo 博客的仓库，因此相当于跳过了该步骤。&lt;/p>
+&lt;h3 id="通过-github-action-自动部署">通过 GIthub Action 自动部署&lt;/h3>
+&lt;p>Hexo 生成静态网页后可以直接部署到 Github Page，但是 Hugo 目前没有这样的功能，好在 Github 提供了 Action 这一功能，借助该功能，可以在推送博客源码到 Github 时自动生成静态网页并推送到 Page 仓库。&lt;/p>
+&lt;p>首先我准备了两个仓库：一个用来存放博客源码，称之为博客仓库；另一个就是之前的 hexo 静态网页仓库，也是存放 Hugo 生成的静态网页的仓库，称之为网页仓库。&lt;/p>
+&lt;p>Github 有很多 Action 项目，选择其中一个脚本配置即可，过程如下：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>在博客文件夹中添加 &lt;code>.github/workflow/build.yml&lt;/code> 文件，内容如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">generate hugo site&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="nt">on&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">push&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">branches&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="l">master &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 每次推送到 master 分支都会触发部署任务&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="nt">jobs&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 部署任务&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">deploy&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">runs-on&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ubuntu-latest&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">steps&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">actions/checkout@v2&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">submodules&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># Fetch Hugo themes (true OR recursive)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">fetch-depth&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># Fetch all history for .GitInfo and .Lastmod&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 使用 hugo&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Setup Hugo&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">peaceiris/actions-hugo@v2&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">hugo-version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;latest&amp;#39;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">extended&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># hugo 生成静态文件&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Build&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">run&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">hugo --minify&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 压缩支持的html&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 部署至 page 仓库&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Deploy&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">peaceiris/actions-gh-pages@v3&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">deploy_key&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">${{ secrets.ACTIONS_DEPLOY_KEY }}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">external_repository&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">SpringLych/SpringLych.github.io &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># page仓库&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">publish_branch&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">master&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">publish_dir&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">./public&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>workflow&lt;/code> 基于项目仓库运行，build添加了一些注释。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>本地生成 SSH 部署密钥：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">ssh-keygen -t rsa -b &lt;span class="m">4096&lt;/span> -C &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>git config user.email&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -f gh-pages -N &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>之后会生成公钥和私钥，将其内容分别复制添加：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>公钥 -&amp;gt; 项目源码仓库 -&amp;gt; Settings -&amp;gt; Deploy key -&amp;gt; add deply key。&lt;/p>
+&lt;p>勾选Allow write access。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>私钥 -&amp;gt; 博客静态仓库 -&amp;gt; Settings -&amp;gt; Secretes -&amp;gt; ACTIONS_DEPLOY_KEY&lt;/p>
+&lt;p>Name 为 上述 build.yaml 文件中的 ACTIONS_DEPLOY_KEY&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>推送至Github&lt;/p>
+&lt;p>推送项目源码至 Github，Action 会自动构建和部署。之后打开博客页面，能看到部署好的博客。Action 构建成功如下：&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="img/image-20210520212211186.png" alt="image-20210520212211186">&lt;/p>
+&lt;h3 id="参考">参考&lt;/h3>
+&lt;p>使用 Github Action 部分参考一下：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://io-oi.me/tech/deploy-hugo-to-github-pages-via-github-actions/">使用 GitHub Actions 部署 Hugo 博客到 GitHub Pages&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.waynerv.com/posts/setup-blog-with-hugo-and-github-pages/">使用 Hugo 和 GitHub Pages 部署个人博客&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="体验">体验&lt;/h2>
+&lt;p>使用 Hugo + Github Action 简化了博客部署流程，添加或修改文章推送后即可自动发布，甚至在一台新的电脑上构建博客也很方便：安装 Hugo -&amp;gt; 从 Github clone 博客源码 -&amp;gt; 编写发布。整个流程极大地节省了时间和精力。&lt;/p></content></entry></feed>
