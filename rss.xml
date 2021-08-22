@@ -1,4 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>SpringLych</title><link>https://SpringLych.github.io/</link><description>MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</description><generator>Hugo 0.87.0 https://gohugo.io/</generator><language>zh-CN</language><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 22 Aug 2021 09:39:51 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://SpringLych.github.io/rss.xml"/><item><title>从Hexo到Hugo</title><link>https://SpringLych.github.io/post/%E4%BB%8Ehexo%E5%88%B0hugo/</link><guid isPermaLink="true">https://SpringLych.github.io/post/%E4%BB%8Ehexo%E5%88%B0hugo/</guid><pubDate>Thu, 20 May 2021 19:55:27 +0800</pubDate><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>​ 自去年某个节点后，博客几乎没有更新过，一个重要原因是，当时接触到了语雀，之前的博客也基本是承担了作为笔记的功能。相比于 Hexo，语雀更适合作为笔记：方便同步，有 Windows 和 Mac 客户端；方便记录，只需打开应用，记录即可。而 Hexo 则要麻烦的多：不仅多端同步是个问题，记录笔记的过程也略显复杂。因此，语雀成为了那段时间的主力工具。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>SpringLych</title><link>https://SpringLych.github.io/</link><description>MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</description><generator>Hugo 0.87.0 https://gohugo.io/</generator><language>zh-CN</language><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 22 Aug 2021 09:41:52 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://SpringLych.github.io/rss.xml"/><item><title>工作中使用技术总结</title><link>https://SpringLych.github.io/post/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</link><guid isPermaLink="true">https://SpringLych.github.io/post/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</guid><pubDate>Sun, 22 Aug 2021 17:06:37 +0800</pubDate><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>本篇文章总结下在工作中使用到的技术。&lt;/p>
+&lt;h2 id="异步">异步&lt;/h2>
+&lt;p>异步的使用场景在调用某个接口时，需要同步修改其他信息，而其他信息的返回结果是不关心的，使用异步来处理，提高接口的相应速度。&lt;/p>
+&lt;p>在 Spring Boot 中，可以使用 &lt;code>@Async&lt;/code> 注解很方便地使用异步。使用步骤如下&lt;/p>
+&lt;ol>
+&lt;li>配置开启异步，指定线程池（可选）&lt;/li>
+&lt;/ol>
+&lt;p>在配置类中添加 &lt;code>@EnableAsync&lt;/code> 即可配置异步。同时手动构造一个线程池，用来执行异步任务&lt;/p>
+&lt;pre>&lt;code>@Configuration
+@EnableAsync
+public class ThreadPoolConfig {
+private static final int CORE_NUM = Runtime.getRuntime().availableProcessors();
+@Bean(&amp;quot;consumerThreadPool&amp;quot;)
+public ExecutorService buildThreadPool() {
+ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat(&amp;quot;consumer-thread-%d&amp;quot;).build();
+ExecutorService threadPool = new ThreadPoolExecutor(CORE_NUM, CORE_NUM * 2, 10L,
+TimeUnit.SECONDS, new ArrayBlockingQueue&amp;lt;&amp;gt;(10), threadFactory,
+new ThreadPoolExecutor.AbortPolicy());
+return threadPool;
+}
+}
+&lt;/code>&lt;/pre>&lt;ol start="2">
+&lt;li>使用异步&lt;/li>
+&lt;/ol>
+&lt;p>使用时，在需要异步的方法上加 &lt;code>@Async&lt;/code> 注解。如果需要使用自定义的线程池，使用 &lt;code>@Async(&amp;quot;指定的线程池Bean&amp;quot;)&lt;/code>&lt;/p>
+&lt;p>需要注意，在 Spring Boot中，使用 &lt;code>@Async&lt;/code> 有两个限制：&lt;/p>
+&lt;ul>
+&lt;li>方法必须使用 public&lt;/li>
+&lt;li>不能在同一个类中调用 含有&lt;code>@Async&lt;/code> 注解的方法，会导致注解失效&lt;/li>
+&lt;/ul>
+&lt;p>原因在于：Spring 扫描 bean 会扫描该类方法是否含有 &lt;code>@Async&lt;/code> 注解，如果包含，生成一个代理类，利用 apo 为这些方法加上异步逻辑。如果这个异步方法在同一个类中被调用，该方法没有通过异步的代理类，而是由该类的代理，因此没有异步执行逻辑。&lt;/p>
+&lt;p>即调用方和被调用方是在同一个类中，是无法产生切面的，该对象没有被Spring容器管理&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.cnblogs.com/sueyyyy/p/14212953.html">springboot使用@Async注解时异步方法不生效原因分析及解决方案&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>正确的写法如下：在另一个类中维护异步方法&lt;/p>
+&lt;pre>&lt;code>public interface FileCommonService {
+@Async(&amp;quot;consumerThreadPool&amp;quot;)
+void deleteFileByIdAsync(String fileId);
+}
+public class FileCommonServiceImpl implements FileCommonService {
+// ...
+}
+&lt;/code>&lt;/pre>&lt;h2 id="线程池">线程池&lt;/h2>
+&lt;p>todo&lt;/p>
+&lt;h2 id="分布式锁">分布式锁&lt;/h2>
+&lt;p>在维护另一个同事的功能时有这样一个场景：进入某个页面时，需要对另一个页面的数据进行汇总、计算展示，接口流程大致如下：&lt;/p>
+&lt;ol>
+&lt;li>在页面 A 进行数据的添加、删除、编辑的操作，数据变更时维护一个Redis key，标记数据有变更&lt;/li>
+&lt;li>进入汇总页面 B，读取 Redis 中的key，判断是否需要进行数据的汇总等操作，不需要就返回数据&lt;/li>
+&lt;li>需要重新汇总数据，读取 A 的数据，根据相关逻辑将 A 中的数据进行计算，添加到 B 表中进行添加、删除等操作&lt;/li>
+&lt;li>汇总数据完成，删除 Redis 中的key。&lt;/li>
+&lt;/ol>
+&lt;p>可以发现，2、3是一个耗时操作，以上过程在并发环境存在一个明显的问题：并发场景下，线程1调用接口，读取 Redis（步骤1），进行数据汇总（2、3）；此时另一个线程 B 调用接口，读取 Redis，此时 线程1还在处理数据，没有删除 Redis 中的标记，因此同样进入数据汇总（2、3）...在第一个线程未删除 Redis 中的标记时，其他线程也会汇总数据，便会在数据库中产生重复数据。&lt;/p>
+&lt;p>因此，解决思路应该是：添加一个锁。第一个获取到Redis key 的线程获取到一个锁，并且只有获取到锁的线程能够汇总数据。锁被获取后，其他线程获取不到锁，不进行数据汇总。我们使用的是微服务架构，可能在多台机器上部署，因此，使用线程锁是不行的，必须使用分布式锁。&lt;/p>
+&lt;p>分布式锁的主要实现有几种流行方案：Redis 、zk。我们的项目没有使用 zk，因此，使用 Redis 是一种不错的方案。&lt;/p>
+&lt;h3 id="基于-redis-的分布式锁">基于 Redis 的分布式锁&lt;/h3>
+&lt;p>关于 Redis 的分布式锁网上有很多，包括各种解决方案、存在的问题、集群部署存在的问题等。简单阐述一下：&lt;/p>
+&lt;ul>
+&lt;li>锁在集群部署下出现的问题。我们的 Redis 使用的是单机部署，可以暂时不考虑&lt;/li>
+&lt;li>使用 redission 完成分布式锁，redisson 足够强大，锁过期、原子性等问题都以解决&lt;/li>
+&lt;/ul>
+&lt;p>最后的实现：&lt;/p>
+&lt;ol>
+&lt;li>首先获取 Redis 锁，然后读取标记判断是否需要添加数据&lt;/li>
+&lt;li>获取到Redis 且需要添加数据，才添加数据。分布式锁同一时间只能有一个线程持有，因此其他线程不添加数据&lt;/li>
+&lt;li>添加数据完成，修改标记，删除锁。&lt;/li>
+&lt;li>此时如果其他线程获取到了锁，标记已经修改，同样不添加数据。&lt;/li>
+&lt;/ol>
+&lt;h2 id="参考">参考&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://cloud.tencent.com/developer/article/1426027">深入理解Spring系列之十五：@Async实现原理&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://stackoverflow.com/questions/40042505/async-in-spring-doesnt-work-in-service-class">@Async in Spring doesn't work in Service class?&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://blog.csdn.net/hguisu/article/details/106671893">Spring Boot(5) @Async异步线程池详解&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://kaito-kidd.com/2021/06/08/is-redis-distributed-lock-really-safe/">深度剖析：Redis分布式锁到底安全吗？看完这篇文章彻底懂了！&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>从Hexo到Hugo</title><link>https://SpringLych.github.io/post/%E4%BB%8Ehexo%E5%88%B0hugo/</link><guid isPermaLink="true">https://SpringLych.github.io/post/%E4%BB%8Ehexo%E5%88%B0hugo/</guid><pubDate>Thu, 20 May 2021 19:55:27 +0800</pubDate><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>​ 自去年某个节点后，博客几乎没有更新过，一个重要原因是，当时接触到了语雀，之前的博客也基本是承担了作为笔记的功能。相比于 Hexo，语雀更适合作为笔记：方便同步，有 Windows 和 Mac 客户端；方便记录，只需打开应用，记录即可。而 Hexo 则要麻烦的多：不仅多端同步是个问题，记录笔记的过程也略显复杂。因此，语雀成为了那段时间的主力工具。&lt;/p>
 &lt;p>​ 在这段时间里，趁着空闲时间学习了下 Go 语言，看好其在云领域的发展。学习中也了解到基于使用 Go 语言编写的 Hugo 框架，由于不太喜欢基于 Node 的 Hexo 所使用的包管理方式，便有了本文的迁移之旅。&lt;/p>
 &lt;h2 id="为什么拥抱-hugo">为什么拥抱 Hugo&lt;/h2>
 &lt;p>从 Hexo 转向 Hugo 有以下一些原因：&lt;/p>
