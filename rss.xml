@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>SpringLych</title><link>https://SpringLych.github.io/</link><description>MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</description><generator>Hugo 0.87.0 https://gohugo.io/</generator><language>zh-CN</language><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 22 Aug 2021 09:41:52 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://SpringLych.github.io/rss.xml"/><item><title>工作中使用技术总结</title><link>https://SpringLych.github.io/post/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</link><guid isPermaLink="true">https://SpringLych.github.io/post/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</guid><pubDate>Sun, 22 Aug 2021 17:06:37 +0800</pubDate><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>本篇文章总结下在工作中使用到的技术。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>SpringLych</title><link>https://SpringLych.github.io/</link><description>MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</description><generator>Hugo 0.88.1 https://gohugo.io/</generator><language>zh-CN</language><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 21 Sep 2021 07:10:13 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://SpringLych.github.io/rss.xml"/><item><title>工作中使用技术总结</title><link>https://SpringLych.github.io/post/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</link><guid isPermaLink="true">https://SpringLych.github.io/post/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</guid><pubDate>Sun, 22 Aug 2021 17:06:37 +0800</pubDate><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>本篇文章总结下在工作中使用到的技术。&lt;/p>
 &lt;h2 id="异步">异步&lt;/h2>
 &lt;p>异步的使用场景在调用某个接口时，需要同步修改其他信息，而其他信息的返回结果是不关心的，使用异步来处理，提高接口的相应速度。&lt;/p>
 &lt;p>在 Spring Boot 中，可以使用 &lt;code>@Async&lt;/code> 注解很方便地使用异步。使用步骤如下&lt;/p>
@@ -6,7 +6,7 @@
 &lt;li>配置开启异步，指定线程池（可选）&lt;/li>
 &lt;/ol>
 &lt;p>在配置类中添加 &lt;code>@EnableAsync&lt;/code> 即可配置异步。同时手动构造一个线程池，用来执行异步任务&lt;/p>
-&lt;pre>&lt;code>@Configuration
+&lt;pre tabindex="0">&lt;code>@Configuration
 @EnableAsync
 public class ThreadPoolConfig {
 private static final int CORE_NUM = Runtime.getRuntime().availableProcessors();
@@ -34,7 +34,7 @@ return threadPool;
 &lt;li>&lt;a href="https://www.cnblogs.com/sueyyyy/p/14212953.html">springboot使用@Async注解时异步方法不生效原因分析及解决方案&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>正确的写法如下：在另一个类中维护异步方法&lt;/p>
-&lt;pre>&lt;code>public interface FileCommonService {
+&lt;pre tabindex="0">&lt;code>public interface FileCommonService {
 @Async(&amp;quot;consumerThreadPool&amp;quot;)
 void deleteFileByIdAsync(String fileId);
 }
@@ -42,7 +42,115 @@ public class FileCommonServiceImpl implements FileCommonService {
 // ...
 }
 &lt;/code>&lt;/pre>&lt;h2 id="线程池">线程池&lt;/h2>
-&lt;p>todo&lt;/p>
+&lt;p>在业务中会遇到一些请求多个接口的情况，然后组装各个接口的返回数据。接口之间几乎不存在关联，可以独立请求，使用单线程会耗费大量的时间，使用并发，可以大大减少请求时间。&lt;/p>
+&lt;p>线程池是一种池化技术，使用线程池的好处在于：&lt;/p>
+&lt;ul>
+&lt;li>降低资源消耗。线程的创建和销毁非常耗费资源，使用线程池可以避免频繁地创建和销毁线程，&lt;/li>
+&lt;li>提高响应速度。使用线程池，无序创建线程，立即执行，提高响应速度。&lt;/li>
+&lt;li>更方便的管理线程。使用线程池统一分配管理。&lt;/li>
+&lt;/ul>
+&lt;h3 id="jdk-自带的线程池">JDK 自带的线程池&lt;/h3>
+&lt;p>JUC 包下的 Executors 工具提供了四种预先创建好的线程池：&lt;/p>
+&lt;ul>
+&lt;li>newCachedThreadPool&lt;/li>
+&lt;li>newFixedThreadPool&lt;/li>
+&lt;li>newScheduledThreadPool&lt;/li>
+&lt;li>newSingleThreadExecutor&lt;/li>
+&lt;/ul>
+&lt;p>底层都是预定义参数创建线程池，以 newCachedThreadPool 为例：&lt;/p>
+&lt;pre tabindex="0">&lt;code>public static ExecutorService newFixedThreadPool(int nThreads) {
+return new ThreadPoolExecutor(nThreads, nThreads,
+0L, TimeUnit.MILLISECONDS,
+new LinkedBlockingQueue&amp;lt;Runnable&amp;gt;());
+}
+&lt;/code>&lt;/pre>&lt;p>尽量不要使用这四种自带的线程池。&lt;/p>
+&lt;ul>
+&lt;li>newFixedThreadPool和newSingleThreadExecutor: 主要问题是堆积的请求处理队列可能会耗费非常大的内存，甚至OOM。&lt;/li>
+&lt;li>newCachedThreadPool和newScheduledThreadPool: 主要问题是线程数最大数是Integer.MAX_VALUE，可能会创建数量非常多的线程，甚至OOM&lt;/li>
+&lt;/ul>
+&lt;h3 id="线程池主要参数">线程池主要参数&lt;/h3>
+&lt;p>线程池的定义：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="kd">public&lt;/span> &lt;span class="nf">ThreadPoolExecutor&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">corePoolSize&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="n">maximumPoolSize&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;span class="kt">long&lt;/span> &lt;span class="n">keepAliveTime&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;span class="n">TimeUnit&lt;/span> &lt;span class="n">unit&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;span class="n">BlockingQueue&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Runnable&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">workQueue&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;span class="n">ThreadFactory&lt;/span> &lt;span class="n">threadFactory&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;span class="n">RejectedExecutionHandler&lt;/span> &lt;span class="n">handler&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>其中一个主要的参数：&lt;/p>
+&lt;ul>
+&lt;li>corePoolSize：核心线程数。&lt;/li>
+&lt;li>maximumPoolSize：最大核心线程数&lt;/li>
+&lt;li>BlockingQueue：阻塞队列&lt;/li>
+&lt;/ul>
+&lt;p>corePoolSize、maximumPoolSize、BlockingQueue 在提交任务后的关系为：&lt;/p>
+&lt;ul>
+&lt;li>如果 当前运行线程数 &amp;lt; corePoolSize ，立即创建一个线程并执行&lt;/li>
+&lt;li>如果 当前运行线程数 &amp;gt;= corePoolSize，且阻塞队列未满，将任务放入阻塞队列中，等待调用。&lt;/li>
+&lt;li>如果 corePoolSize &amp;lt;= 当前运行线程数 &amp;lt; maximumPoolSize，且阻塞队列已满，创建一个线程并立即执行&lt;/li>
+&lt;li>如果 当前运行线程数 &amp;gt;= maximumPoolSize，且阻塞队列已满，执行拒绝策略。&lt;/li>
+&lt;/ul>
+&lt;h3 id="手动创建线程池">手动创建线程池&lt;/h3>
+&lt;p>更推荐手动创建线程池。&lt;/p>
+&lt;p>在 Spring Boot 中，可以通过 &lt;code>@Bean&lt;/code>配置一个线程池&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="nd">@Configuration&lt;/span>
+&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">ThreadPoolConfig&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;span class="kd">private&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kd">final&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">CORE_NUM&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Runtime&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getRuntime&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">availableProcessors&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;span class="nd">@Bean&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;consumerThreadPool&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;span class="kd">public&lt;/span> &lt;span class="n">ExecutorService&lt;/span> &lt;span class="nf">buildThreadPool&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;span class="n">ThreadFactory&lt;/span> &lt;span class="n">threadFactory&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ThreadFactoryBuilder&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">setNameFormat&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;consumer-thread-%d&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;span class="n">ExecutorService&lt;/span> &lt;span class="n">threadPool&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ThreadPoolExecutor&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">CORE_NUM&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">CORE_NUM&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">2&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">10L&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;span class="n">TimeUnit&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">SECONDS&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ArrayBlockingQueue&lt;/span>&lt;span class="o">&amp;lt;&amp;gt;(&lt;/span>&lt;span class="n">10&lt;/span>&lt;span class="o">),&lt;/span> &lt;span class="n">threadFactory&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;span class="k">new&lt;/span> &lt;span class="n">ThreadPoolExecutor&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">AbortPolicy&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">threadPool&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;span class="o">}&lt;/span>
+&lt;span class="o">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>使用的时候直接引用：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="nd">@Resource&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;consumerThreadPool&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;span class="kd">private&lt;/span> &lt;span class="n">ExecutorService&lt;/span> &lt;span class="n">consumerThreadPool&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>一般来讲，会根据业务划分多个线程池，不同的业务使用不同的线程池，避免一个业务阻塞导致其他业务产生异常。&lt;/p>
 &lt;h2 id="分布式锁">分布式锁&lt;/h2>
 &lt;p>在维护另一个同事的功能时有这样一个场景：进入某个页面时，需要对另一个页面的数据进行汇总、计算展示，接口流程大致如下：&lt;/p>
 &lt;ol>
